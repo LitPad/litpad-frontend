@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:litpad/core/utils/utils.dart';
+import 'package:litpad/ui/components/common/on_hover.dart';
 
 class CustomBtn {
   static Widget solid({
@@ -15,34 +16,36 @@ class CustomBtn {
   }) {
     return IgnorePointer(
       ignoring: !online,
-      child: InkWell(
-        onTap: onTap,
-        child: Container(
-          width: width,
-          height: height ?? 44,
-          decoration: online
-              ? BoxDecoration(
-                  borderRadius: BorderRadius.circular(borderRadius ?? 30),
-                  color: onlineColor ?? AppColors.primaryPurple,
-                )
-              : BoxDecoration(
-                  borderRadius: BorderRadius.circular(borderRadius ?? 30),
-                  color: offlineColor ?? AppColors.grey,
-                ),
-          child: Center(
-            child: isLoading
-                ? const FittedBox(
-                    child: CircularProgressIndicator(),
+      child: OnHoverScale(
+        child: InkWell(
+          onTap: onTap,
+          child: Container(
+            width: width,
+            height: height ?? 44,
+            decoration: online
+                ? BoxDecoration(
+                    borderRadius: BorderRadius.circular(borderRadius ?? 30),
+                    color: onlineColor ?? AppColors.primaryPurple,
                   )
-                : Text(
-                    text,
-                    style: AppTypography.text16.copyWith(
-                      fontWeight: FontWeight.w500,
-                      color: online
-                          ? AppColors.white
-                          : AppColors.grey.withOpacity(0.5),
-                    ),
+                : BoxDecoration(
+                    borderRadius: BorderRadius.circular(borderRadius ?? 30),
+                    color: offlineColor ?? AppColors.grey,
                   ),
+            child: Center(
+              child: isLoading
+                  ? const FittedBox(
+                      child: CircularProgressIndicator(),
+                    )
+                  : Text(
+                      text,
+                      style: AppTypography.text16.copyWith(
+                        fontWeight: FontWeight.w500,
+                        color: online
+                            ? AppColors.white
+                            : AppColors.grey.withOpacity(0.5),
+                      ),
+                    ),
+            ),
           ),
         ),
       ),
@@ -61,21 +64,23 @@ class CustomBtn {
   }) {
     return IgnorePointer(
       ignoring: !online,
-      child: InkWell(
-        onTap: onTap,
-        child: Container(
-          width: width,
-          height: height ?? 44,
-          decoration: online
-              ? BoxDecoration(
-                  borderRadius: BorderRadius.circular(borderRadius ?? 30),
-                  color: onlineColor ?? AppColors.primaryPurple,
-                )
-              : BoxDecoration(
-                  borderRadius: BorderRadius.circular(borderRadius ?? 30),
-                  color: offlineColor ?? AppColors.grey,
-                ),
-          child: Center(child: child),
+      child: OnHoverScale(
+        child: InkWell(
+          onTap: onTap,
+          child: Container(
+            width: width,
+            height: height ?? 44,
+            decoration: online
+                ? BoxDecoration(
+                    borderRadius: BorderRadius.circular(borderRadius ?? 30),
+                    color: onlineColor ?? AppColors.primaryPurple,
+                  )
+                : BoxDecoration(
+                    borderRadius: BorderRadius.circular(borderRadius ?? 30),
+                    color: offlineColor ?? AppColors.grey,
+                  ),
+            child: Center(child: child),
+          ),
         ),
       ),
     );
@@ -94,39 +99,41 @@ class CustomBtn {
   }) {
     return IgnorePointer(
       ignoring: !online,
-      child: InkWell(
-        onTap: onTap,
-        child: Container(
-          width: width,
-          height: height ?? 65,
-          // padding: padding ??
-          //     EdgeInsets.symmetric(
-          //       vertical: Sizer.height(14),
-          //       horizontal: Sizer.width(10),
-          //     ),
-          decoration: online
-              ? BoxDecoration(
-                  borderRadius: borderRadius,
-                  color: onlineColor ?? AppColors.primaryPurple,
-                )
-              : BoxDecoration(
-                  borderRadius: borderRadius,
-                  color: offlineColor ?? AppColors.grey,
-                ),
-          child: Center(
-            child: isLoading
-                ? const FittedBox(
-                    child: CircularProgressIndicator(),
+      child: OnHoverScale(
+        child: InkWell(
+          onTap: onTap,
+          child: Container(
+            width: width,
+            height: height ?? 65,
+            // padding: padding ??
+            //     EdgeInsets.symmetric(
+            //       vertical: Sizer.height(14),
+            //       horizontal: Sizer.width(10),
+            //     ),
+            decoration: online
+                ? BoxDecoration(
+                    borderRadius: borderRadius,
+                    color: onlineColor ?? AppColors.primaryPurple,
                   )
-                : Text(
-                    text,
-                    style: AppTypography.text16.copyWith(
-                      fontWeight: FontWeight.w500,
-                      color: online
-                          ? AppColors.white
-                          : AppColors.grey.withOpacity(0.5),
-                    ),
+                : BoxDecoration(
+                    borderRadius: borderRadius,
+                    color: offlineColor ?? AppColors.grey,
                   ),
+            child: Center(
+              child: isLoading
+                  ? const FittedBox(
+                      child: CircularProgressIndicator(),
+                    )
+                  : Text(
+                      text,
+                      style: AppTypography.text16.copyWith(
+                        fontWeight: FontWeight.w500,
+                        color: online
+                            ? AppColors.white
+                            : AppColors.grey.withOpacity(0.5),
+                      ),
+                    ),
+            ),
           ),
         ),
       ),
@@ -146,27 +153,29 @@ class CustomBtn {
   }) {
     return IgnorePointer(
       ignoring: !online,
-      child: InkWell(
-        onTap: onTap,
-        child: Container(
-          width: width,
-          height: height ?? 44,
-          decoration: online
-              ? BoxDecoration(
-                  borderRadius: BorderRadius.circular(borderRadius ?? 30),
-                  border: Border.all(
-                    color: onlineColor ?? AppColors.black,
-                    width: 1,
+      child: OnHoverScale(
+        child: InkWell(
+          onTap: onTap,
+          child: Container(
+            width: width,
+            height: height ?? 44,
+            decoration: online
+                ? BoxDecoration(
+                    borderRadius: BorderRadius.circular(borderRadius ?? 30),
+                    border: Border.all(
+                      color: onlineColor ?? AppColors.black,
+                      width: 1,
+                    ),
+                  )
+                : BoxDecoration(
+                    borderRadius: BorderRadius.circular(borderRadius ?? 30),
+                    border: Border.all(
+                      color: offlineColor ?? AppColors.grey,
+                      width: 1,
+                    ),
                   ),
-                )
-              : BoxDecoration(
-                  borderRadius: BorderRadius.circular(borderRadius ?? 30),
-                  border: Border.all(
-                    color: offlineColor ?? AppColors.grey,
-                    width: 1,
-                  ),
-                ),
-          child: Center(child: child),
+            child: Center(child: child),
+          ),
         ),
       ),
     );

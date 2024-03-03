@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:litpad/core/utils/utils.dart';
+import 'package:litpad/ui/components/common/on_hover.dart';
 
 class FooterSection extends StatelessWidget {
   const FooterSection({Key? key}) : super(key: key);
@@ -126,19 +127,31 @@ class FooterAbout extends StatelessWidget {
         const SizedBox(height: 40),
         Row(
           children: [
-            svgHelper(AppSvgs.x, height: 19, width: 20),
+            OnHoverTranslate(
+                child: InkWell(
+                    onTap: () {},
+                    child: svgHelper(AppSvgs.x, height: 19, width: 20))),
             const SizedBox(width: 16),
             imageHelper(AppImages.vline, height: 20),
             const SizedBox(width: 16),
-            svgHelper(AppSvgs.fb, height: 19, width: 20),
+            OnHoverTranslate(
+                child: InkWell(
+                    onTap: () {},
+                    child: svgHelper(AppSvgs.fb, height: 19, width: 20))),
             const SizedBox(width: 16),
             imageHelper(AppImages.vline, height: 20),
             const SizedBox(width: 16),
-            imageHelper(AppImages.ig, height: 19, width: 20),
+            OnHoverTranslate(
+                child: InkWell(
+                    onTap: () {},
+                    child: imageHelper(AppImages.ig, height: 19, width: 20))),
             const SizedBox(width: 16),
             imageHelper(AppImages.vline, height: 20),
             const SizedBox(width: 16),
-            svgHelper(AppSvgs.lk, height: 19, width: 20),
+            OnHoverTranslate(
+                child: InkWell(
+                    onTap: () {},
+                    child: svgHelper(AppSvgs.lk, height: 19, width: 20))),
           ],
         )
       ],

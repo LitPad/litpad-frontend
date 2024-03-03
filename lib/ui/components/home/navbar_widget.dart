@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:litpad/core/utils/utils.dart';
+import 'package:litpad/ui/components/common/on_hover.dart';
 import 'package:litpad/ui/components/components.dart';
 import 'package:responsive_builder/responsive_builder.dart';
 
@@ -72,25 +73,30 @@ Widget deeskTopNavBar() {
 }
 
 Widget navButton(String text) {
-  return Container(
-    margin: const EdgeInsets.symmetric(horizontal: 4),
-    child: TextButton(
-      onPressed: () {},
-      child: Text(
-        text,
-        style: AppTypography.text15,
+  return OnHoverTranslate(
+    child: Container(
+      margin: const EdgeInsets.symmetric(horizontal: 4),
+      child: TextButton(
+        onPressed: () {},
+        child: Text(
+          text,
+          style: AppTypography.text15,
+        ),
       ),
     ),
   );
 }
 
 Widget navLogo() {
-  return InkWell(
-    onTap: () {},
-    child: Container(
-      padding: const EdgeInsets.all(10),
-      child: svgHelper(
-        AppSvgs.logo,
+  return OnHoverScale(
+    child: InkWell(
+      onTap: () {},
+      hoverColor: AppColors.transparent,
+      child: Container(
+        padding: const EdgeInsets.all(10),
+        child: svgHelper(
+          AppSvgs.logo,
+        ),
       ),
     ),
   );

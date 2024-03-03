@@ -39,6 +39,7 @@ dependencies:
   flutter_svg: ^2.0.10+1
   iconsax: ^0.0.8
   animate_do: ^3.3.4
+  flutter_animate_on_scroll: ^0.0.2
 
 dev_dependencies:
   flutter_test:

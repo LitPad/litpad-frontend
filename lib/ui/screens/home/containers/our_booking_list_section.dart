@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:litpad/core/utils/utils.dart';
+import 'package:litpad/ui/components/common/on_hover.dart';
 
 class OurBookingListSection extends StatefulWidget {
   const OurBookingListSection({Key? key}) : super(key: key);
@@ -193,30 +194,32 @@ class TabBtn extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return InkWell(
-      onTap: onTap,
-      child: Container(
-        padding: const EdgeInsets.symmetric(
-          horizontal: 18,
-          vertical: 12,
-        ),
-        decoration: BoxDecoration(
-          color: isSelected
-              ? (activeColor ?? AppColors.purple100)
-              : AppColors.white,
-          borderRadius: BorderRadius.circular(50),
-          border: Border.all(
-            color: isSelected
-                ? AppColors.purple800
-                : AppColors.black.withOpacity(0.20),
-            width: 1,
+    return OnHoverTranslate(
+      child: InkWell(
+        onTap: onTap,
+        child: Container(
+          padding: const EdgeInsets.symmetric(
+            horizontal: 18,
+            vertical: 12,
           ),
-        ),
-        child: Text(
-          text,
-          style: AppTypography.text15.copyWith(
-            fontWeight: FontWeight.w500,
-            color: isSelected ? AppColors.purple900 : AppColors.grey500,
+          decoration: BoxDecoration(
+            color: isSelected
+                ? (activeColor ?? AppColors.purple100)
+                : AppColors.white,
+            borderRadius: BorderRadius.circular(50),
+            border: Border.all(
+              color: isSelected
+                  ? AppColors.purple800
+                  : AppColors.black.withOpacity(0.20),
+              width: 1,
+            ),
+          ),
+          child: Text(
+            text,
+            style: AppTypography.text15.copyWith(
+              fontWeight: FontWeight.w500,
+              color: isSelected ? AppColors.purple900 : AppColors.grey500,
+            ),
           ),
         ),
       ),
