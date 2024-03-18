@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-
 import 'package:litpad/core/utils/utils.dart';
 
 class WithLitpadSection extends StatelessWidget {
@@ -27,24 +26,30 @@ class WithLitpadSection extends StatelessWidget {
           const Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              WithLitCard(
-                iconPath: AppSvgs.write,
-                title: "Autho-Friendly Platform",
-                description:
-                    "Providing authors with tools and resources to publish, \npromote, and monetize their work while retainning \ncreative control",
+              Expanded(
+                child: WithLitCard(
+                  iconPath: AppSvgs.write,
+                  title: "Autho-Friendly Platform",
+                  description:
+                      "Providing authors with tools and resources to publish, promote, and monetize their work while retainning creative control",
+                ),
               ),
-              WithLitCard(
-                iconPath: AppSvgs.bookOpen,
-                iconColor: AppColors.black,
-                title: "Reader-Centric Experience",
-                description:
-                    "Curating a diverse selection of literacy content \nacross genres and empowering readers to discover, \nengage with, and support their favorite authors",
+              Expanded(
+                child: WithLitCard(
+                  iconPath: AppSvgs.bookOpen,
+                  iconColor: AppColors.black,
+                  title: "Reader-Centric Experience",
+                  description:
+                      "Curating a diverse selection of literacy content across genres and empowering readers to discover, engage with, and support their favorite authors",
+                ),
               ),
-              WithLitCard(
-                iconPath: AppSvgs.magnify,
-                title: "Transparency and fairness",
-                description:
-                    "Implementing transparent revenue-sharing models \nand fostering a community built on trust and \ncollaboration",
+              Expanded(
+                child: WithLitCard(
+                  iconPath: AppSvgs.magnify,
+                  title: "Transparency and fairness",
+                  description:
+                      "Implementing transparent revenue-sharing models and fostering a community built on trust and collaboration",
+                ),
               ),
             ],
           )
@@ -98,15 +103,11 @@ class WithLitCard extends StatelessWidget {
           ),
         ),
         const SizedBox(height: 8),
-        Row(
-          children: [
-            Text(
-              description,
-              style: AppTypography.text16.copyWith(
-                color: AppColors.grey600,
-              ),
-            ),
-          ],
+        Text(
+          description,
+          style: AppTypography.text16.copyWith(
+            color: AppColors.grey600,
+          ),
         ),
       ],
     );

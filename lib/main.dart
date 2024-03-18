@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:litpad/ui/screens/home/home_screen.dart';
+
+import 'core/router/app_router.dart';
 
 void main() {
   runApp(const MyApp());
@@ -11,14 +12,14 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return MaterialApp.router(
       title: 'LitPad',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home: const HomeScreen(),
+      routerConfig: appRouter,
     );
   }
 }

@@ -15,6 +15,10 @@ class AppSvgs {
   static const String x = "$svgIcon/x.svg";
   static const String fb = "$svgIcon/fb.svg";
   static const String lk = "$svgIcon/lk.svg";
+
+  static const String muscle = "$svgIcon/muscle.svg";
+  static const String people = "$svgIcon/people.svg";
+  static const String rocket = "$svgIcon/rocket.svg";
 }
 
 SvgPicture svgHelper(String svg,

@@ -8,6 +8,7 @@ class FooterSection extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
+      color: AppColors.white,
       padding: const EdgeInsets.symmetric(horizontal: 60),
       child: Column(
         children: [
@@ -127,34 +128,68 @@ class FooterAbout extends StatelessWidget {
         const SizedBox(height: 40),
         Row(
           children: [
-            OnHoverTranslate(
-                child: InkWell(
-                    onTap: () {},
-                    child: svgHelper(AppSvgs.x, height: 19, width: 20))),
+            FooterSocials(
+              assetPath: AppSvgs.x,
+              onTap: () {},
+            ),
             const SizedBox(width: 16),
             imageHelper(AppImages.vline, height: 20),
             const SizedBox(width: 16),
-            OnHoverTranslate(
-                child: InkWell(
-                    onTap: () {},
-                    child: svgHelper(AppSvgs.fb, height: 19, width: 20))),
+            FooterSocials(
+              assetPath: AppSvgs.fb,
+              onTap: () {},
+            ),
             const SizedBox(width: 16),
             imageHelper(AppImages.vline, height: 20),
             const SizedBox(width: 16),
-            OnHoverTranslate(
-                child: InkWell(
-                    onTap: () {},
-                    child: imageHelper(AppImages.ig, height: 19, width: 20))),
+            FooterSocials(
+              assetPath: AppImages.ig,
+              isImage: true,
+              onTap: () {},
+            ),
             const SizedBox(width: 16),
             imageHelper(AppImages.vline, height: 20),
             const SizedBox(width: 16),
-            OnHoverTranslate(
-                child: InkWell(
-                    onTap: () {},
-                    child: svgHelper(AppSvgs.lk, height: 19, width: 20))),
+            FooterSocials(
+              assetPath: AppSvgs.lk,
+              onTap: () {},
+            ),
           ],
         )
       ],
+    );
+  }
+}
+
+class FooterSocials extends StatelessWidget {
+  const FooterSocials({
+    Key? key,
+    required this.assetPath,
+    this.isImage = false,
+    this.onTap,
+  }) : super(key: key);
+
+  final String assetPath;
+  final bool isImage;
+  final VoidCallback? onTap;
+
+  @override
+  Widget build(BuildContext context) {
+    return OnHoverTranslate(
+      child: InkWell(
+        onTap: onTap,
+        child: isImage
+            ? imageHelper(
+                assetPath,
+                height: 19,
+                width: 20,
+              )
+            : svgHelper(
+                assetPath,
+                height: 19,
+                width: 20,
+              ),
+      ),
     );
   }
 }

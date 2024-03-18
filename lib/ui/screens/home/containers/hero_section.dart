@@ -46,7 +46,7 @@ class HeroSection extends StatelessWidget {
           const SizedBox(
             height: 30,
           ),
-          Container(
+          SizedBox(
             height: 45,
             child: ElevatedButton.icon(
                 style: ButtonStyle(

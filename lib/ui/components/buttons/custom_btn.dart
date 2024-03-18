@@ -87,15 +87,16 @@ class CustomBtn {
   }
 
   static Widget outline({
-    required Function()? onTap,
-    required bool online,
+    Function()? onTap,
+    bool online = true,
     required String text,
     bool isLoading = false,
-    BorderRadiusGeometry? borderRadius,
+    double? borderRadius,
     double? width,
     double? height,
     Color? offlineColor,
     Color? onlineColor,
+    Color? bgColor,
   }) {
     return IgnorePointer(
       ignoring: !online,
@@ -112,12 +113,20 @@ class CustomBtn {
             //     ),
             decoration: online
                 ? BoxDecoration(
-                    borderRadius: borderRadius,
-                    color: onlineColor ?? AppColors.primaryPurple,
+                    borderRadius: BorderRadius.circular(borderRadius ?? 30),
+                    color: bgColor ?? AppColors.transparent,
+                    border: Border.all(
+                      color: onlineColor ?? AppColors.purple900,
+                      width: 1,
+                    ),
                   )
                 : BoxDecoration(
-                    borderRadius: borderRadius,
-                    color: offlineColor ?? AppColors.grey,
+                    borderRadius: BorderRadius.circular(borderRadius ?? 30),
+                    color: bgColor ?? AppColors.transparent,
+                    border: Border.all(
+                      color: onlineColor ?? AppColors.purple900,
+                      width: 1,
+                    ),
                   ),
             child: Center(
               child: isLoading
@@ -129,7 +138,7 @@ class CustomBtn {
                       style: AppTypography.text16.copyWith(
                         fontWeight: FontWeight.w500,
                         color: online
-                            ? AppColors.white
+                            ? AppColors.purple900
                             : AppColors.grey.withOpacity(0.5),
                       ),
                     ),
@@ -149,6 +158,7 @@ class CustomBtn {
     double? height,
     Color? offlineColor,
     Color? onlineColor,
+    Color? bgColor,
     required Widget child,
   }) {
     return IgnorePointer(
@@ -162,6 +172,7 @@ class CustomBtn {
             decoration: online
                 ? BoxDecoration(
                     borderRadius: BorderRadius.circular(borderRadius ?? 30),
+                    color: bgColor ?? AppColors.transparent,
                     border: Border.all(
                       color: onlineColor ?? AppColors.black,
                       width: 1,
@@ -169,6 +180,7 @@ class CustomBtn {
                   )
                 : BoxDecoration(
                     borderRadius: BorderRadius.circular(borderRadius ?? 30),
+                    color: bgColor ?? AppColors.transparent,
                     border: Border.all(
                       color: offlineColor ?? AppColors.grey,
                       width: 1,

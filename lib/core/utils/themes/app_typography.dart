@@ -51,21 +51,25 @@ class AppTypography {
   static TextStyle text20 = const TextStyle(
     color: AppColors.purple900,
     fontSize: 20,
+    height: 1.2,
   );
 
   static TextStyle text22 = const TextStyle(
     color: AppColors.purple900,
     fontSize: 22,
+    height: 1.2,
   );
 
   static TextStyle text24 = const TextStyle(
     color: AppColors.purple900,
     fontSize: 24,
+    height: 1.2,
   );
 
   static TextStyle text28 = const TextStyle(
     color: AppColors.purple900,
     fontSize: 28,
+    height: 1.2,
   );
 
   static TextStyle text32 = const TextStyle(
