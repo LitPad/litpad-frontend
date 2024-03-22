@@ -8,6 +8,8 @@ class AppColors {
   static const black = Color(0xFF000000);
   static const primaryPurple = Color(0xFF9255DD);
 
+  static const bgWhite = Color(0xFFFFFFFF);
+
   static const black600 = Color(0xFF5B5B5B);
   static const black700 = Color(0xFF292D32);
 
@@ -17,12 +19,16 @@ class AppColors {
 
   static const grey900 = Color(0xFF120024);
   static const grey800 = Color(0xFF2C1C3C);
+  static const grey700 = Color(0xFF493B56);
   static const grey600 = Color(0xFF7F7589);
   static const grey400 = Color(0xFFC4BFC8);
   static const grey500 = Color(0xFF727272);
   static const grey300 = Color(0xFFEDEDED);
   static const grey200 = Color(0xFFF6F5F6);
+  static const grey100 = Color(0xFFFAFAFB);
+  static const menuGrey = Color(0xFFAAA3B0);
 
+  static const magneta50 = Color(0xFFFFE6FA);
   static const magneta100 = Color(0xFFFFCDF5);
   static const magneta900 = Color(0xFF5A1F52);
 

@@ -1,15 +1,17 @@
 import 'package:litpad/core/utils/utils.dart';
 import 'package:litpad/ui/components/components.dart';
-import 'package:litpad/ui/screens/profile/widgets/widgets.dart';
 
-class PublishedBooks extends StatefulWidget {
-  const PublishedBooks({Key? key}) : super(key: key);
+import 'update_password_widget.dart';
+import 'update_profile_widget.dart';
+
+class ProfileTabMenuSection extends StatefulWidget {
+  const ProfileTabMenuSection({Key? key}) : super(key: key);
 
   @override
-  State<PublishedBooks> createState() => _PublishedBooksState();
+  State<ProfileTabMenuSection> createState() => _ProfileTabMenuSectionState();
 }
 
-class _PublishedBooksState extends State<PublishedBooks> {
+class _ProfileTabMenuSectionState extends State<ProfileTabMenuSection> {
   int _selectedTabIndex = 0;
   @override
   Widget build(BuildContext context) {

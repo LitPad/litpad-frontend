@@ -7,14 +7,17 @@ const String svgIcon = "assets/svgs";
 
 class AppSvgs {
   static const String logo = "$svgIcon/logo.svg";
+  static const String logoIcon = "$svgIcon/logoIcon.svg";
   static const String write = "$svgIcon/write.svg";
   static const String magnify = "$svgIcon/magnify.svg";
   static const String search = "$svgIcon/search.svg";
   static const String bookOpen = "$svgIcon/bookOpen.svg";
 
-  static const String x = "$svgIcon/x.svg";
-  static const String fb = "$svgIcon/fb.svg";
-  static const String lk = "$svgIcon/lk.svg";
+  // Socials
+  static const String x = "$svgIcon/socials/x.svg";
+  static const String fb = "$svgIcon/socials/fb.svg";
+  static const String lk = "$svgIcon/socials/lk.svg";
+  static const String google = "$svgIcon/socials/google.svg.svg";
 
   static const String muscle = "$svgIcon/muscle.svg";
   static const String people = "$svgIcon/people.svg";

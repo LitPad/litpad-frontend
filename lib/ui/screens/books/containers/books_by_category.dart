@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
+import 'package:litpad/core/router/app_router.dart';
 import 'package:litpad/core/utils/utils.dart';
 import 'package:litpad/ui/components/books/books.dart';
 
@@ -49,14 +51,50 @@ class _BooksByCategoryState extends State<BooksByCategory> {
             crossAxisCount: 2,
             crossAxisSpacing: 20,
             mainAxisSpacing: 30,
-            childAspectRatio: 500 / 234,
-            children: const [
-              BookCard(),
-              BookCard(),
-              BookCard(),
-              BookCard(),
-              BookCard(),
-              BookCard(),
+            childAspectRatio: 580 / 234,
+            children: [
+              BookCard(
+                onImageTap: () {
+                  context.goNamed(RoutePath.bookDetailsScreen, pathParameters: {
+                    'id': '1',
+                  });
+                },
+              ),
+              BookCard(
+                onImageTap: () {
+                  context.goNamed(RoutePath.bookDetailsScreen, pathParameters: {
+                    'id': '1',
+                  });
+                },
+              ),
+              BookCard(
+                onImageTap: () {
+                  context.goNamed(RoutePath.bookDetailsScreen, pathParameters: {
+                    'id': '1',
+                  });
+                },
+              ),
+              BookCard(
+                onImageTap: () {
+                  context.goNamed(RoutePath.bookDetailsScreen, pathParameters: {
+                    'id': '1',
+                  });
+                },
+              ),
+              BookCard(
+                onImageTap: () {
+                  context.goNamed(RoutePath.bookDetailsScreen, pathParameters: {
+                    'id': '1',
+                  });
+                },
+              ),
+              BookCard(
+                onImageTap: () {
+                  context.goNamed(RoutePath.bookDetailsScreen, pathParameters: {
+                    'id': '1',
+                  });
+                },
+              ),
             ],
           ),
           const SizedBox(height: 20),

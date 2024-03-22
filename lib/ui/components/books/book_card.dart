@@ -4,7 +4,12 @@ import 'package:litpad/ui/components/books/row_icon_with_text.dart';
 import 'package:litpad/ui/components/books/tags.dart';
 
 class BookCard extends StatelessWidget {
-  const BookCard({Key? key}) : super(key: key);
+  const BookCard({
+    Key? key,
+    this.onImageTap,
+  }) : super(key: key);
+
+  final VoidCallback? onImageTap;
 
   @override
   Widget build(BuildContext context) {
@@ -12,13 +17,16 @@ class BookCard extends StatelessWidget {
       color: AppColors.white,
       child: Row(
         children: [
-          Container(
-            width: 204,
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(20),
-              image: const DecorationImage(
-                image: AssetImage(AppImages.article),
-                fit: BoxFit.cover,
+          InkWell(
+            onTap: onImageTap,
+            child: Container(
+              width: 204,
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(20),
+                image: const DecorationImage(
+                  image: AssetImage(AppImages.article),
+                  fit: BoxFit.cover,
+                ),
               ),
             ),
           ),

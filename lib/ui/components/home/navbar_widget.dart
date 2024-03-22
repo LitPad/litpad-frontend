@@ -1,25 +1,28 @@
-import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:litpad/core/router/app_router.dart';
 import 'package:litpad/core/utils/utils.dart';
-import 'package:litpad/ui/components/common/on_hover.dart';
 import 'package:litpad/ui/components/components.dart';
 import 'package:responsive_builder/responsive_builder.dart';
 
-class NavBar extends StatelessWidget {
+class NavBar extends StatefulWidget {
   const NavBar({Key? key}) : super(key: key);
 
   @override
+  State<NavBar> createState() => _NavBarState();
+}
+
+class _NavBarState extends State<NavBar> {
+  @override
   Widget build(BuildContext context) {
     return ScreenTypeLayout.builder(
-      mobile: (BuildContext context) => mobileNavBar(),
+      mobile: (BuildContext context) => mobileNavBar(context),
       tablet: (BuildContext context) => deeskTopNavBar(context),
       desktop: (BuildContext context) => deeskTopNavBar(context),
     );
   }
 }
 
-Widget mobileNavBar() {
+Widget mobileNavBar(BuildContext context) {
   return Container(
     margin: const EdgeInsets.symmetric(horizontal: 20),
     height: 70,
@@ -27,7 +30,7 @@ Widget mobileNavBar() {
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
         const Icon(Icons.menu),
-        navLogo(),
+        navLogo(context),
       ],
     ),
   );
@@ -55,7 +58,7 @@ Widget deeskTopNavBar(BuildContext context) {
         Row(
           mainAxisSize: MainAxisSize.min,
           children: [
-            navLogo(),
+            navLogo(context),
             const XBox(50),
             Row(
               children: [
@@ -84,9 +87,15 @@ Widget deeskTopNavBar(BuildContext context) {
         ),
         Row(
           children: [
-            navButton(text: 'Login'),
+            navButton(
+                text: 'Login',
+                onTap: () {
+                  context.goNamed(RoutePath.loginScreen);
+                }),
             CustomBtn.solid(
-              onTap: () {},
+              onTap: () {
+                context.goNamed(RoutePath.signupScreen);
+              },
               online: true,
               text: 'Sign up',
               width: 110,
@@ -113,10 +122,12 @@ Widget navButton({required String text, VoidCallback? onTap}) {
   );
 }
 
-Widget navLogo() {
+Widget navLogo(BuildContext context) {
   return OnHoverScale(
     child: InkWell(
-      onTap: () {},
+      onTap: () {
+        context.goNamed(RoutePath.homeScreen);
+      },
       hoverColor: AppColors.transparent,
       child: Container(
         padding: const EdgeInsets.all(10),

@@ -34,6 +34,7 @@ class WithLitpadSection extends StatelessWidget {
                       "Providing authors with tools and resources to publish, promote, and monetize their work while retainning creative control",
                 ),
               ),
+              XBox(50),
               Expanded(
                 child: WithLitCard(
                   iconPath: AppSvgs.bookOpen,
@@ -43,6 +44,7 @@ class WithLitpadSection extends StatelessWidget {
                       "Curating a diverse selection of literacy content across genres and empowering readers to discover, engage with, and support their favorite authors",
                 ),
               ),
+              XBox(50),
               Expanded(
                 child: WithLitCard(
                   iconPath: AppSvgs.magnify,
@@ -107,6 +109,7 @@ class WithLitCard extends StatelessWidget {
           description,
           style: AppTypography.text16.copyWith(
             color: AppColors.grey600,
+            height: 1.5,
           ),
         ),
       ],

@@ -1,7 +1,11 @@
+import 'package:go_router/go_router.dart';
+import 'package:litpad/core/router/app_router.dart';
 import 'package:litpad/core/utils/utils.dart';
 import 'package:litpad/ui/components/books/row_icon_with_text.dart';
 import 'package:litpad/ui/components/components.dart';
 import 'package:litpad/ui/screens/home/containers/containers.dart';
+
+import 'containers/books_tab_menu_section.dart';
 
 class BookDetailsScreen extends StatelessWidget {
   const BookDetailsScreen({Key? key}) : super(key: key);
@@ -56,10 +60,17 @@ class BookDetailsScreen extends StatelessWidget {
                               const SizedBox(height: 8),
                               Row(
                                 children: [
-                                  Text(
-                                    "By Herman Merville",
-                                    style: AppTypography.text16.copyWith(
-                                      color: AppColors.purple900,
+                                  TextButton(
+                                    onPressed: () {
+                                      context.goNamed(
+                                          RoutePath.authorsDetailScreen,
+                                          pathParameters: {'id': '1'});
+                                    },
+                                    child: Text(
+                                      "By Herman Merville",
+                                      style: AppTypography.text16.copyWith(
+                                        color: AppColors.purple900,
+                                      ),
                                     ),
                                   ),
                                   Container(
@@ -176,6 +187,8 @@ class BookDetailsScreen extends StatelessWidget {
                   ],
                 ),
               ),
+              const SizedBox(height: 60),
+              const BooksTabMenuSection(),
               Container(
                 padding:
                     const EdgeInsets.symmetric(vertical: 40, horizontal: 60),

@@ -110,7 +110,7 @@ class _CustomTextFieldState extends State<CustomTextField> {
                           )),
                     ],
                   ),
-                  YBox(4),
+                  const YBox(4),
                 ],
               )
             : const SizedBox(),
@@ -169,7 +169,7 @@ class _CustomTextFieldState extends State<CustomTextField> {
                     ? BorderSide.none
                     : const BorderSide(
                         width: 1,
-                        color: AppColors.grey,
+                        color: AppColors.grey300,
                       ),
                 borderRadius: BorderRadius.circular(widget.borderRadius),
               ),
@@ -186,7 +186,7 @@ class _CustomTextFieldState extends State<CustomTextField> {
                     ? BorderSide.none
                     : const BorderSide(
                         width: 1,
-                        color: AppColors.grey,
+                        color: AppColors.grey300,
                       ),
                 borderRadius: BorderRadius.circular(widget.borderRadius),
               ),
@@ -210,7 +210,7 @@ class _CustomTextFieldState extends State<CustomTextField> {
                     ? BorderSide.none
                     : const BorderSide(
                         width: 1,
-                        color: AppColors.grey,
+                        color: AppColors.grey300,
                       ),
                 borderRadius: BorderRadius.circular(widget.borderRadius),
               ),
@@ -264,7 +264,7 @@ class PasswordSuffixWidget extends StatelessWidget {
       width: 48,
       height: 26,
       alignment: Alignment.center,
-      margin: EdgeInsets.only(
+      margin: const EdgeInsets.only(
         top: 11,
         bottom: 11,
       ),

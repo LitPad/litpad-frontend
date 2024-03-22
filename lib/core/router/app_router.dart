@@ -8,6 +8,12 @@ class RoutePath {
   static const String bookDetailsScreen = 'bookDetailsScreen';
   static const String browsingingScreen = 'browsingingScreen';
   static const String latestBooksScreen = 'latestBooksScreen';
+
+  static const String signupScreen = 'signupScreen';
+  static const String loginScreen = 'loginScreen';
+  static const String authCheckMail = 'authCheckMail';
+  static const String profileScreen = 'profileScreen';
+  static const String userScreen = 'userScreen';
 }
 
 final GoRouter appRouter = GoRouter(
@@ -18,6 +24,21 @@ final GoRouter appRouter = GoRouter(
       builder: (context, state) => const HomeScreen(),
     ),
     GoRoute(
+      name: RoutePath.loginScreen,
+      path: "/login",
+      builder: (context, state) => const LoginScreen(),
+    ),
+    GoRoute(
+      name: RoutePath.signupScreen,
+      path: "/signup",
+      builder: (context, state) => const SignupScreen(),
+    ),
+    GoRoute(
+      name: RoutePath.authCheckMail,
+      path: "/auth-check-mail",
+      builder: (context, state) => const AuthCheckMail(),
+    ),
+    GoRoute(
       name: RoutePath.aboutScreen,
       path: "/about-us",
       builder: (context, state) => const AboutScreen(),
@@ -26,6 +47,11 @@ final GoRouter appRouter = GoRouter(
       name: RoutePath.authorsDetailScreen,
       path: "/authors/:id",
       builder: (context, state) => const AuthorsDetails(),
+    ),
+    GoRoute(
+      name: RoutePath.profileScreen,
+      path: "/my-account/:id",
+      builder: (context, state) => const MyProfileScreen(),
     ),
     GoRoute(
       name: RoutePath.browsingingScreen,
