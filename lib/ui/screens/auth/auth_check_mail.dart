@@ -1,4 +1,4 @@
-// import 'package:iconsax/iconsax.dart';
+
 import 'package:litpad/core/utils/utils.dart';
 
 class AuthCheckMail extends StatelessWidget {
