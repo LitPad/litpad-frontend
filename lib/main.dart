@@ -16,7 +16,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ScreenUtilInit(
-      designSize: const Size(1330, 1024),
+      designSize: const Size(1440, 1024),
       builder: (context, child) {
         return MaterialApp.router(
           title: 'LitPad',

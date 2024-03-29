@@ -21,7 +21,7 @@ class CustomBtn {
           onTap: onTap,
           child: Container(
             width: width,
-            height: height ?? 44,
+            height: Sizer.height(height ?? 44),
             decoration: online
                 ? BoxDecoration(
                     borderRadius: BorderRadius.circular(borderRadius ?? 30),
@@ -69,7 +69,7 @@ class CustomBtn {
           onTap: onTap,
           child: Container(
             width: width,
-            height: height ?? 44,
+            height: Sizer.height(height ?? 44),
             decoration: online
                 ? BoxDecoration(
                     borderRadius: BorderRadius.circular(borderRadius ?? 30),
@@ -105,7 +105,7 @@ class CustomBtn {
           onTap: onTap,
           child: Container(
             width: width,
-            height: height ?? 65,
+            height: Sizer.height(height ?? 44),
             // padding: padding ??
             //     EdgeInsets.symmetric(
             //       vertical: Sizer.height(14),
@@ -168,7 +168,7 @@ class CustomBtn {
           onTap: onTap,
           child: Container(
             width: width,
-            height: height ?? 44,
+            height: Sizer.height(height ?? 44),
             decoration: online
                 ? BoxDecoration(
                     borderRadius: BorderRadius.circular(borderRadius ?? 30),

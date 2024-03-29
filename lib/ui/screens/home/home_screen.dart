@@ -1,4 +1,4 @@
-import 'package:litpad/core/utils/constants/constants.dart';
+import 'package:litpad/core/utils/utils.dart';
 import 'package:litpad/ui/components/home/navbar_widget.dart';
 import 'package:litpad/ui/screens/home/containers/containers.dart';
 
@@ -14,25 +14,32 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget build(BuildContext context) {
     w = MediaQuery.of(context).size.width;
     h = MediaQuery.of(context).size.height;
+    // printty(w, logLevel: "width");
+    // printty(h, logLevel: "height");
     return Scaffold(
+        backgroundColor: AppColors.bgWhite,
         body: SingleChildScrollView(
-      // controller: context.scrollController,
-      child: Column(
-        children: [
-          const NavBar(),
-          const SizedBox(height: 100),
-          const HeroSection(),
-          const SizedBox(height: 80),
-          const WithLitpadSection(),
-          const OurBookingListSection(),
-          const JoinLitpadContainer(),
-          Container(
-            padding: const EdgeInsets.symmetric(vertical: 60, horizontal: 60),
-            child: const Divider(),
+          // controller: context.scrollController,
+          child: Column(
+            children: [
+              const NavBar(),
+              const YBox(100),
+              const HeroSection(),
+              const YBox(80),
+              const WithLitpadSection(),
+              const PopularBooks(),
+              const OurBookingListSection(),
+              const JoinLitpadContainer(),
+              Container(
+                padding: EdgeInsets.symmetric(
+                  vertical: Sizer.height(60),
+                  horizontal: Sizer.width(60),
+                ),
+                child: const Divider(),
+              ),
+              const FooterSection(),
+            ],
           ),
-          const FooterSection(),
-        ],
-      ),
-    ));
+        ));
   }
 }

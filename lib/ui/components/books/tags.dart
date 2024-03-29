@@ -1,4 +1,3 @@
-import 'package:flutter/material.dart';
 import 'package:litpad/core/utils/utils.dart';
 
 class Tags extends StatelessWidget {
@@ -25,7 +24,7 @@ class Tags extends StatelessWidget {
         ),
         child: Text(
           tag,
-          style: AppTypography.text15.copyWith(
+          style: AppTypography.text13.copyWith(
             color: AppColors.grey600,
             fontWeight: FontWeight.w500,
           ),

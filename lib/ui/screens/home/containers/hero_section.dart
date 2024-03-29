@@ -72,6 +72,7 @@ class HeroSection extends StatelessWidget {
 
   Widget desktopContainer1() {
     return Container(
+      color: AppColors.bgWhite,
       margin: const EdgeInsets.symmetric(horizontal: 60, vertical: 20),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -82,11 +83,11 @@ class HeroSection extends StatelessWidget {
             children: [
               Text(
                 'Where writers thrive \nand readers discover \nmeaningful content',
-                style: AppTypography.text50,
+                style: AppTypography.text50.copyWith(
+                  fontWeight: FontWeight.w500,
+                ),
               ),
-              const SizedBox(
-                height: 24,
-              ),
+              const YBox(24),
               Text(
                   'Empower authors with creative control, offer readers \na diverse literacy experience, ensure transparency in \nrevenue sharing',
                   style: AppTypography.text18.copyWith(
@@ -98,18 +99,19 @@ class HeroSection extends StatelessWidget {
               Row(
                 children: [
                   CustomBtn.withChild(
+                    height: 54,
                     onTap: () {},
                     online: true,
                     child: Row(
                       mainAxisSize: MainAxisSize.min,
                       children: [
                         Text(
-                          'start reading',
+                          'Start reading',
                           style: AppTypography.text15.copyWith(
                             color: AppColors.white,
                           ),
                         ),
-                        const SizedBox(width: 10),
+                        const XBox(10),
                         svgHelper(
                           AppSvgs.bookOpen,
                         )
@@ -117,15 +119,16 @@ class HeroSection extends StatelessWidget {
                     ),
                     width: 180,
                   ),
-                  const SizedBox(width: 20),
+                  const XBox(20),
                   CustomBtn.outlineWithChild(
+                    height: 54,
                     onTap: () {},
                     online: true,
                     child: Row(
                       mainAxisSize: MainAxisSize.min,
                       children: [
                         Text(
-                          'start writing',
+                          'Start writing',
                           style: AppTypography.text15,
                         ),
                         const SizedBox(width: 10),
@@ -142,10 +145,10 @@ class HeroSection extends StatelessWidget {
           )),
           Expanded(
             child: Container(
-              height: 530,
+              height: Sizer.height(530),
               decoration: BoxDecoration(
                 color: AppColors.purple900,
-                borderRadius: BorderRadius.circular(20),
+                borderRadius: BorderRadius.circular(Sizer.radius(40)),
               ),
             ),
           ),
