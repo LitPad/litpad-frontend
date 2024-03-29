@@ -29,7 +29,7 @@ class WithLitpadSection extends StatelessWidget {
               Expanded(
                 child: WithLitCard(
                   iconPath: AppSvgs.write,
-                  title: "Autho-Friendly Platform",
+                  title: "Author-Friendly Platform",
                   description:
                       "Providing authors with tools and resources to publish, promote, and monetize their work while retainning creative control",
                 ),

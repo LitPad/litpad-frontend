@@ -1,4 +1,3 @@
-import 'package:flutter/material.dart';
 import 'package:litpad/core/utils/utils.dart';
 
 class RowIconWithText extends StatelessWidget {
@@ -21,14 +20,12 @@ class RowIconWithText extends StatelessWidget {
         Icon(
           icon,
           color: color ?? AppColors.purple900,
-          size: 26,
+          size: Sizer.radius(22),
         ),
         const SizedBox(width: 4),
         Text(
           text,
-          style: AppTypography.text16.copyWith(
-            color: AppColors.purple900,
-          ),
+          style: AppTypography.text14,
         ),
       ],
     );
