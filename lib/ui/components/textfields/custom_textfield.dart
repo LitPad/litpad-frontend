@@ -1,5 +1,3 @@
-import 'package:flutter/material.dart';
-import 'package:iconsax/iconsax.dart';
 import 'package:litpad/core/utils/utils.dart';
 
 class CustomTextField extends StatefulWidget {
@@ -240,7 +238,7 @@ class _CustomTextFieldState extends State<CustomTextField> {
     }
     if (widget.showSuffixIcon! && widget.suffixIcon == null) {
       return const Icon(
-        Iconsax.arrow_down,
+        Icons.arrow_downward,
         size: 18,
         color: AppColors.black,
       );
@@ -272,17 +270,17 @@ class PasswordSuffixWidget extends StatelessWidget {
         // color: AppColors.black,
         borderRadius: BorderRadius.circular(4),
       ),
-      child: showPassword
-          ? const Icon(
-              Iconsax.eye_slash5,
-              size: 24,
-              color: AppColors.black,
-            )
-          : const Icon(
-              Iconsax.eye4,
-              size: 24,
-              color: AppColors.black,
-            ),
+      // child: showPassword
+      //     ? const Icon(
+      //         Icons.eye,
+      //         size: 24,
+      //         color: AppColors.black,
+      //       )
+      //     : const Icon(
+      //         Iconsax.eye4,
+      //         size: 24,
+      //         color: AppColors.black,
+      //       ),
     );
   }
 }

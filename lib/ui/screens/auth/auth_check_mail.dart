@@ -1,6 +1,4 @@
-import 'package:iconsax/iconsax.dart';
 import 'package:litpad/core/utils/utils.dart';
-import 'package:litpad/ui/components/components.dart';
 
 class AuthCheckMail extends StatelessWidget {
   const AuthCheckMail({Key? key}) : super(key: key);
@@ -98,10 +96,10 @@ class AuthCheckMail extends StatelessWidget {
                       ),
                     ),
                     const XBox(12),
-                    Icon(
-                      Iconsax.edit_2,
-                      size: Sizer.radius(20),
-                    ),
+                    // Icon(
+                    //   Iconsax.edit_2,
+                    //   size: Sizer.radius(20),
+                    // ),
                   ],
                 ),
               )
