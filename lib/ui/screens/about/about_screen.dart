@@ -1,4 +1,3 @@
-import 'package:flutter_animate_on_scroll/flutter_animate_on_scroll.dart';
 import 'package:litpad/core/utils/constants/constants.dart';
 import 'package:litpad/ui/components/home/navbar_widget.dart';
 import 'package:litpad/ui/screens/about/containers/containers.dart';
@@ -16,10 +15,9 @@ class _AboutScreenState extends State<AboutScreen> {
   Widget build(BuildContext context) {
     w = MediaQuery.of(context).size.width;
     h = MediaQuery.of(context).size.height;
-    return Scaffold(
+    return const Scaffold(
         body: SingleChildScrollView(
-      controller: context.scrollController,
-      child: const Column(
+      child: Column(
         children: [
           NavBar(),
           OurVisionScreen(),

@@ -1,16 +1,26 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
+// import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:litpad/core/utils/themes/app_colors.dart';
 
 class Sizer {
-  static double get screenWidth => 1.sw;
-  static double get screenHeight => 1.sh;
+  static double get screenWidth => 1;
+  static double get screenHeight => 1;
   static get deviceRatio => screenHeight / screenWidth;
-  static height(double height) => height.h;
-  static width(double width) => width.w;
-  static text(double size, {applySizer = true}) => applySizer ? size.sp : size;
-  static radius(double size) => size.r;
+  static height(double height) => height;
+  static width(double width) => width;
+  static text(double size) => size;
+  static radius(double size) => size;
 }
+
+// class Sizer {
+//   static double get screenWidth => 1.sw;
+//   static double get screenHeight => 1.sh;
+//   static get deviceRatio => screenHeight / screenWidth;
+//   static height(double height) => height.h;
+//   static width(double width) => width.w;
+//   static text(double size, {applySizer = true}) => applySizer ? size.sp : size;
+//   static radius(double size) => size.r;
+// }
 
 class XBox extends StatelessWidget {
   final double _width;
@@ -20,7 +30,7 @@ class XBox extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      width: _width.w,
+      width: _width,
     );
   }
 }
@@ -34,7 +44,7 @@ class YBox extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: _height.h,
+      height: _height,
     );
   }
 }

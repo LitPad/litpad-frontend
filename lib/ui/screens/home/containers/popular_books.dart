@@ -9,7 +9,7 @@ class PopularBooks extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: Sizer.screenWidth,
+      // width: Sizer.screenWidth,
       padding: EdgeInsets.symmetric(
         horizontal: Sizer.width(60),
         vertical: Sizer.height(54),
