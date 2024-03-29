@@ -237,11 +237,13 @@ class _CustomTextFieldState extends State<CustomTextField> {
           ));
     }
     if (widget.showSuffixIcon! && widget.suffixIcon == null) {
-      return const Icon(
-        Icons.arrow_downward,
-        size: 18,
-        color: AppColors.black,
-      );
+
+      // return const Icon(
+      //   Iconsax.arrow_down,
+      //   size: 18,
+      //   color: AppColors.black,
+      // );
+
     }
 
     if (widget.showSuffixIcon! && widget.suffixIcon != null) {
@@ -272,7 +274,9 @@ class PasswordSuffixWidget extends StatelessWidget {
       ),
       // child: showPassword
       //     ? const Icon(
-      //         Icons.eye,
+
+      //         Iconsax.eye_slash5,
+
       //         size: 24,
       //         color: AppColors.black,
       //       )
