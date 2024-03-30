@@ -38,7 +38,7 @@ class HeroSection extends StatelessWidget {
           ),
           const YBox(24),
           Row(
-            mainAxisAlignment: MainAxisAlignment.center,
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               CustomBtn.withChild(
                 height: 44,
@@ -53,13 +53,13 @@ class HeroSection extends StatelessWidget {
                         color: AppColors.white,
                       ),
                     ),
-                    const XBox(10),
+                    const XBox(8),
                     svgHelper(
                       AppSvgs.bookOpen,
                     )
                   ],
                 ),
-                width: 180,
+                width: 160,
               ),
               const XBox(20),
               CustomBtn.outlineWithChild(
@@ -79,7 +79,7 @@ class HeroSection extends StatelessWidget {
                     )
                   ],
                 ),
-                width: 170,
+                width: 154,
               )
             ],
           ),
