@@ -1,4 +1,3 @@
-
 import 'package:litpad/core/utils/utils.dart';
 
 class AuthCheckMail extends StatelessWidget {
@@ -9,14 +8,14 @@ class AuthCheckMail extends StatelessWidget {
     return Scaffold(
       body: Container(
         color: AppColors.white,
-        width: Sizer.screenWidth,
-        height: Sizer.screenHeight,
+        width: MediaQuery.of(context).size.width,
+        height: MediaQuery.of(context).size.height,
         child: Center(
             child: Container(
-          width: Sizer.width(570),
-          padding: EdgeInsets.symmetric(
-            vertical: Sizer.height(32),
-            horizontal: Sizer.width(50),
+          width: (570),
+          padding: const EdgeInsets.symmetric(
+            vertical: (32),
+            horizontal: (50),
           ),
           decoration: const BoxDecoration(
             color: AppColors.bgWhite,
@@ -76,9 +75,9 @@ class AuthCheckMail extends StatelessWidget {
                   ])),
               const YBox(30),
               Container(
-                padding: EdgeInsets.symmetric(
-                  vertical: Sizer.height(10),
-                  horizontal: Sizer.width(18),
+                padding: const EdgeInsets.symmetric(
+                  vertical: (10),
+                  horizontal: (18),
                 ),
                 decoration: BoxDecoration(
                   color: AppColors.grey100,
@@ -99,7 +98,7 @@ class AuthCheckMail extends StatelessWidget {
                     const XBox(12),
                     // Icon(
                     //   Iconsax.edit_2,
-                    //   size: Sizer.radius(20),
+                    //   size: (20),
                     // ),
                   ],
                 ),

@@ -23,17 +23,20 @@ class _HomeScreenState extends State<HomeScreen> {
           child: Column(
             children: [
               const NavBar(),
-              const YBox(100),
               const HeroSection(),
-              const YBox(80),
               const WithLitpadSection(),
               const PopularBooks(),
-              const OurBookingListSection(),
-              const JoinLitpadContainer(),
+              const HomeTrending(),
+              const HomeRising(),
+              const PopularBooks(title: "Serialising"),
+              const PopularBooks(title: "Completed books"),
+              const PopularBooks(title: "Upcoming books"),
+              // const OurBookingListSection(), // NOT NEEDED FOR NOW
+              // const JoinLitpadContainer(), // NOT NEEDED FOR NOW
               Container(
-                padding: EdgeInsets.symmetric(
-                  vertical: Sizer.height(60),
-                  horizontal: Sizer.width(60),
+                padding: const EdgeInsets.symmetric(
+                  vertical: 60,
+                  horizontal: 60,
                 ),
                 child: const Divider(),
               ),

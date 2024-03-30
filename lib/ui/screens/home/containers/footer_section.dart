@@ -1,12 +1,141 @@
-import 'package:flutter/material.dart';
 import 'package:litpad/core/utils/utils.dart';
 import 'package:litpad/ui/components/common/on_hover.dart';
+import 'package:responsive_builder/responsive_builder.dart';
 
 class FooterSection extends StatelessWidget {
   const FooterSection({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    return ScreenTypeLayout.builder(
+      mobile: (BuildContext context) => _footerMobile(),
+      tablet: (BuildContext context) => _footerMobile(),
+      desktop: (BuildContext context) => _footerDesktop(),
+    );
+  }
+
+  _footerMobile() {
+    return Container(
+      color: AppColors.white,
+      padding: const EdgeInsets.symmetric(horizontal: 20),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              svgHelper(AppSvgs.logo, height: 28, width: 105),
+              Row(
+                children: [
+                  FooterSocials(
+                    isMobile: true,
+                    assetPath: AppSvgs.x,
+                    onTap: () {},
+                  ),
+                  const SizedBox(width: 16),
+                  imageHelper(AppImages.vline, height: 20),
+                  const SizedBox(width: 16),
+                  FooterSocials(
+                    isMobile: true,
+                    assetPath: AppSvgs.fb,
+                    onTap: () {},
+                  ),
+                  const SizedBox(width: 16),
+                  imageHelper(AppImages.vline, height: 20),
+                  const SizedBox(width: 16),
+                  FooterSocials(
+                    isMobile: true,
+                    assetPath: AppImages.ig,
+                    isImage: true,
+                    onTap: () {},
+                  ),
+                  const SizedBox(width: 16),
+                  imageHelper(AppImages.vline, height: 20),
+                  const SizedBox(width: 16),
+                  FooterSocials(
+                    isMobile: true,
+                    assetPath: AppSvgs.lk,
+                    onTap: () {},
+                  ),
+                ],
+              )
+            ],
+          ),
+          const SizedBox(height: 16),
+          Text(
+            "Write, read, and enjoy \nquality stories without \nlimits",
+            style: AppTypography.text15.copyWith(
+              color: AppColors.purple900,
+              fontWeight: FontWeight.w500,
+            ),
+          ),
+          const SizedBox(height: 40),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  _footerLink(
+                    text: "Company",
+                    isMobile: true,
+                    onPressed: () {},
+                  ),
+                  _footerLink(
+                    text: "About us",
+                    isMobile: true,
+                    onPressed: () {},
+                  ),
+                ],
+              ),
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  _footerLink(
+                    text: "Support",
+                    isMobile: true,
+                    onPressed: () {},
+                  ),
+                  _footerLink(
+                    text: "Contact us",
+                    isMobile: true,
+                    onPressed: () {},
+                  ),
+                ],
+              ),
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  _footerLink(
+                    text: "Legal",
+                    isMobile: true,
+                    onPressed: () {},
+                  ),
+                  _footerLink(
+                    text: "Privacy",
+                    onPressed: () {},
+                  ),
+                ],
+              ),
+            ],
+          ),
+          const SizedBox(height: 100),
+          Container(
+            padding: const EdgeInsets.symmetric(vertical: 20),
+            alignment: Alignment.center,
+            child: Text(
+              "© 2024 LitPad",
+              style: AppTypography.text14.copyWith(
+                color: AppColors.grey,
+              ),
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+
+  Container _footerDesktop() {
     return Container(
       color: AppColors.white,
       padding: const EdgeInsets.symmetric(horizontal: 60),
@@ -91,6 +220,7 @@ class FooterSection extends StatelessWidget {
   TextButton _footerLink({
     required String text,
     VoidCallback? onPressed,
+    bool isMobile = false,
   }) {
     return TextButton(
       onPressed: onPressed,
@@ -99,9 +229,10 @@ class FooterSection extends StatelessWidget {
         margin: const EdgeInsets.symmetric(vertical: 5),
         child: Text(
           text,
-          style: AppTypography.text18.copyWith(
+          style: TextStyle(
             color: AppColors.grey600,
             fontWeight: FontWeight.w500,
+            fontSize: isMobile ? 14 : 18,
           ),
         ),
       ),
@@ -166,11 +297,13 @@ class FooterSocials extends StatelessWidget {
     Key? key,
     required this.assetPath,
     this.isImage = false,
+    this.isMobile = false,
     this.onTap,
   }) : super(key: key);
 
   final String assetPath;
   final bool isImage;
+  final bool isMobile;
   final VoidCallback? onTap;
 
   @override
@@ -181,13 +314,13 @@ class FooterSocials extends StatelessWidget {
         child: isImage
             ? imageHelper(
                 assetPath,
-                height: 19,
-                width: 20,
+                height: isMobile ? 16 : 19,
+                width: isMobile ? 16 : 20,
               )
             : svgHelper(
                 assetPath,
-                height: 19,
-                width: 20,
+                height: isMobile ? 16 : 19,
+                width: isMobile ? 16 : 20,
               ),
       ),
     );

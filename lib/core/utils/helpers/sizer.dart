@@ -2,16 +2,6 @@ import 'package:flutter/material.dart';
 // import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:litpad/core/utils/themes/app_colors.dart';
 
-class Sizer {
-  static double get screenWidth => 1;
-  static double get screenHeight => 1;
-  static get deviceRatio => screenHeight / screenWidth;
-  static height(double height) => height;
-  static width(double width) => width;
-  static text(double size) => size;
-  static radius(double size) => size;
-}
-
 // class Sizer {
 //   static double get screenWidth => 1.sw;
 //   static double get screenHeight => 1.sh;

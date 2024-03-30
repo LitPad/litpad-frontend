@@ -1,99 +1,104 @@
 import 'package:flutter/cupertino.dart';
-import 'package:litpad/core/utils/helpers/sizer.dart';
 import 'package:litpad/core/utils/themes/app_colors.dart';
 
 class AppTypography {
-  static TextStyle text10 = TextStyle(
+  static TextStyle text10 = const TextStyle(
     fontWeight: FontWeight.normal,
     color: AppColors.purple900,
-    fontSize: Sizer.text(10),
+    fontSize: 10,
   );
-  static TextStyle text12 = TextStyle(
+  static TextStyle text12 = const TextStyle(
     fontWeight: FontWeight.normal,
     color: AppColors.purple900,
-    fontSize: Sizer.text(12),
+    fontSize: 12,
     letterSpacing: 0.1,
   );
 
-  static TextStyle text13 = TextStyle(
+  static TextStyle text13 = const TextStyle(
     fontWeight: FontWeight.normal,
     color: AppColors.purple900,
-    fontSize: Sizer.text(13),
+    fontSize: 13,
   );
 
-  static TextStyle text14 = TextStyle(
+  static TextStyle text14 = const TextStyle(
     fontWeight: FontWeight.normal,
     color: AppColors.purple900,
-    fontSize: Sizer.text(14),
+    fontSize: 14,
     height: 1.2,
   );
 
-  static TextStyle text15 = TextStyle(
+  static TextStyle text15 = const TextStyle(
     fontWeight: FontWeight.normal,
     color: AppColors.purple900,
-    fontSize: Sizer.text(15),
+    fontSize: 15,
     height: 1.2,
   );
 
-  static TextStyle text16 = TextStyle(
+  static TextStyle text16 = const TextStyle(
     fontWeight: FontWeight.normal,
     color: AppColors.purple900,
-    fontSize: Sizer.text(16),
+    fontSize: 16,
     height: 1.2,
   );
 
-  static TextStyle text18 = TextStyle(
+  static TextStyle text18 = const TextStyle(
     fontWeight: FontWeight.normal,
     color: AppColors.purple900,
-    fontSize: Sizer.text(18),
+    fontSize: 18,
     height: 1.2,
   );
 
-  static TextStyle text20 = TextStyle(
+  static TextStyle text20 = const TextStyle(
     color: AppColors.purple900,
-    fontSize: Sizer.text(20),
+    fontSize: 20,
     height: 1.2,
   );
 
-  static TextStyle text22 = TextStyle(
+  static TextStyle text22 = const TextStyle(
     color: AppColors.purple900,
-    fontSize: Sizer.text(22),
+    fontSize: 22,
     height: 1.2,
   );
 
-  static TextStyle text24 = TextStyle(
+  static TextStyle text24 = const TextStyle(
     color: AppColors.purple900,
-    fontSize: Sizer.text(24),
+    fontSize: 24,
     height: 1.2,
   );
 
-  static TextStyle text28 = TextStyle(
+  static TextStyle text28 = const TextStyle(
     color: AppColors.purple900,
-    fontSize: Sizer.text(28),
+    fontSize: 28,
     height: 1.2,
   );
 
-  static TextStyle text32 = TextStyle(
+  static TextStyle text30 = const TextStyle(
     color: AppColors.purple900,
     height: 1.2,
-    fontSize: Sizer.text(32),
+    fontSize: 30,
   );
 
-  static TextStyle text36 = TextStyle(
+  static TextStyle text32 = const TextStyle(
     color: AppColors.purple900,
     height: 1.2,
-    fontSize: Sizer.text(36),
+    fontSize: 32,
   );
 
-  static TextStyle text50 = TextStyle(
+  static TextStyle text36 = const TextStyle(
     color: AppColors.purple900,
     height: 1.2,
-    fontSize: Sizer.text(50),
+    fontSize: 36,
   );
 
-  static TextStyle text40 = TextStyle(
+  static TextStyle text50 = const TextStyle(
     color: AppColors.purple900,
     height: 1.2,
-    fontSize: Sizer.text(40),
+    fontSize: 50,
+  );
+
+  static TextStyle text40 = const TextStyle(
+    color: AppColors.purple900,
+    height: 1.2,
+    fontSize: 40,
   );
 }

@@ -15,10 +15,6 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    // return ScreenUtilInit(
-    // Initialize the ScreenUtil
-    // designSize: const Size(1440, 1024),
-    // builder: (context, child) {
     return MaterialApp.router(
       title: 'LitPad',
       debugShowCheckedModeBanner: false,

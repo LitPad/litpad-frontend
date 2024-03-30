@@ -46,4 +46,13 @@ class AppColors {
     begin: Alignment.topCenter,
     end: Alignment.bottomCenter,
   );
+
+  static const trendBtn = LinearGradient(
+    begin: Alignment.topLeft, // Start of the gradient
+    end: Alignment.bottomRight, // End of the gradient
+    colors: [
+      Color(0xFF9255DD), // Start color
+      Color(0xFFF35ADF), // End color
+    ],
+  );
 }

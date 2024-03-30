@@ -6,6 +6,9 @@ class AppImages {
   static const article = "$images/article.png";
   static const vline = "$images/vline.png";
   static const ig = "$images/ig.png";
+
+  static const String trendbook = "$images/trendbook.png";
+  static const String risingBook = "$images/risingBook.png";
 }
 
 // Image Helper

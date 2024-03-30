@@ -1,4 +1,3 @@
-import 'package:flutter/material.dart';
 import 'package:litpad/core/utils/utils.dart';
 import 'package:litpad/ui/components/common/on_hover.dart';
 
@@ -21,7 +20,7 @@ class CustomBtn {
           onTap: onTap,
           child: Container(
             width: width,
-            height: Sizer.height(height ?? 44),
+            height: (height ?? 44),
             decoration: online
                 ? BoxDecoration(
                     borderRadius: BorderRadius.circular(borderRadius ?? 30),
@@ -69,7 +68,7 @@ class CustomBtn {
           onTap: onTap,
           child: Container(
             width: width,
-            height: Sizer.height(height ?? 44),
+            height: (height ?? 44),
             decoration: online
                 ? BoxDecoration(
                     borderRadius: BorderRadius.circular(borderRadius ?? 30),
@@ -105,11 +104,11 @@ class CustomBtn {
           onTap: onTap,
           child: Container(
             width: width,
-            height: Sizer.height(height ?? 44),
+            height: (height ?? 44),
             // padding: padding ??
             //     EdgeInsets.symmetric(
-            //       vertical: Sizer.height(14),
-            //       horizontal: Sizer.width(10),
+            //       vertical: (14),
+            //       horizontal: (10),
             //     ),
             decoration: online
                 ? BoxDecoration(
@@ -168,7 +167,7 @@ class CustomBtn {
           onTap: onTap,
           child: Container(
             width: width,
-            height: Sizer.height(height ?? 44),
+            height: (height ?? 44),
             decoration: online
                 ? BoxDecoration(
                     borderRadius: BorderRadius.circular(borderRadius ?? 30),

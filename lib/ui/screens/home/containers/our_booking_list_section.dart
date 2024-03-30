@@ -1,7 +1,6 @@
-import 'package:flutter/material.dart';
-
 import 'package:litpad/core/utils/utils.dart';
 import 'package:litpad/ui/components/common/on_hover.dart';
+import 'package:litpad/ui/components/home/home.dart';
 
 class OurBookingListSection extends StatefulWidget {
   const OurBookingListSection({Key? key}) : super(key: key);
@@ -104,74 +103,6 @@ class _OurBookingListSectionState extends State<OurBookingListSection> {
               ],
             ),
           ),
-        ],
-      ),
-    );
-  }
-}
-
-class ArticleCard extends StatelessWidget {
-  const ArticleCard({
-    super.key,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      width: 233,
-      margin: const EdgeInsets.only(bottom: 36),
-      decoration: BoxDecoration(
-        color: AppColors.white,
-        borderRadius: BorderRadius.circular(12),
-      ),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Container(
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(12),
-            ),
-            child: imageHelper(AppImages.article, height: 300),
-          ),
-          const SizedBox(height: 12),
-          Text(
-            "Falling for my Boyfriend",
-            style: AppTypography.text18.copyWith(
-              fontWeight: FontWeight.w500,
-            ),
-          ),
-          const SizedBox(height: 2),
-          Text(
-            "By Sarah john",
-            style: AppTypography.text15,
-          ),
-          const SizedBox(height: 6),
-          Row(
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              Container(
-                padding: const EdgeInsets.symmetric(
-                  horizontal: 10,
-                  vertical: 4,
-                ),
-                decoration: BoxDecoration(
-                  color: AppColors.grey300,
-                  borderRadius: BorderRadius.circular(30),
-                ),
-                child: Text(
-                  "Romance",
-                  style: AppTypography.text13.copyWith(
-                    color: AppColors.black600,
-                  ),
-                ),
-              ),
-              const SizedBox(width: 20),
-              Text(
-                '4.5',
-                style: AppTypography.text14,
-              ),
-            ],
-          )
         ],
       ),
     );

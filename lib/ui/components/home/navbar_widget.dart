@@ -16,7 +16,7 @@ class _NavBarState extends State<NavBar> {
   Widget build(BuildContext context) {
     return ScreenTypeLayout.builder(
       mobile: (BuildContext context) => mobileNavBar(context),
-      tablet: (BuildContext context) => deeskTopNavBar(context),
+      tablet: (BuildContext context) => mobileNavBar(context),
       desktop: (BuildContext context) => deeskTopNavBar(context),
     );
   }
@@ -24,13 +24,24 @@ class _NavBarState extends State<NavBar> {
 
 Widget mobileNavBar(BuildContext context) {
   return Container(
-    margin: const EdgeInsets.symmetric(horizontal: 20),
+    margin: const EdgeInsets.symmetric(horizontal: 16),
     height: 70,
     child: Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
-        const Icon(Icons.menu),
-        navLogo(context),
+        navLogo(
+          context: context,
+          logoWidth: 105,
+          logoHeight: 28,
+        ),
+        Row(
+          children: [
+            svgHelper(AppSvgs.search,
+                height: 24, width: 24, color: AppColors.black),
+            const XBox(20),
+            const Icon(Icons.menu),
+          ],
+        ),
       ],
     ),
   );
@@ -58,7 +69,7 @@ Widget deeskTopNavBar(BuildContext context) {
         Row(
           mainAxisSize: MainAxisSize.min,
           children: [
-            navLogo(context),
+            navLogo(context: context),
             const XBox(50),
             Row(
               children: [
@@ -122,7 +133,11 @@ Widget navButton({required String text, VoidCallback? onTap}) {
   );
 }
 
-Widget navLogo(BuildContext context) {
+Widget navLogo({
+  required BuildContext context,
+  double? logoWidth,
+  double? logoHeight,
+}) {
   return OnHoverScale(
     child: InkWell(
       onTap: () {
@@ -133,6 +148,8 @@ Widget navLogo(BuildContext context) {
         padding: const EdgeInsets.all(10),
         child: svgHelper(
           AppSvgs.logo,
+          width: logoWidth,
+          height: logoHeight,
         ),
       ),
     ),

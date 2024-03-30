@@ -1,5 +1,4 @@
 import 'package:litpad/core/utils/utils.dart';
-import 'package:litpad/ui/components/components.dart';
 import 'package:litpad/ui/screens/auth/widgets/widgets.dart';
 
 class SignupScreen extends StatelessWidget {
@@ -10,14 +9,14 @@ class SignupScreen extends StatelessWidget {
     return Scaffold(
       body: Container(
         color: AppColors.white,
-        width: Sizer.screenWidth,
-        height: Sizer.screenHeight,
+        width: MediaQuery.of(context).size.width,
+        height: MediaQuery.of(context).size.height,
         child: Center(
             child: Container(
-          width: Sizer.width(600),
-          padding: EdgeInsets.symmetric(
-            vertical: Sizer.height(32),
-            horizontal: Sizer.width(32),
+          width: (600),
+          padding: const EdgeInsets.symmetric(
+            vertical: (32),
+            horizontal: (32),
           ),
           decoration: const BoxDecoration(
             color: AppColors.bgWhite,

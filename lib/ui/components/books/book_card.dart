@@ -21,8 +21,8 @@ class BookCard extends StatelessWidget {
         InkWell(
           onTap: onImageTap,
           child: Container(
-            height: Sizer.height(imgheight ?? 0),
-            width: Sizer.width(imgWidth ?? 204),
+            height: (imgheight ?? 0),
+            width: (imgWidth ?? 204),
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(20),
               image: const DecorationImage(

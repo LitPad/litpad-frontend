@@ -33,3 +33,29 @@ class Tags extends StatelessWidget {
     );
   }
 }
+
+class MobileTag extends StatelessWidget {
+  const MobileTag({
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      padding: const EdgeInsets.symmetric(
+        horizontal: 10,
+        vertical: 4,
+      ),
+      decoration: BoxDecoration(
+        color: AppColors.grey300,
+        borderRadius: BorderRadius.circular(30),
+      ),
+      child: Text(
+        "Romance",
+        style: AppTypography.text10.copyWith(
+          color: AppColors.black600,
+        ),
+      ),
+    );
+  }
+}

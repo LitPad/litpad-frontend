@@ -18,9 +18,9 @@ class SocialAuthBtn extends StatelessWidget {
     return InkWell(
       onTap: onTap,
       child: Container(
-        height: Sizer.height(50),
-        padding: EdgeInsets.symmetric(
-          horizontal: Sizer.width(20),
+        height: (50),
+        padding: const EdgeInsets.symmetric(
+          horizontal: (20),
         ),
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(12),
