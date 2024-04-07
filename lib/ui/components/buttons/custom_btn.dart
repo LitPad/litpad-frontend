@@ -12,38 +12,54 @@ class CustomBtn {
     double? height,
     Color? offlineColor,
     Color? onlineColor,
+    TextStyle? textStyle,
+    Widget? icon,
+    Alignment iconAlignment = Alignment.centerLeft,
   }) {
     return IgnorePointer(
       ignoring: !online,
-      child: OnHoverScale(
+      child: OnHoverTranslate(
         child: InkWell(
           onTap: onTap,
           child: Container(
             width: width,
-            height: (height ?? 44),
-            decoration: online
-                ? BoxDecoration(
-                    borderRadius: BorderRadius.circular(borderRadius ?? 30),
-                    color: onlineColor ?? AppColors.primaryPurple,
-                  )
-                : BoxDecoration(
-                    borderRadius: BorderRadius.circular(borderRadius ?? 30),
-                    color: offlineColor ?? AppColors.grey,
+            padding: const EdgeInsets.symmetric(
+              vertical: 13,
+              horizontal: 26,
+            ),
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(borderRadius ?? 30),
+              color: online
+                  ? (onlineColor ?? AppColors.primaryPurple)
+                  : (offlineColor ?? AppColors.grey),
+            ),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                if (icon != null)
+                  Container(
+                    color: textStyle?.color ?? AppColors.white,
+                    child: icon,
                   ),
-            child: Center(
-              child: isLoading
-                  ? const FittedBox(
-                      child: CircularProgressIndicator(),
-                    )
-                  : Text(
-                      text,
-                      style: AppTypography.text16.copyWith(
-                        fontWeight: FontWeight.w500,
-                        color: online
-                            ? AppColors.white
-                            : AppColors.grey.withOpacity(0.5),
-                      ),
-                    ),
+                Center(
+                  child: isLoading
+                      ? CircularProgressIndicator(
+                          valueColor: AlwaysStoppedAnimation<Color>(
+                              textStyle?.color ?? Colors.white),
+                        )
+                      : Text(
+                          text,
+                          style: textStyle ??
+                              AppTypography.text14.copyWith(
+                                fontWeight: FontWeight.w500,
+                                color: online
+                                    ? Colors.white
+                                    : AppColors.grey.withOpacity(0.5),
+                              ),
+                          textAlign: TextAlign.center,
+                        ),
+                ),
+              ],
             ),
           ),
         ),

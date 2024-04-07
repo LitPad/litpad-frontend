@@ -1,7 +1,6 @@
 import 'package:litpad/core/utils/utils.dart';
-import 'package:litpad/ui/components/home/navbar_widget.dart';
+import 'package:litpad/ui/components/components.dart';
 import 'package:litpad/ui/screens/books/containers/containers.dart';
-import 'package:litpad/ui/screens/home/containers/containers.dart';
 
 class LatestBooksScreen extends StatefulWidget {
   const LatestBooksScreen({Key? key}) : super(key: key);
@@ -15,25 +14,30 @@ class _LatestBooksScreenState extends State<LatestBooksScreen> {
   Widget build(BuildContext context) {
     w = MediaQuery.of(context).size.width;
     h = MediaQuery.of(context).size.height;
-    return Scaffold(
-      backgroundColor: AppColors.white,
-      body: SingleChildScrollView(
-        child: Column(
-          children: [
-            const NavBar(),
-            const SizedBox(height: 30),
-            const BooksByCategory(),
-            Container(
-              padding: const EdgeInsets.symmetric(vertical: 40, horizontal: 60),
-              child: const Divider(
-                color: AppColors.grey300,
-                thickness: 1,
+    return LayoutBuilder(builder: (context, constraints) {
+      return Scaffold(
+        backgroundColor: AppColors.white,
+        body: SingleChildScrollView(
+          child: Column(
+            children: [
+              constraints.maxWidth >= 768
+                  ? const DeskTopNavbar()
+                  : const MobileNavbar(),
+              const SizedBox(height: 30),
+              const BooksByCategory(),
+              Container(
+                padding:
+                    const EdgeInsets.symmetric(vertical: 40, horizontal: 60),
+                child: const Divider(
+                  color: AppColors.grey300,
+                  thickness: 1,
+                ),
               ),
-            ),
-            const FooterSection(),
-          ],
+              const FooterSection(),
+            ],
+          ),
         ),
-      ),
-    );
+      );
+    });
   }
 }

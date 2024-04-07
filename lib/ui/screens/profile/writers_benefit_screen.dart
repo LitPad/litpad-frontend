@@ -1,5 +1,4 @@
 import 'package:litpad/ui/components/components.dart';
-import 'package:litpad/ui/screens/home/containers/footer_section.dart';
 import 'package:litpad/ui/screens/profile/containers/containers.dart';
 
 class WritersBenefitScreen extends StatelessWidget {
@@ -7,17 +6,21 @@ class WritersBenefitScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
-      body: SingleChildScrollView(
-        child: Column(
-          children: [
-            NavBar(),
-            WritersBenefitSection(),
-            SizedBox(height: 30),
-            FooterSection(),
-          ],
+    return LayoutBuilder(builder: (context, constraints) {
+      return Scaffold(
+        body: SingleChildScrollView(
+          child: Column(
+            children: [
+              constraints.maxWidth >= 768
+                  ? const DeskTopNavbar()
+                  : const MobileNavbar(),
+              const WritersBenefitSection(),
+              const SizedBox(height: 30),
+              const FooterSection(),
+            ],
+          ),
         ),
-      ),
-    );
+      );
+    });
   }
 }

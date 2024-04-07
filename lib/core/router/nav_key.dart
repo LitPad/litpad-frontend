@@ -5,3 +5,8 @@ class NavigatorKeys {
   static GlobalKey<NavigatorState> appNavigatorKey =
       GlobalKey<NavigatorState>();
 }
+
+// class ScaffoldKeys {
+//   /// Key used by the home scaffold
+//   static GlobalKey<ScaffoldState> homeScaffoldKey = GlobalKey<ScaffoldState>();
+// }
