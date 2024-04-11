@@ -84,7 +84,7 @@ class DeskTopNavbar extends StatelessWidget {
                   NavButton(
                     text: 'Writer\'s benefits',
                     onTap: () {
-                      context.goNamed(RoutePath.aboutScreen);
+                      context.goNamed(RoutePath.writersBenefitScreen);
                     },
                   ),
                   // NavButton(

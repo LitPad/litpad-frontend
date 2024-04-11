@@ -14,7 +14,13 @@ class WritersBenefitScreen extends StatelessWidget {
               constraints.maxWidth >= 768
                   ? const DeskTopNavbar()
                   : const MobileNavbar(),
-              const WritersBenefitSection(),
+              SizedBox(
+                height: MediaQuery.of(context).size.height,
+                width: MediaQuery.of(context).size.width,
+                child: WritersBenefitSection(
+                  constraints: constraints,
+                ),
+              ),
               const SizedBox(height: 30),
               const FooterSection(),
             ],

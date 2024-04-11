@@ -9,6 +9,8 @@ class RoutePath {
   static const String browsingingScreen = 'browsingingScreen';
   static const String latestBooksScreen = 'latestBooksScreen';
 
+  static const String writersBenefitScreen = 'writersBenefitScreen';
+
   static const String signupScreen = 'signupScreen';
   static const String loginScreen = 'loginScreen';
   static const String authCheckMail = 'authCheckMail';
@@ -32,6 +34,11 @@ final GoRouter appRouter = GoRouter(
       name: RoutePath.signupScreen,
       path: "/signup",
       builder: (context, state) => const SignupScreen(),
+    ),
+    GoRoute(
+      name: RoutePath.writersBenefitScreen,
+      path: "/writers-benefit",
+      builder: (context, state) => const WritersBenefitScreen(),
     ),
     GoRoute(
       name: RoutePath.authCheckMail,
