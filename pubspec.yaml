@@ -33,6 +33,10 @@ dependencies:
   go_router: ^13.2.0
   url_strategy: ^0.2.0
   flutter_screenutil: ^5.9.0
+  stacked: ^3.4.2
+  dio: ^5.4.3+1
+  http: ^1.2.0
+  flutter_dotenv: ^5.1.0
 
 dev_dependencies:
   flutter_test:
