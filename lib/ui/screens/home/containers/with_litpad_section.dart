@@ -1,63 +1,12 @@
 import 'package:litpad/core/utils/utils.dart';
-import 'package:responsive_builder/responsive_builder.dart';
 
-class WithLitpadSection extends StatelessWidget {
-  const WithLitpadSection({Key? key}) : super(key: key);
+class WithLitpadDesktop extends StatelessWidget {
+  const WithLitpadDesktop({
+    super.key,
+  });
 
   @override
   Widget build(BuildContext context) {
-    return ScreenTypeLayout.builder(
-      mobile: (BuildContext context) => _mobileView(),
-      tablet: (BuildContext context) => _mobileView(),
-      desktop: (BuildContext context) => _desktopView(),
-    );
-  }
-
-  Container _mobileView() {
-    return Container(
-      padding: const EdgeInsets.symmetric(
-        horizontal: 20,
-        vertical: 10,
-      ),
-      child: Column(
-        children: [
-          Container(
-            alignment: Alignment.centerLeft,
-            child: Text(
-              "With LitPad",
-              style: AppTypography.text24.copyWith(
-                fontWeight: FontWeight.w500,
-              ),
-            ),
-          ),
-          const SizedBox(height: 24),
-          const WithLitCardMobile(
-            iconPath: AppSvgs.write,
-            title: "Author-Friendly Platform",
-            description:
-                "Providing authors with tools and resources to publish, promote, and monetize their work while retainning creative control",
-          ),
-          const SizedBox(height: 24),
-          const WithLitCardMobile(
-            iconPath: AppSvgs.bookOpen,
-            iconColor: AppColors.black,
-            title: "Reader-Centric Experience",
-            description:
-                "Curating a diverse selection of literacy content across genres and empowering readers to discover, engage with, and support their favorite authors",
-          ),
-          const SizedBox(height: 24),
-          const WithLitCardMobile(
-            iconPath: AppSvgs.magnify,
-            title: "Transparency and fairness",
-            description:
-                "Implementing transparent revenue-sharing models and fostering a community built on trust and collaboration",
-          )
-        ],
-      ),
-    );
-  }
-
-  Container _desktopView() {
     return Container(
       padding: const EdgeInsets.symmetric(
         horizontal: 60,
@@ -106,6 +55,57 @@ class WithLitpadSection extends StatelessWidget {
                 ),
               ),
             ],
+          )
+        ],
+      ),
+    );
+  }
+}
+
+class WithLitpadMobile extends StatelessWidget {
+  const WithLitpadMobile({
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      padding: const EdgeInsets.symmetric(
+        horizontal: 20,
+        vertical: 10,
+      ),
+      child: Column(
+        children: [
+          Container(
+            alignment: Alignment.centerLeft,
+            child: Text(
+              "With LitPad",
+              style: AppTypography.text24.copyWith(
+                fontWeight: FontWeight.w500,
+              ),
+            ),
+          ),
+          const SizedBox(height: 24),
+          const WithLitCardMobile(
+            iconPath: AppSvgs.write,
+            title: "Author-Friendly Platform",
+            description:
+                "Providing authors with tools and resources to publish, promote, and monetize their work while retainning creative control",
+          ),
+          const SizedBox(height: 24),
+          const WithLitCardMobile(
+            iconPath: AppSvgs.bookOpen,
+            iconColor: AppColors.black,
+            title: "Reader-Centric Experience",
+            description:
+                "Curating a diverse selection of literacy content across genres and empowering readers to discover, engage with, and support their favorite authors",
+          ),
+          const SizedBox(height: 24),
+          const WithLitCardMobile(
+            iconPath: AppSvgs.magnify,
+            title: "Transparency and fairness",
+            description:
+                "Implementing transparent revenue-sharing models and fostering a community built on trust and collaboration",
           )
         ],
       ),

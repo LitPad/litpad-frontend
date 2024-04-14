@@ -58,12 +58,12 @@ class BookCard extends StatelessWidget {
                     text: "4.5k",
                     icon: Icons.visibility_outlined,
                   ),
-                  XBox(10),
+                  XBox(5),
                   RowIconWithText(
                     text: "248.k words",
                     icon: Icons.edit_outlined,
                   ),
-                  XBox(10),
+                  XBox(5),
                   RowIconWithText(
                     text: "4.5",
                     icon: Icons.star,

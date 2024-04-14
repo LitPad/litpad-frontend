@@ -37,27 +37,48 @@ class _HomeScreenState extends State<HomeScreen> {
                           scaffoldKey.currentState!.openEndDrawer();
                         },
                       ),
-                const HeroSection(),
-                const WithLitpadSection(),
-                const PopularBooks(),
-                const HomeTrending(),
-                const HomeRising(),
-                const PopularBooks(title: "Serialising"),
-                const PopularBooks(title: "Completed books"),
-                const PopularBooks(title: "Upcoming books"),
-                // const OurBookingListSection(), // NOT NEEDED FOR NOW
-                // const JoinLitpadContainer(), // NOT NEEDED FOR NOW
-                Container(
-                  padding: const EdgeInsets.symmetric(
-                    vertical: 60,
-                    horizontal: 60,
-                  ),
-                  child: const Divider(),
-                ),
+                constraints.maxWidth >= 950
+                    ? const HeroSectionDestop()
+                    : const HeroSectionMobile(),
+                constraints.maxWidth >= 950
+                    ? const WithLitpadDesktop()
+                    : const WithLitpadMobile(),
+                constraints.maxWidth >= 950
+                    ? const PopularBookDesttop()
+                    : const PopularBooksMobile(),
+                constraints.maxWidth >= 950
+                    ? const HomeTrendingDesktop()
+                    : const HometrendingMobile(),
+                const ArticleSlider(title: "New arrivals"),
+                constraints.maxWidth >= 950
+                    ? const PopularBookDesttop(title: "Serialising")
+                    : const PopularBooksMobile(title: "Serialising"),
+                constraints.maxWidth >= 950
+                    ? const PopularBookDesttop(title: "Completed books")
+                    : const PopularBooksMobile(title: "Completed books"),
+                const ArticleSlider(title: "Upcoming book"),
+                const HLine(),
                 const FooterSection(),
               ],
             ),
           ));
     });
+  }
+}
+
+class HLine extends StatelessWidget {
+  const HLine({
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      padding: const EdgeInsets.symmetric(
+        vertical: 60,
+        horizontal: 60,
+      ),
+      child: const Divider(),
+    );
   }
 }
