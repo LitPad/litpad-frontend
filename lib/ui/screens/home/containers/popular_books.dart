@@ -3,10 +3,9 @@ import 'package:litpad/core/router/app_router.dart';
 import 'package:litpad/core/utils/utils.dart';
 import 'package:litpad/ui/components/books/books.dart';
 import 'package:litpad/ui/components/home/home.dart';
-import 'package:responsive_builder/responsive_builder.dart';
 
-class PopularBooks extends StatelessWidget {
-  const PopularBooks({
+class PopularBooksMobile extends StatelessWidget {
+  const PopularBooksMobile({
     Key? key,
     this.title,
   }) : super(key: key);
@@ -15,14 +14,6 @@ class PopularBooks extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ScreenTypeLayout.builder(
-      mobile: (BuildContext context) => _mobileView(context, title: title),
-      tablet: (BuildContext context) => _mobileView(context, title: title),
-      desktop: (BuildContext context) => _desktopView(context),
-    );
-  }
-
-  _mobileView(BuildContext context, {String? title}) {
     return Container(
       padding: const EdgeInsets.symmetric(
         horizontal: 20,
@@ -50,7 +41,7 @@ class PopularBooks extends StatelessWidget {
                   ),
                 ),
               ),
-              _textBtn(textSize: 14, iconSize: 18)
+              const TextBtn(textSize: 14, iconSize: 18)
             ],
           ),
           const YBox(24),
@@ -69,8 +60,18 @@ class PopularBooks extends StatelessWidget {
       ),
     );
   }
+}
 
-  Container _desktopView(BuildContext context) {
+class PopularBookDesttop extends StatelessWidget {
+  const PopularBookDesttop({
+    Key? key,
+    this.title,
+  }) : super(key: key);
+
+  final String? title;
+
+  @override
+  Widget build(BuildContext context) {
     return Container(
       // width: MediaQuery.of(context).size.width,
       padding: const EdgeInsets.symmetric(
@@ -88,12 +89,12 @@ class PopularBooks extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Text(
-                "Popular books",
+                title ?? "Popular books",
                 style: AppTypography.text36.copyWith(
                   fontWeight: FontWeight.w500,
                 ),
               ),
-              _textBtn()
+              const TextBtn()
             ],
           ),
           const YBox(40),
@@ -170,33 +171,6 @@ class PopularBooks extends StatelessWidget {
           //     ),
           //   ],
           // ),
-        ],
-      ),
-    );
-  }
-
-  TextButton _textBtn({
-    double? textSize,
-    double? iconSize,
-  }) {
-    return TextButton(
-      onPressed: () {},
-      child: Row(
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          Text(
-            "More",
-            style: TextStyle(
-              fontSize: textSize ?? 18,
-              fontWeight: FontWeight.w500,
-              color: AppColors.purple500,
-            ),
-          ),
-          Icon(
-            color: AppColors.purple500,
-            Icons.chevron_right_outlined,
-            size: iconSize ?? 30,
-          )
         ],
       ),
     );

@@ -6,7 +6,7 @@ class RoutePath {
   static const String aboutScreen = 'aboutScreen';
   static const String authorsDetailScreen = 'authorsDetailScreen';
   static const String bookDetailsScreen = 'bookDetailsScreen';
-  static const String browsingingScreen = 'browsingingScreen';
+  static const String browsingScreen = 'browsingingScreen';
   static const String latestBooksScreen = 'latestBooksScreen';
 
   static const String writersBenefitScreen = 'writersBenefitScreen';
@@ -18,12 +18,14 @@ class RoutePath {
   static const String userScreen = 'userScreen';
 }
 
+
 final GoRouter appRouter = GoRouter(
   routes: [
     GoRoute(
       name: RoutePath.homeScreen,
       path: "/",
       builder: (context, state) => const HomeScreen(),
+
     ),
     GoRoute(
       name: RoutePath.loginScreen,
@@ -61,7 +63,7 @@ final GoRouter appRouter = GoRouter(
       builder: (context, state) => const MyProfileScreen(),
     ),
     GoRoute(
-      name: RoutePath.browsingingScreen,
+      name: RoutePath.browsingScreen,
       path: "/books",
       builder: (context, state) => const BrowsingScreen(),
       routes: [
