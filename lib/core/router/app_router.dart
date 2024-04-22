@@ -1,4 +1,5 @@
 import 'package:go_router/go_router.dart';
+import 'package:litpad/ui/screens/auth/create_username_screen.dart';
 import 'package:litpad/ui/screens/screens.dart';
 
 class RoutePath {
@@ -13,11 +14,12 @@ class RoutePath {
 
   static const String signupScreen = 'signupScreen';
   static const String loginScreen = 'loginScreen';
+  static const String createUsername = 'createUsername';
+
   static const String authCheckMail = 'authCheckMail';
   static const String profileScreen = 'profileScreen';
   static const String userScreen = 'userScreen';
 }
-
 
 final GoRouter appRouter = GoRouter(
   routes: [
@@ -25,7 +27,6 @@ final GoRouter appRouter = GoRouter(
       name: RoutePath.homeScreen,
       path: "/",
       builder: (context, state) => const HomeScreen(),
-
     ),
     GoRoute(
       name: RoutePath.loginScreen,
@@ -38,6 +39,11 @@ final GoRouter appRouter = GoRouter(
       builder: (context, state) => const SignupScreen(),
     ),
     GoRoute(
+      name: RoutePath.createUsername,
+      path: "/create-username",
+      builder: (context, state) => const CreateUsernameScreen(),
+    ),
+    GoRoute(
       name: RoutePath.writersBenefitScreen,
       path: "/writers-benefit",
       builder: (context, state) => const WritersBenefitScreen(),
@@ -45,7 +51,7 @@ final GoRouter appRouter = GoRouter(
     GoRoute(
       name: RoutePath.authCheckMail,
       path: "/auth-check-mail",
-      builder: (context, state) => const AuthCheckMail(),
+      builder: (context, state) => const AuthCheckMailScreen(),
     ),
     GoRoute(
       name: RoutePath.aboutScreen,
@@ -79,5 +85,22 @@ final GoRouter appRouter = GoRouter(
         )
       ],
     ),
+    // GoRoute(
+    //   name: RoutePath.browsingScreen,
+    //   path: "/auth",
+    //   builder: (context, state) => const BrowsingScreen(),
+    //   routes: [
+    //     GoRoute(
+    //       name: RoutePath.bookDetailsScreen,
+    //       path: "details/:id",
+    //       builder: (context, state) => const BookDetailsScreen(),
+    //     ),
+    //     GoRoute(
+    //       name: RoutePath.latestBooksScreen,
+    //       path: "latest",
+    //       builder: (context, state) => const LatestBooksScreen(),
+    //     )
+    //   ],
+    // ),
   ],
 );

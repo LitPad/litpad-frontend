@@ -1,16 +1,5 @@
 import 'package:flutter/material.dart';
-// import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:litpad/core/utils/themes/app_colors.dart';
-
-// class Sizer {
-//   static double get screenWidth => 1.sw;
-//   static double get screenHeight => 1.sh;
-//   static get deviceRatio => screenHeight / screenWidth;
-//   static height(double height) => height.h;
-//   static width(double width) => width.w;
-//   static text(double size, {applySizer = true}) => applySizer ? size.sp : size;
-//   static radius(double size) => size.r;
-// }
 
 class XBox extends StatelessWidget {
   final double _width;

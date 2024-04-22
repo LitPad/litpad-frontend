@@ -1,9 +1,6 @@
-import 'dart:convert';
-import 'dart:io';
-
 import 'package:dio/dio.dart';
 
-import 'package:http/http.dart' as http;
+// import 'package:http/http.dart' as http;
 
 import '../../ui/components/components.dart';
 
@@ -41,32 +38,32 @@ class ApiService {
 
     final uri = Uri.https(_apiHost, '/api/v1$path', queryParameters);
 
-    try {
-      final res = method == HttpMethod.get
-          ? await http.get(uri, headers: headers)
-          : method == HttpMethod.patch
-              ? await http.patch(uri, headers: headers, body: body)
-              : await http.post(uri, headers: headers, body: jsonEncode(body));
+    // try {
+    //   final res = method == HttpMethod.get
+    //       ? await http.get(uri, headers: headers)
+    //       : method == HttpMethod.patch
+    //           ? await http.patch(uri, headers: headers, body: body)
+    //           : await http.post(uri, headers: headers, body: jsonEncode(body));
 
-      if (res.statusCode >= 500) {
-        if (showToast) {
-          //Todo: Handle toast for errors
-          printApiCallDetails();
-          // _toast.show('Something went wrong, while processing your request');
-        }
-      } else {
-        final responseBody = jsonDecode(res.body);
-        //Todo: Process response here...
-      }
-    } on http.ClientException catch (_) {
-      //Todo: Handle ClientException...
-    } on FormatException {
-      //Todo: Handle FormatException...
-    } on SocketException {
-      //Todo: Handle SocketException...
-    } catch (error) {
-      //Todo: Handle other exceptions...
-    }
+    //   if (res.statusCode >= 500) {
+    //     if (showToast) {
+    //       //Todo: Handle toast for errors
+    //       printApiCallDetails();
+    //       // _toast.show('Something went wrong, while processing your request');
+    //     }
+    //   } else {
+    //     final responseBody = jsonDecode(res.body);
+    //     //Todo: Process response here...
+    //   }
+    // } on http.ClientException catch (_) {
+    //   //Todo: Handle ClientException...
+    // } on FormatException {
+    //   //Todo: Handle FormatException...
+    // } on SocketException {
+    //   //Todo: Handle SocketException...
+    // } catch (error) {
+    //   //Todo: Handle other exceptions...
+    // }
   }
 
   Future makeApiCall({

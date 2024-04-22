@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:litpad/app/startup_logic.dart';
-// import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:url_strategy/url_strategy.dart';
 
 import 'app/locator.dart';
@@ -10,12 +8,13 @@ void main() async {
   setPathUrlStrategy();
   WidgetsFlutterBinding.ensureInitialized();
   setupLocator();
-  final startupLogic = StartupLogic();
-  await startupLogic.initialize();
-  runApp(MyApp(startupLogic: startupLogic));}
+  // final startupLogic = StartupLogic();
+  // await startupLogic.initialize();
+  runApp(const MyApp());
+}
 
 class MyApp extends StatelessWidget {
-  const MyApp({super.key, required StartupLogic startupLogic});
+  const MyApp({super.key});
 
   @override
   Widget build(BuildContext context) {

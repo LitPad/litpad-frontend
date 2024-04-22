@@ -114,7 +114,7 @@ class _CustomTextFieldState extends State<CustomTextField> {
             : const SizedBox(),
         Container(
           width: widget.width ?? double.infinity,
-          height: widget.height ?? 48,
+          height: widget.height ?? 40,
           alignment: Alignment.center,
           // color: Colors.red,
           child: TextField(
@@ -237,13 +237,11 @@ class _CustomTextFieldState extends State<CustomTextField> {
           ));
     }
     if (widget.showSuffixIcon! && widget.suffixIcon == null) {
-
       // return const Icon(
       //   Iconsax.arrow_down,
       //   size: 18,
       //   color: AppColors.black,
       // );
-
     }
 
     if (widget.showSuffixIcon! && widget.suffixIcon != null) {
