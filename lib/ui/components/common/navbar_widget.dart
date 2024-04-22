@@ -73,7 +73,7 @@ class DeskTopNavbar extends StatelessWidget {
                   NavButton(
                     text: 'Browse',
                     onTap: () {
-                      context.goNamed(RoutePath.browsingingScreen);
+                      context.goNamed(RoutePath.browsingScreen);
                     },
                   ),
                   NavButton(
