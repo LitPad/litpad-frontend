@@ -1,6 +1,9 @@
 import 'package:go_router/go_router.dart';
 import 'package:litpad/ui/screens/auth/create_username_screen.dart';
 import 'package:litpad/ui/screens/screens.dart';
+import 'package:provider/provider.dart';
+
+import '../vm/auth/signup_vm.dart';
 
 class RoutePath {
   static const String homeScreen = 'homeScreen';

@@ -14,7 +14,6 @@ class StartupLogic extends BaseViewModel {
     _isAuthenticated = isLoggedIn;
     notifyListeners();
     //Todo: Set authentication state
-    notifyListeners();
   }
 
   Future futureToRun() async {

@@ -8,7 +8,7 @@ class DioService {
   final Dio _dio = Dio();
 
   DioService() {
-    _dio.options.baseUrl = dotenv.env['BASE_URL'] ?? "";
+    _dio.options.baseUrl = dotenv.env['stagingUrl'] ?? "";
     _dio.options.connectTimeout = const Duration(milliseconds: 5000); // 5s
     _dio.options.receiveTimeout = const Duration(milliseconds: 3000); // 3s
 
