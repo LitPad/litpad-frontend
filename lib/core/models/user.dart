@@ -6,9 +6,6 @@ class User {
   String lastName;
   String email;
   String token;
-  String? phone;
-  String? photoUrl;
-  String? phoneVerifiedAt;
 
   User(
       {required this.email,
@@ -16,9 +13,7 @@ class User {
         required this.firstName,
         required this.lastName,
         required this.token,
-        required this.phone,
-        required this.photoUrl,
-        required this.phoneVerifiedAt});
+     });
 
   factory User.fromMap(Map<dynamic, dynamic> map) {
     return User(
@@ -26,10 +21,7 @@ class User {
       id: map['id'] ?? '',
       lastName: map['last_name'] ?? '',
       firstName: map['first_name'] ?? '',
-      phone: map['phone'] ?? '',
       token: map['token'] ?? '',
-      phoneVerifiedAt: map['phone_verified_at'],
-      photoUrl : map['avatar']?? '',
     );
   }
 
@@ -39,10 +31,8 @@ class User {
       'id': id,
       'first_name': firstName,
       'last_name': lastName,
-      'phone': phone,
       'token': token,
-      'phone_verified_at': phoneVerifiedAt,
-      'avatar' : photoUrl
+
     };
   }
 
