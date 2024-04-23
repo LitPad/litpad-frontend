@@ -1,3 +1,4 @@
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:litpad/core/core.dart';
 import 'package:provider/provider.dart';
 import 'package:url_strategy/url_strategy.dart';
@@ -7,9 +8,10 @@ import 'app/locator.dart';
 void main() async {
   setPathUrlStrategy();
   WidgetsFlutterBinding.ensureInitialized();
-  setupLocator();
+  // setupLocator();
   // final startupLogic = StartupLogic();
   // await startupLogic.initialize();
+  await dotenv.load(fileName: '.env');
   runApp(const MyApp());
 }
 

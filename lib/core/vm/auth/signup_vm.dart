@@ -17,6 +17,7 @@ class SignUpVM extends BaseVM {
         "email": emailC.text.trim(),
         "first_name": firstNameC.text.trim(),
         "last_name": lastNameC.text.trim(),
+        "terms_agreement": true,
       },
       onSuccess: (data) {
         // Store the access token

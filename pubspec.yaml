@@ -66,6 +66,7 @@ flutter:
     - assets/images/
     - assets/svgs/
     - assets/svgs/socials/
+    - .env
   #   - images/a_dot_ham.jpeg
 
   # example:
