@@ -1,6 +1,6 @@
 import 'package:litpad/core/core.dart';
 
-class SignUpVM extends BaseVM {
+class SignupVM extends BaseVM {
   TextEditingController userNameC = TextEditingController();
   TextEditingController passwordC = TextEditingController();
   TextEditingController firstNameC = TextEditingController();

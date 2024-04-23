@@ -7,14 +7,17 @@ import 'package:provider/provider.dart';
 
 import '../../../../core/vm/auth/signup_vm.dart';
 
-class SignupForm extends StatelessWidget {
+class SignupForm extends StatefulWidget {
   const SignupForm({Key? key}) : super(key: key);
 
   @override
-  Widget build(BuildContext context) {
-    // final signUpVM = Provider.of<SignUpVM>(context);
+  State<SignupForm> createState() => _SignupFormState();
+}
 
-    return Consumer<SignUpVM>(
+class _SignupFormState extends State<SignupForm> {
+  @override
+  Widget build(BuildContext context) {
+    return Consumer<SignupVM>(
       builder: (context, signUpVM, _) {
         return Column(
           children: [
@@ -79,11 +82,8 @@ class SignupForm extends StatelessWidget {
             ),
             const YBox(16),
             CustomBtn.solid(
-              onTap: () {
-                signUpVM.signUp();
-                context.goNamed(RoutePath.authCheckMail);
-              },
-              online: true,
+              onTap: () => _completeSignUp(),
+              online: !signUpVM.isBusy,
               text: 'Save changes',
             ),
             const YBox(16),
@@ -114,5 +114,17 @@ class SignupForm extends StatelessWidget {
         );
       },
     );
+  }
+
+  _completeSignUp() {
+    printty("Signup pressed");
+    // var signVm = context.read<SignupVM>().signUp().then((value) {
+    //   if (value.success) {
+    //     // show a success toast and navigate to next screen
+    //     // context.goNamed(RoutePath.authCheckMail);
+    //   } else {
+    //     // show error toast
+    //   }
+    // });
   }
 }
