@@ -21,8 +21,20 @@ class SignUpVM extends BaseVM {
       onSuccess: (data) {
         // Store the access token
         return ApiResponse(success: true, data: data);
-
       },
     );
+  }
+
+  @override
+  void dispose() {
+    printty("SignUpVM disposed");
+
+    userNameC.dispose();
+    passwordC.dispose();
+    firstNameC.dispose();
+    lastNameC.dispose();
+    emailC.dispose();
+
+    super.dispose();
   }
 }
