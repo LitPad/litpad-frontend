@@ -25,7 +25,7 @@ class AuthorsDetails extends StatelessWidget {
                           ? const DeskTopNavbar()
                           : const MobileNavbar(),
                       const SizedBox(height: 30),
-                      const AvatarContainer(),
+                      const AvatarContainerDeskTop(),
                       const PublishedBooks(),
                       Container(
                         padding: const EdgeInsets.symmetric(

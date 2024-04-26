@@ -21,7 +21,7 @@ class BookDetailsScreen extends StatelessWidget {
             ),
             child: Column(
               children: [
-                constraints.maxWidth >= 768
+                constraints.maxWidth >= 950
                     ? const DeskTopNavbar()
                     : const MobileNavbar(),
                 Container(
