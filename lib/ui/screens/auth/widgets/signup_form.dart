@@ -4,7 +4,6 @@ import 'package:litpad/core/utils/utils.dart';
 import 'package:litpad/ui/components/buttons/buttons.dart';
 import 'package:litpad/ui/components/textfields/textfields.dart';
 import 'package:provider/provider.dart';
-
 import '../../../../core/vm/auth/signup_vm.dart';
 
 class SignupForm extends StatefulWidget {
@@ -29,6 +28,20 @@ class _SignupFormState extends State<SignupForm> {
             ),
             const YBox(20),
             CustomTextField(
+              controller: signUpVM.firstNameC,
+              labelText: 'First Name',
+              showLabelHeader: true,
+              borderRadius: 50,
+            ),
+            const YBox(20),
+            CustomTextField(
+              controller: signUpVM.lastNameC,
+              labelText: 'Last Name',
+              showLabelHeader: true,
+              borderRadius: 50,
+            ),
+            const YBox(20),
+            CustomTextField(
               controller: signUpVM.userNameC,
               labelText: 'Username',
               showLabelHeader: true,
@@ -41,6 +54,7 @@ class _SignupFormState extends State<SignupForm> {
               showLabelHeader: true,
               isPassword: true,
               borderRadius: 50,
+              suffixIcon: const Icon(Icons.visibility),
             ),
             const YBox(10),
             RichText(
@@ -118,13 +132,15 @@ class _SignupFormState extends State<SignupForm> {
 
   _completeSignUp() {
     printty("Signup pressed");
-    // var signVm = context.read<SignupVM>().signUp().then((value) {
-    //   if (value.success) {
-    //     // show a success toast and navigate to next screen
-    //     // context.goNamed(RoutePath.authCheckMail);
-    //   } else {
-    //     // show error toast
-    //   }
-    // });
+
+    var signVm = context.read<SignupVM>().signUp().then((value) {
+      if (value.success) {
+        // show a success toast and navigate to next screen
+        context.goNamed(RoutePath.authCheckMail);
+      } else {
+        debugPrint('Error');
+        // show error toast
+      }
+    });
   }
 }

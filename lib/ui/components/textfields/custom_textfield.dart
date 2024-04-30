@@ -16,6 +16,8 @@ class CustomTextField extends StatefulWidget {
   final Color? fillColor;
   final bool isOptional;
   final Function()? onTap;
+  final FormFieldValidator<String>? validator;
+
 
   const CustomTextField({
     Key? key,
@@ -43,7 +45,7 @@ class CustomTextField extends StatefulWidget {
     this.focusNode,
     this.isOptional = false,
     this.onChange,
-    this.onTap,
+    this.onTap, this.validator,
   }) : super(key: key);
 
   @override

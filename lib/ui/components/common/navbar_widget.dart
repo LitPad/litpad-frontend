@@ -109,7 +109,7 @@ class DeskTopNavbar extends StatelessWidget {
                   context.goNamed(RoutePath.signupScreen);
                 },
                 online: true,
-                text: 'Signn up',
+                text: 'Sign up',
                 // width: 110,
               )
             ],

@@ -40,6 +40,7 @@ dependencies:
   get_it: ^7.6.7
   provider: ^6.1.2
   universal_html: ^2.2.4
+  flutter_spinkit: ^5.2.1
 
 dev_dependencies:
   flutter_test:
@@ -67,6 +68,7 @@ flutter:
     - assets/svgs/
     - assets/svgs/socials/
     - .env
+  #   - images/a_dot_ham.jpeg
 
   # example:
   fonts:
