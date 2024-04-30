@@ -62,29 +62,12 @@ class _HomeScreenState extends State<HomeScreen> {
                           ? const PopularBookDesttop(title: "Completed books")
                           : const PopularBooksMobile(title: "Completed books"),
                       const ArticleSlider(title: "Upcoming book"),
-                      const HLine(),
+                      const HDivider(),
                       const FooterSection(),
                     ],
                   ),
                 ));
           });
         });
-  }
-}
-
-class HLine extends StatelessWidget {
-  const HLine({
-    super.key,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      padding: const EdgeInsets.symmetric(
-        vertical: 60,
-        horizontal: 60,
-      ),
-      child: const Divider(),
-    );
   }
 }

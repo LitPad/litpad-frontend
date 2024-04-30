@@ -2,8 +2,6 @@ import 'package:go_router/go_router.dart';
 import 'package:litpad/ui/screens/auth/create_username_screen.dart';
 import 'package:litpad/ui/screens/screens.dart';
 
-import '../../ui/screens/auth/widgets/verify_mail_screen.dart';
-
 class RoutePath {
   static const String homeScreen = 'homeScreen';
   static const String aboutScreen = 'aboutScreen';
@@ -21,7 +19,10 @@ class RoutePath {
   static const String authCheckMail = 'authCheckMail';
   static const String profileScreen = 'profileScreen';
   static const String userScreen = 'userScreen';
-  static const String verifyMailScreen = 'verifyMailScreen';
+
+  static const String settingsScreen = 'settingsScreen';
+  static const String topupScreen = 'topupScreen';
+  static const String authorCentreScreen = 'authorCentreScreen';
 }
 
 final GoRouter appRouter = GoRouter(
@@ -62,6 +63,21 @@ final GoRouter appRouter = GoRouter(
       builder: (context, state) => const AboutScreen(),
     ),
     GoRoute(
+      name: RoutePath.settingsScreen,
+      path: "/settings",
+      builder: (context, state) => const SettingScreen(),
+    ),
+    GoRoute(
+      name: RoutePath.topupScreen,
+      path: "/topup",
+      builder: (context, state) => const TopupScreen(),
+    ),
+    GoRoute(
+      name: RoutePath.authorCentreScreen,
+      path: "/author-centre",
+      builder: (context, state) => const AuthorsCentreScreen(),
+    ),
+    GoRoute(
       name: RoutePath.authorsDetailScreen,
       path: "/authors/:id",
       builder: (context, state) => const AuthorsDetails(),
@@ -71,12 +87,6 @@ final GoRouter appRouter = GoRouter(
       path: "/my-account/:id",
       builder: (context, state) => const MyProfileScreen(),
     ),
-    GoRoute(
-        name: RoutePath.verifyMailScreen,
-        path: "/verify-email/:token",
-        builder: (context, state) {
-          return VerifyMailScreen(token: state.pathParameters['token']);
-        }),
     GoRoute(
       name: RoutePath.browsingScreen,
       path: "/books",
@@ -91,7 +101,7 @@ final GoRouter appRouter = GoRouter(
           name: RoutePath.latestBooksScreen,
           path: "latest",
           builder: (context, state) => const LatestBooksScreen(),
-        ),
+        )
       ],
     ),
     // GoRoute(

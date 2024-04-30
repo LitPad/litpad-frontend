@@ -1,17 +1,15 @@
 import 'package:litpad/core/utils/utils.dart';
 import 'package:litpad/ui/components/components.dart';
-import 'package:litpad/ui/screens/profile/widgets/widgets.dart';
+import 'package:litpad/ui/screens/screens.dart';
 
-class ProfileTabMenuSectionDeskTop extends StatefulWidget {
-  const ProfileTabMenuSectionDeskTop({Key? key}) : super(key: key);
+class SettingsTabDesktop extends StatefulWidget {
+  const SettingsTabDesktop({Key? key}) : super(key: key);
 
   @override
-  State<ProfileTabMenuSectionDeskTop> createState() =>
-      _ProfileTabMenuSectionDeskTopState();
+  State<SettingsTabDesktop> createState() => _SettingsTabDesktopState();
 }
 
-class _ProfileTabMenuSectionDeskTopState
-    extends State<ProfileTabMenuSectionDeskTop> {
+class _SettingsTabDesktopState extends State<SettingsTabDesktop> {
   int _selectedTabIndex = 0;
   @override
   Widget build(BuildContext context) {
@@ -25,9 +23,14 @@ class _ProfileTabMenuSectionDeskTopState
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
+          const YBox(40),
+          Text(
+            "Settings",
+            style: AppTypography.text32.copyWith(fontWeight: FontWeight.w500),
+          ),
+          const YBox(32),
           Container(
             height: 50,
-            margin: const EdgeInsets.only(bottom: 40),
             decoration: const BoxDecoration(
               border: Border(
                 bottom: BorderSide(
@@ -41,26 +44,20 @@ class _ProfileTabMenuSectionDeskTopState
                 Row(
                   children: [
                     MenuTab(
-                      text: 'Profile',
+                      text: 'Language',
                       isActive: _selectedTabIndex == 0,
                       onTap: () => setState(() => _selectedTabIndex = 0),
                     ),
                     MenuTab(
-                      text: 'Password',
+                      text: 'Notification',
                       isActive: _selectedTabIndex == 1,
                       onTap: () => setState(() => _selectedTabIndex = 1),
-                    ),
-                    MenuTab(
-                      text: 'Followings',
-                      isActive: _selectedTabIndex == 2,
-                      onTap: () => setState(() => _selectedTabIndex = 2),
                     ),
                   ],
                 ),
               ],
             ),
           ),
-          const SizedBox(height: 20),
           SizedBox(
             width: 550,
             child: Column(
@@ -70,7 +67,7 @@ class _ProfileTabMenuSectionDeskTopState
                   child: AnimatedOpacity(
                     duration: const Duration(milliseconds: 500),
                     opacity: _selectedTabIndex == 0 ? 1 : 0,
-                    child: const UpdateProfileWidget(),
+                    child: const LanguageTab(),
                   ),
                 ),
                 Visibility(
@@ -78,15 +75,7 @@ class _ProfileTabMenuSectionDeskTopState
                   child: AnimatedOpacity(
                     duration: const Duration(milliseconds: 500),
                     opacity: _selectedTabIndex == 1 ? 1 : 0,
-                    child: const UpdatePasswordWidget(),
-                  ),
-                ),
-                Visibility(
-                  visible: _selectedTabIndex == 2,
-                  child: AnimatedOpacity(
-                    duration: const Duration(milliseconds: 500),
-                    opacity: _selectedTabIndex == 2 ? 1 : 0,
-                    child: const FollowingTab(),
+                    child: const NotificationTab(),
                   ),
                 ),
               ],
@@ -98,16 +87,14 @@ class _ProfileTabMenuSectionDeskTopState
   }
 }
 
-class ProfileTabMenuSectionMobile extends StatefulWidget {
-  const ProfileTabMenuSectionMobile({Key? key}) : super(key: key);
+class SettingsTabMobile extends StatefulWidget {
+  const SettingsTabMobile({Key? key}) : super(key: key);
 
   @override
-  State<ProfileTabMenuSectionMobile> createState() =>
-      _ProfileTabMenuSectionMobileState();
+  State<SettingsTabMobile> createState() => _SettingsTabMobileState();
 }
 
-class _ProfileTabMenuSectionMobileState
-    extends State<ProfileTabMenuSectionMobile> {
+class _SettingsTabMobileState extends State<SettingsTabMobile> {
   int _selectedTabIndex = 0;
   @override
   Widget build(BuildContext context) {
@@ -121,6 +108,12 @@ class _ProfileTabMenuSectionMobileState
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
+          const YBox(24),
+          Text(
+            "Settings",
+            style: AppTypography.text20.copyWith(fontWeight: FontWeight.w500),
+          ),
+          const YBox(20),
           Container(
             height: 30,
             decoration: const BoxDecoration(
@@ -137,21 +130,15 @@ class _ProfileTabMenuSectionMobileState
                   children: [
                     MenuTab(
                       isMobile: true,
-                      text: 'Profile',
+                      text: 'Language',
                       isActive: _selectedTabIndex == 0,
                       onTap: () => setState(() => _selectedTabIndex = 0),
                     ),
                     MenuTab(
                       isMobile: true,
-                      text: 'Password',
+                      text: 'Notification',
                       isActive: _selectedTabIndex == 1,
                       onTap: () => setState(() => _selectedTabIndex = 1),
-                    ),
-                    MenuTab(
-                      isMobile: true,
-                      text: 'Followings',
-                      isActive: _selectedTabIndex == 2,
-                      onTap: () => setState(() => _selectedTabIndex = 2),
                     ),
                   ],
                 ),
@@ -168,7 +155,7 @@ class _ProfileTabMenuSectionMobileState
                   child: AnimatedOpacity(
                     duration: const Duration(milliseconds: 500),
                     opacity: _selectedTabIndex == 0 ? 1 : 0,
-                    child: const UpdateProfileWidget(isMobile: true),
+                    child: const LanguageTab(isMobile: true),
                   ),
                 ),
                 Visibility(
@@ -176,15 +163,7 @@ class _ProfileTabMenuSectionMobileState
                   child: AnimatedOpacity(
                     duration: const Duration(milliseconds: 500),
                     opacity: _selectedTabIndex == 1 ? 1 : 0,
-                    child: const UpdatePasswordWidget(isMobile: true),
-                  ),
-                ),
-                Visibility(
-                  visible: _selectedTabIndex == 2,
-                  child: AnimatedOpacity(
-                    duration: const Duration(milliseconds: 500),
-                    opacity: _selectedTabIndex == 2 ? 1 : 0,
-                    child: const FollowingTab(isMobile: true),
+                    child: const NotificationTab(isMobile: true),
                   ),
                 ),
               ],

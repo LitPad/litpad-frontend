@@ -44,3 +44,19 @@ class AppDivider extends StatelessWidget {
     );
   }
 }
+
+class HDivider extends StatelessWidget {
+  const HDivider({
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      padding: const EdgeInsets.symmetric(vertical: 40, horizontal: 60),
+      child: const Divider(
+        color: AppColors.grey300,
+      ),
+    );
+  }
+}
