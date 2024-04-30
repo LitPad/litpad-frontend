@@ -1,4 +1,5 @@
 import 'package:dio/dio.dart';
+import 'package:litpad/app/session_storage.dart';
 
 class TokenInterceptor extends InterceptorsWrapper {
   @override
@@ -39,14 +40,10 @@ class TokenInterceptor extends InterceptorsWrapper {
 
 class TokenManager {
   static Future<String?> getAccessToken() async {
-    return null;
-
-    // Implement your logic to retrieve the access token
+    return SessionStorageHelper.getValue('accessToken');
   }
 
   static Future<String?> refreshAccessToken() async {
-    return null;
-
-    // Implement your logic to refresh the access token
+    return SessionStorageHelper.getValue('refreshToken');
   }
 }

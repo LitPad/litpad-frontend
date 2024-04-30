@@ -10,7 +10,7 @@ class SignupVM extends BaseVM {
   Future<ApiResponse> signUp() async {
     return makeRequest(
       method: DioHttpMethod.POST,
-      endpoint: '/register',
+      endpoint: '/auth/register',
       data: {
         "username": userNameC.text.trim(),
         "password": passwordC.text.trim(),
@@ -23,6 +23,7 @@ class SignupVM extends BaseVM {
         // Store the access token
         return ApiResponse(success: true, data: data);
       },
+
     );
   }
 

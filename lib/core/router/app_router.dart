@@ -1,9 +1,8 @@
 import 'package:go_router/go_router.dart';
 import 'package:litpad/ui/screens/auth/create_username_screen.dart';
 import 'package:litpad/ui/screens/screens.dart';
-import 'package:provider/provider.dart';
 
-import '../vm/auth/signup_vm.dart';
+import '../../ui/screens/auth/widgets/verify_mail_screen.dart';
 
 class RoutePath {
   static const String homeScreen = 'homeScreen';
@@ -22,6 +21,7 @@ class RoutePath {
   static const String authCheckMail = 'authCheckMail';
   static const String profileScreen = 'profileScreen';
   static const String userScreen = 'userScreen';
+  static const String verifyMailScreen = 'verifyMailScreen';
 }
 
 final GoRouter appRouter = GoRouter(
@@ -72,6 +72,12 @@ final GoRouter appRouter = GoRouter(
       builder: (context, state) => const MyProfileScreen(),
     ),
     GoRoute(
+        name: RoutePath.verifyMailScreen,
+        path: "/verify-email/:token",
+        builder: (context, state) {
+          return VerifyMailScreen(token: state.pathParameters['token']);
+        }),
+    GoRoute(
       name: RoutePath.browsingScreen,
       path: "/books",
       builder: (context, state) => const BrowsingScreen(),
@@ -85,7 +91,7 @@ final GoRouter appRouter = GoRouter(
           name: RoutePath.latestBooksScreen,
           path: "latest",
           builder: (context, state) => const LatestBooksScreen(),
-        )
+        ),
       ],
     ),
     // GoRoute(
