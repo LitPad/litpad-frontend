@@ -7,12 +7,14 @@ class MenuTab extends StatelessWidget {
     this.onTap,
     this.isActive = false,
     this.isMobile = false,
+    this.fontSize,
   }) : super(key: key);
 
   final String text;
   final Function()? onTap;
   final bool isActive;
   final bool isMobile;
+  final double? fontSize;
 
   @override
   Widget build(BuildContext context) {
@@ -36,7 +38,7 @@ class MenuTab extends StatelessWidget {
         child: Text(
           text,
           style: TextStyle(
-            fontSize: isMobile ? 14 : 22,
+            fontSize: fontSize ?? (isMobile ? 14 : 22),
             fontWeight: FontWeight.w500,
             color: isActive ? AppColors.purple900 : AppColors.menuGrey,
           ),

@@ -1,9 +1,6 @@
 import 'package:go_router/go_router.dart';
 import 'package:litpad/ui/screens/auth/create_username_screen.dart';
 import 'package:litpad/ui/screens/screens.dart';
-import 'package:provider/provider.dart';
-
-import '../vm/auth/signup_vm.dart';
 
 class RoutePath {
   static const String homeScreen = 'homeScreen';
@@ -22,6 +19,10 @@ class RoutePath {
   static const String authCheckMail = 'authCheckMail';
   static const String profileScreen = 'profileScreen';
   static const String userScreen = 'userScreen';
+
+  static const String settingsScreen = 'settingsScreen';
+  static const String topupScreen = 'topupScreen';
+  static const String authorCentreScreen = 'authorCentreScreen';
 }
 
 final GoRouter appRouter = GoRouter(
@@ -60,6 +61,21 @@ final GoRouter appRouter = GoRouter(
       name: RoutePath.aboutScreen,
       path: "/about-us",
       builder: (context, state) => const AboutScreen(),
+    ),
+    GoRoute(
+      name: RoutePath.settingsScreen,
+      path: "/settings",
+      builder: (context, state) => const SettingScreen(),
+    ),
+    GoRoute(
+      name: RoutePath.topupScreen,
+      path: "/topup",
+      builder: (context, state) => const TopupScreen(),
+    ),
+    GoRoute(
+      name: RoutePath.authorCentreScreen,
+      path: "/author-centre",
+      builder: (context, state) => const AuthorsCentreScreen(),
     ),
     GoRoute(
       name: RoutePath.authorsDetailScreen,
