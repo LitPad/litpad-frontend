@@ -1,4 +1,4 @@
-import 'package:flutter_spinkit/flutter_spinkit.dart';
+// import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:go_router/go_router.dart';
 import 'package:litpad/core/core.dart';
 import 'package:litpad/core/vm/auth/verify_email_vm.dart';
@@ -95,10 +95,11 @@ class _MainContentState extends State<MainContent> {
           ],
         ),
         child: verifyMailVM.isBusy
-            ? const SpinKitFadingCircle(
-                color: Colors.deepPurple,
-                size: 50.0,
-              )
+            // ? const SpinKitFadingCircle(
+            //     color: Colors.deepPurple,
+            //     size: 50.0,
+            //   )
+            ? const CircularProgressIndicator()
             : (verifyMailVM.isSuccess == true)
                 ? Column(
                     // Success UI
