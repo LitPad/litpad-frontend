@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:universal_html/html.dart';
 
 class LocalStorageHelper {
@@ -5,10 +7,13 @@ class LocalStorageHelper {
 
   static void saveValue(String key, String value) {
     localStorage[key] = value;
+    log('Saved $value');
   }
 
   static String? getValue(String key) {
+    log('Gotten value $key');
     return localStorage[key];
+
   }
   static void removeValue(String key) {
     localStorage.remove(key);
