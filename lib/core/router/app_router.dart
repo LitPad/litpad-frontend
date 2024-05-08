@@ -1,7 +1,10 @@
 import 'package:go_router/go_router.dart';
 import 'package:litpad/ui/screens/auth/create_username_screen.dart';
+import 'package:litpad/ui/screens/auth/set_new_password/set_new_password.dart';
+import 'package:litpad/ui/screens/auth/widgets/reset_password_message_screen.dart';
 import 'package:litpad/ui/screens/screens.dart';
 
+import '../../ui/screens/auth/forgot_password/forgot_password.dart';
 import '../../ui/screens/auth/widgets/verify_mail_screen.dart';
 
 class RoutePath {
@@ -23,10 +26,12 @@ class RoutePath {
   static const String userScreen = 'userScreen';
 
   static const String settingsScreen = 'settingsScreen';
-  static const String topupScreen = 'topupScreen';
+  static const String topUpScreen = 'topupScreen';
   static const String authorCentreScreen = 'authorCentreScreen';
   static const String verifyMailScreen = 'verifyMailScreen';
-
+  static const String forgotPasswordScreen = 'forgotPasswordScreen';
+  static const String setNewPasswordScreen = 'setNewPasswordScreen';
+  static const String resetPasswordMessageScreen = 'resetPasswordMessageScreen';
 }
 
 final GoRouter appRouter = GoRouter(
@@ -62,6 +67,21 @@ final GoRouter appRouter = GoRouter(
       builder: (context, state) => const AuthCheckMailScreen(),
     ),
     GoRoute(
+      name: RoutePath.forgotPasswordScreen,
+      path: "/forgot-password",
+      builder: (context, state) => const ForgotPasswordScreen(),
+    ),
+    GoRoute(
+      name: RoutePath.resetPasswordMessageScreen,
+      path: "/reset-password-mail",
+      builder: (context, state) => const ResetPasswordMessageScreen(),
+    ),
+    GoRoute(
+      name: RoutePath.setNewPasswordScreen,
+      path: "/password-reset/:token",
+      builder: (context, state) => const SetNewPasswordScreen(),
+    ),
+    GoRoute(
       name: RoutePath.aboutScreen,
       path: "/about-us",
       builder: (context, state) => const AboutScreen(),
@@ -72,7 +92,7 @@ final GoRouter appRouter = GoRouter(
       builder: (context, state) => const SettingScreen(),
     ),
     GoRoute(
-      name: RoutePath.topupScreen,
+      name: RoutePath.topUpScreen,
       path: "/topup",
       builder: (context, state) => const TopupScreen(),
     ),

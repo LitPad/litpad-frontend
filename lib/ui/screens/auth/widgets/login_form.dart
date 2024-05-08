@@ -39,7 +39,7 @@ class _LoginFormState extends State<LoginForm> {
               children: [
                 InkWell(
                   onTap: () {
-                    // context.goNamed(RoutePath.forgotPasswordScreen);
+                    context.goNamed(RoutePath.forgotPasswordScreen);
                   },
                   child: Text(
                     "Forgot password?",

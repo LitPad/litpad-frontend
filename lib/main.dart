@@ -3,11 +3,21 @@ import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:litpad/core/core.dart';
 import 'package:provider/provider.dart';
 import 'package:url_strategy/url_strategy.dart';
+import 'package:flutter/foundation.dart' show kIsWeb;
+import 'package:flutter_facebook_auth/flutter_facebook_auth.dart';
 
 void main() async {
   setPathUrlStrategy();
   WidgetsFlutterBinding.ensureInitialized();
   await dotenv.load(fileName: "dotenv");
+  if (kIsWeb) {
+    await FacebookAuth.i.webAndDesktopInitialize(
+      appId: dotenv.env['APP_ID']!,
+      cookie: true,
+      xfbml: true,
+      version: "v15.0",
+    );
+  }
   runApp(const MyApp());
 }
 
