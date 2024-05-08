@@ -82,9 +82,38 @@ class DeskTopNavbar extends StatelessWidget {
                         context.goNamed(RoutePath.latestBooksScreen);
                       }),
                   NavButton(
-                    text: 'Writer\'s benefits',
+                    text: 'Settings',
                     onTap: () {
-                      context.goNamed(RoutePath.writersBenefitScreen);
+                      context.goNamed(RoutePath.settingsScreen);
+                    },
+                  ),
+                  NavButton(
+                    text: 'TopUp',
+                    onTap: () {
+                      context.goNamed(RoutePath.topupScreen);
+                    },
+                  ),
+                  NavButton(
+                    text: 'Author\'s Centre',
+                    onTap: () {
+                      context.goNamed(RoutePath.authorCentreScreen);
+                    },
+                  ),
+                  NavButton(
+                    text: 'Author Id',
+                    onTap: () {
+                      context.goNamed(RoutePath.authorsDetailScreen,
+                          pathParameters: {
+                            'id': '1',
+                          });
+                    },
+                  ),
+                  NavButton(
+                    text: 'My Profile',
+                    onTap: () {
+                      context.goNamed(RoutePath.profileScreen, pathParameters: {
+                        'id': '1',
+                      });
                     },
                   ),
                   // NavButton(
@@ -130,7 +159,7 @@ class NavButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return OnHoverTranslate(
       child: Container(
-        margin: const EdgeInsets.symmetric(horizontal: 4),
+        margin: const EdgeInsets.symmetric(horizontal: 2),
         child: TextButton(
           onPressed: onTap,
           child: Text(
