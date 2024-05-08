@@ -1,4 +1,3 @@
-import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:litpad/core/router/app_router.dart';
 import 'package:litpad/core/utils/utils.dart';
@@ -41,63 +40,27 @@ class _BooksByCategoryState extends State<BooksByCategory> {
               ),
             ),
           ),
-          const SizedBox(height: 40),
-          GridView.count(
-            padding: EdgeInsets.only(
-              bottom: MediaQuery.of(context).size.height * 0.1,
-            ),
-            shrinkWrap: true,
-            physics: const NeverScrollableScrollPhysics(),
-            crossAxisCount: 2,
-            crossAxisSpacing: 20,
-            mainAxisSpacing: 30,
-            childAspectRatio: 580 / 234,
-            children: [
-              BookCard(
-                onImageTap: () {
-                  context.goNamed(RoutePath.bookDetailsScreen, pathParameters: {
-                    'id': '1',
-                  });
-                },
-              ),
-              BookCard(
-                onImageTap: () {
-                  context.goNamed(RoutePath.bookDetailsScreen, pathParameters: {
-                    'id': '1',
-                  });
-                },
-              ),
-              BookCard(
-                onImageTap: () {
-                  context.goNamed(RoutePath.bookDetailsScreen, pathParameters: {
-                    'id': '1',
-                  });
-                },
-              ),
-              BookCard(
-                onImageTap: () {
-                  context.goNamed(RoutePath.bookDetailsScreen, pathParameters: {
-                    'id': '1',
-                  });
-                },
-              ),
-              BookCard(
-                onImageTap: () {
-                  context.goNamed(RoutePath.bookDetailsScreen, pathParameters: {
-                    'id': '1',
-                  });
-                },
-              ),
-              BookCard(
-                onImageTap: () {
-                  context.goNamed(RoutePath.bookDetailsScreen, pathParameters: {
-                    'id': '1',
-                  });
-                },
-              ),
-            ],
+          const SizedBox(height: 80),
+          Wrap(
+            spacing: (20),
+            runSpacing: (40),
+            children: List.generate(6, (index) {
+              return SizedBox(
+                width: (420),
+                child: BookCard(
+                  imgWidth: 174,
+                  imgheight: 225,
+                  onImageTap: () {
+                    context
+                        .goNamed(RoutePath.bookDetailsScreen, pathParameters: {
+                      'id': '1',
+                    });
+                  },
+                ),
+              );
+            }),
           ),
-          const SizedBox(height: 20),
+          const SizedBox(height: 80),
           // Pagination
           Container(
             padding: const EdgeInsets.only(right: 150),

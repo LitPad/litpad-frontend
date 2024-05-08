@@ -25,10 +25,10 @@ class BookCard extends StatelessWidget {
             width: (imgWidth ?? 204),
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(20),
-              image: const DecorationImage(
-                image: AssetImage(AppImages.article),
-                fit: BoxFit.cover,
-              ),
+            ),
+            child: Image.asset(
+              AppImages.article,
+              fit: BoxFit.cover,
             ),
           ),
         ),

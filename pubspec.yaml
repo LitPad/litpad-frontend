@@ -32,7 +32,6 @@ dependencies:
 
   go_router: ^13.2.0
   url_strategy: ^0.2.0
-  flutter_screenutil: ^5.9.0
   stacked: ^3.4.2
   dio: ^5.4.3+1
   http: ^1.2.0
@@ -68,7 +67,7 @@ flutter:
     - assets/images/
     - assets/svgs/
     - assets/svgs/socials/
-    - .env
+    - dotenv
   #   - images/a_dot_ham.jpeg
 
   # example:
