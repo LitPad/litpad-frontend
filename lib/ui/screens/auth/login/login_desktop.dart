@@ -1,96 +1,101 @@
 import 'package:litpad/core/core.dart';
 import 'package:litpad/ui/screens/auth/widgets/widgets.dart';
+import 'package:provider/provider.dart';
 
 class LoginDesktop extends StatelessWidget {
   const LoginDesktop({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: Container(
-        color: AppColors.white,
-        width: MediaQuery.of(context).size.width,
-        height: MediaQuery.of(context).size.height,
-        child: Center(
-            child: Container(
-          width: (600),
-          padding: const EdgeInsets.symmetric(
-            vertical: (32),
-            horizontal: (32),
-          ),
-          decoration: const BoxDecoration(
-            color: AppColors.bgWhite,
-            borderRadius: BorderRadius.all(Radius.circular(36)),
-            boxShadow: [
-              BoxShadow(
-                color: AppColors.grey300,
-                spreadRadius: 2,
-                blurRadius: 4,
-                offset: Offset(0, 5),
+    return Consumer<FaceBookLoginVM>(
+      builder: (context, fbLoginVM, _) {
+        return Scaffold(
+          body: Container(
+            color: AppColors.white,
+            width: MediaQuery.of(context).size.width,
+            height: MediaQuery.of(context).size.height,
+            child: Center(
+                child: Container(
+              width: (600),
+              padding: const EdgeInsets.symmetric(
+                vertical: (32),
+                horizontal: (32),
               ),
-            ],
-          ),
-          child: Column(
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              svgHelper(
-                AppSvgs.logoIcon,
-              ),
-              const YBox(20),
-              Text(
-                "Welcome Back",
-                style: AppTypography.text24.copyWith(
-                  color: AppColors.grey900,
-                  fontWeight: FontWeight.w600,
-                ),
-              ),
-              const YBox(30),
-              Row(
-                children: [
-                  Expanded(
-                    child: SocialAuthBtn(
-                      text: "Login with Facebook",
-                      svg: AppSvgs.fb,
-                      onTap: () {},
-                    ),
+              decoration: const BoxDecoration(
+                color: AppColors.bgWhite,
+                borderRadius: BorderRadius.all(Radius.circular(36)),
+                boxShadow: [
+                  BoxShadow(
+                    color: AppColors.grey300,
+                    spreadRadius: 2,
+                    blurRadius: 4,
+                    offset: Offset(0, 5),
                   ),
-                  const XBox(14),
-                  Expanded(
-                    child: SocialAuthBtn(
-                      text: "Login with Google",
-                      svg: AppSvgs.google,
-                      onTap: () {},
-                    ),
-                  )
                 ],
               ),
-              const YBox(30),
-              Row(
+              child: Column(
+                mainAxisSize: MainAxisSize.min,
                 children: [
-                  const Expanded(
-                    child: Divider(
-                      color: AppColors.grey200,
-                    ),
+                  svgHelper(
+                    AppSvgs.logoIcon,
                   ),
-                  const XBox(20),
+                  const YBox(20),
                   Text(
-                    "or",
-                    style: AppTypography.text16,
-                  ),
-                  const XBox(20),
-                  const Expanded(
-                    child: Divider(
-                      color: AppColors.grey200,
+                    "Welcome Back",
+                    style: AppTypography.text24.copyWith(
+                      color: AppColors.grey900,
+                      fontWeight: FontWeight.w600,
                     ),
                   ),
+                  const YBox(30),
+                  Row(
+                    children: [
+                      Expanded(
+                        child: SocialAuthBtn(
+                          text: "Login with Facebook",
+                          svg: AppSvgs.fb,
+                          onTap: fbLoginVM.facebookLogin,
+                        ),
+                      ),
+                      const XBox(14),
+                      Expanded(
+                        child: SocialAuthBtn(
+                          text: "Login with Google",
+                          svg: AppSvgs.google,
+                          onTap: () {},
+                        ),
+                      )
+                    ],
+                  ),
+                  const YBox(30),
+                  Row(
+                    children: [
+                      const Expanded(
+                        child: Divider(
+                          color: AppColors.grey200,
+                        ),
+                      ),
+                      const XBox(20),
+                      Text(
+                        "or",
+                        style: AppTypography.text16,
+                      ),
+                      const XBox(20),
+                      const Expanded(
+                        child: Divider(
+                          color: AppColors.grey200,
+                        ),
+                      ),
+                    ],
+                  ),
+                  const YBox(20),
+                  const LoginForm(),
                 ],
               ),
-              const YBox(20),
-              const LoginForm(),
-            ],
+            )),
           ),
-        )),
-      ),
+        );
+      }
     );
   }
 }
