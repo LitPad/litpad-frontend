@@ -7,7 +7,7 @@ import 'package:url_strategy/url_strategy.dart';
 void main() async {
   setPathUrlStrategy();
   WidgetsFlutterBinding.ensureInitialized();
-  await dotenv.load(fileName: ".env");
+  await dotenv.load(fileName: "dotenv");
   runApp(const MyApp());
 }
 
