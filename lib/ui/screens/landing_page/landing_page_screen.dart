@@ -4,15 +4,14 @@ import 'package:litpad/ui/screens/home/containers/containers.dart';
 import 'package:litpad/ui/screens/home/home_screen_viewmodel.dart';
 import 'package:stacked/stacked.dart';
 
-class HomeScreen extends StatefulWidget {
-  final bool? isAuthenticated;
-  const HomeScreen({Key? key, this.isAuthenticated}) : super(key: key);
+class LandingPage extends StatefulWidget {
+  const LandingPage({Key? key,}) : super(key: key);
 
   @override
-  State<HomeScreen> createState() => _HomeScreenState();
+  State<LandingPage> createState() => _LandingPageState();
 }
 
-class _HomeScreenState extends State<HomeScreen> {
+class _LandingPageState extends State<LandingPage> {
   final scaffoldKey = GlobalKey<ScaffoldState>();
   @override
   Widget build(BuildContext context) {
@@ -29,7 +28,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 backgroundColor: AppColors.bgWhite,
                 endDrawer: constraints.maxWidth >= 950
                     ? null
-                    : DrawerMobile(onNavItemTap: (int navIndex) {
+                    : LandingPageDrawerMobile(onNavItemTap: (int navIndex) {
                         scaffoldKey.currentState?.closeEndDrawer();
                       }),
                 body: SingleChildScrollView(
@@ -37,18 +36,18 @@ class _HomeScreenState extends State<HomeScreen> {
                   child: Column(
                     children: [
                       constraints.maxWidth >= 950
-                          ?  const DeskTopNavbar()
+                          ?  const LandingPageNavBar()
                           : MobileNavbar(
                               openDrawer: () {
                                 scaffoldKey.currentState!.openEndDrawer();
                               },
                             ),
-                      // constraints.maxWidth >= 950
-                      //     ? const HeroSectionDestop()
-                      //     : const HeroSectionMobile(),
-                      // constraints.maxWidth >= 950
-                      //     ? const WithLitpadDesktop()
-                      //     : const WithLitpadMobile(),
+                      constraints.maxWidth >= 950
+                          ? const HeroSectionDestop()
+                          : const HeroSectionMobile(),
+                      constraints.maxWidth >= 950
+                          ? const WithLitpadDesktop()
+                          : const WithLitpadMobile(),
                       constraints.maxWidth >= 950
                           ? const PopularBookDesttop()
                           : const PopularBooksMobile(),

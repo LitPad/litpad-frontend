@@ -1,9 +1,6 @@
 import 'package:go_router/go_router.dart';
-import 'package:litpad/core/vm/auth/reset_new_password_vm.dart';
-import 'package:litpad/core/vm/auth/set_new_password_vm.dart';
 import 'package:provider/provider.dart';
 import 'package:universal_html/html.dart';
-
 import '../../../../core/core.dart';
 import '../../../ui.dart';
 
@@ -14,6 +11,7 @@ class SetNewPasswordForm extends StatefulWidget {
   State<SetNewPasswordForm> createState() => _SetNewPasswordFormState();
 }
 
+//Todo: Check for errors on this method
 class _SetNewPasswordFormState extends State<SetNewPasswordForm> {
   String? token;
   @override
@@ -26,6 +24,7 @@ class _SetNewPasswordFormState extends State<SetNewPasswordForm> {
     token = pathSegments.isNotEmpty ? pathSegments.last : null;
     debugPrint('token: $token');
   }
+
   @override
   Widget build(BuildContext context) {
     return Consumer<SetNewPasswordVM>(builder: (context, newPassVM, _) {
@@ -54,12 +53,12 @@ class _SetNewPasswordFormState extends State<SetNewPasswordForm> {
           const YBox(16),
         ],
       );
+
     });
   }
-  setNewPassword() async{
+  setNewPassword() async {
     printty("Login pressed");
-
-    var setNewPassword = context.read<SetNewPasswordVM>().setNewPass(token).then((value) {
+    context.read<SetNewPasswordVM>().setNewPass(token).then((value) {
       if (value.success) {
         debugPrint('D $value');
         context.goNamed(RoutePath.authCheckMail);
@@ -68,6 +67,5 @@ class _SetNewPasswordFormState extends State<SetNewPasswordForm> {
         // show error toast
       }
     });
-
   }
 }

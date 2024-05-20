@@ -1,14 +1,21 @@
 import 'package:go_router/go_router.dart';
 import 'package:litpad/ui/screens/auth/create_username_screen.dart';
 import 'package:litpad/ui/screens/auth/set_new_password/set_new_password.dart';
+import 'package:litpad/ui/screens/auth/unverified_user.dart';
 import 'package:litpad/ui/screens/auth/widgets/reset_password_message_screen.dart';
+import 'package:litpad/ui/screens/landing_page/landing_page.dart';
 import 'package:litpad/ui/screens/screens.dart';
 
+import '../../ui/components/components.dart';
 import '../../ui/screens/auth/forgot_password/forgot_password.dart';
 import '../../ui/screens/auth/widgets/verify_mail_screen.dart';
+import '../core.dart';
+
+//Todo: Fix redirection bug
 
 class RoutePath {
   static const String homeScreen = 'homeScreen';
+  static const String landingPage = 'landingPage';
   static const String aboutScreen = 'aboutScreen';
   static const String authorsDetailScreen = 'authorsDetailScreen';
   static const String bookDetailsScreen = 'bookDetailsScreen';
@@ -32,19 +39,47 @@ class RoutePath {
   static const String forgotPasswordScreen = 'forgotPasswordScreen';
   static const String setNewPasswordScreen = 'setNewPasswordScreen';
   static const String resetPasswordMessageScreen = 'resetPasswordMessageScreen';
+  static const String unverifiedUserScreen = 'unverifiedUserScreen';
 }
 
+Future<bool> isAuthenticated() async {
+  final startupVM = StartupVM();
+  return await startupVM.checkAuthentication();
+}
+
+//Todo: Implement redirect/route guarding using the authentication
 final GoRouter appRouter = GoRouter(
+  // redirect: (context, state) async {
+  //   final isAuth = await isAuthenticated();
+  //   if (!isAuth) {
+  //     return '/landing-page';
+  //   }
+  //   return '/';
+  // },
   routes: [
     GoRoute(
-      name: RoutePath.homeScreen,
+      name: RoutePath.landingPage,
       path: "/",
+      builder: (context, state) => const LandingPage(),
+    ),
+    GoRoute(
+      name: RoutePath.homeScreen,
+      path: "/home",
       builder: (context, state) => const HomeScreen(),
     ),
+
     GoRoute(
       name: RoutePath.loginScreen,
       path: "/login",
       builder: (context, state) => const LoginScreen(),
+      // redirect: (context, state) async {
+      //   final isAuth = await isAuthenticated();
+      //   if (isAuth) {
+      //     return '/';
+      //   } else {
+      //     return '/landing-page';
+      //   }
+      // }
     ),
     GoRoute(
       name: RoutePath.signupScreen,
@@ -121,6 +156,14 @@ final GoRouter appRouter = GoRouter(
       name: RoutePath.browsingScreen,
       path: "/books",
       builder: (context, state) => const BrowsingScreen(),
+      // redirect: (context, state) async {
+      //   final isAuth = await isAuthenticated();
+      //   if (isAuth) {
+      //     return '/';
+      //   } else {
+      //     return '/landing-page';
+      //   }
+      // },
       routes: [
         GoRoute(
           name: RoutePath.bookDetailsScreen,
@@ -131,8 +174,13 @@ final GoRouter appRouter = GoRouter(
           name: RoutePath.latestBooksScreen,
           path: "latest",
           builder: (context, state) => const LatestBooksScreen(),
-        )
+        ),
       ],
+    ),
+    GoRoute(
+      name: RoutePath.unverifiedUserScreen,
+      path: "/unverified-user",
+      builder: (context, state) => const UnverifiedUser(),
     ),
     // GoRoute(
     //   name: RoutePath.browsingScreen,
@@ -153,3 +201,8 @@ final GoRouter appRouter = GoRouter(
     // ),
   ],
 );
+
+//Todo: Screens to be placed in login guard
+//Homscreen has
+//Browse, Booklisting and writer's benefit
+//Browse, Booklisting and writer's benefit , login & signup

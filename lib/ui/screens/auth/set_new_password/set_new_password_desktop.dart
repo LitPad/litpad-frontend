@@ -1,11 +1,9 @@
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:go_router/go_router.dart';
-import 'package:litpad/core/vm/auth/set_new_password_vm.dart';
 import 'package:litpad/ui/components/buttons/custom_btn.dart';
 import 'package:provider/provider.dart';
 
 import '../../../../core/core.dart';
-import '../widgets/forgot_password_form.dart';
 import '../widgets/new_password_form.dart';
 
 class SetNewPasswordDesktop extends StatefulWidget {

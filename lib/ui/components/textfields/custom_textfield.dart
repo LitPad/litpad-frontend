@@ -1,7 +1,7 @@
 import 'package:litpad/core/utils/utils.dart';
 
 class CustomTextField extends StatefulWidget {
-  final String? errorText, labelText, hintText, optionalText;
+  final String? labelText, hintText, optionalText;
   final TextEditingController? controller;
   final Function? onChange;
   final bool? isPassword, isConfirmPassword, showSuffixIcon;
@@ -17,7 +17,6 @@ class CustomTextField extends StatefulWidget {
   final bool isOptional;
   final Function()? onTap;
   final FormFieldValidator<String>? validator;
-
 
   const CustomTextField({
     Key? key,
@@ -35,7 +34,7 @@ class CustomTextField extends StatefulWidget {
     this.suffixIcon,
     this.prefix,
     this.prefixIcon,
-    this.errorText,
+    // this.errorText,
     this.width,
     this.height,
     this.borderRadius = 0,
@@ -45,7 +44,8 @@ class CustomTextField extends StatefulWidget {
     this.focusNode,
     this.isOptional = false,
     this.onChange,
-    this.onTap, this.validator,
+    this.onTap,
+    this.validator,
   }) : super(key: key);
 
   @override
@@ -54,6 +54,7 @@ class CustomTextField extends StatefulWidget {
 
 class _CustomTextFieldState extends State<CustomTextField> {
   bool showPassword = false;
+  String? errorText;
 
   @override
   void initState() {
@@ -83,13 +84,15 @@ class _CustomTextFieldState extends State<CustomTextField> {
   @override
   Widget build(BuildContext context) {
     return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      mainAxisSize: MainAxisSize.min,
+      crossAxisAlignment: CrossAxisAlignment.center,
+      mainAxisAlignment: MainAxisAlignment.center,      mainAxisSize: MainAxisSize.min,
       children: [
         widget.showLabelHeader
             ? Column(
                 children: [
                   Row(
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       Text(widget.labelText!,
                           style: TextStyle(
@@ -119,7 +122,16 @@ class _CustomTextFieldState extends State<CustomTextField> {
           height: widget.height ?? 40,
           alignment: Alignment.center,
           // color: Colors.red,
-          child: TextField(
+          child: TextFormField(
+            validator: (value) {
+              final result = widget.validator?.call(value);
+
+              setState(() {
+                errorText = result;
+              });
+              return result;
+            },
+            // widget.validator,
             // cursorHeight: 14.sp,
             cursorColor: AppColors.black,
             focusNode: widget.focusNode,
@@ -135,11 +147,15 @@ class _CustomTextFieldState extends State<CustomTextField> {
               if (widget.onChange != null) {
                 widget.onChange!();
               }
+              setState(() {
+                errorText = null;
+              });
             },
             onTap: widget.onTap,
             readOnly: widget.isReadOnly!,
             decoration: InputDecoration(
-              errorText: widget.errorText,
+              errorText: null,
+              // widget.errorText,
               errorStyle: const TextStyle(
                   color: AppColors.red, fontSize: 0.01, height: 0.2),
               // contentPadding: EdgeInsets.only(
@@ -217,10 +233,10 @@ class _CustomTextFieldState extends State<CustomTextField> {
             ),
           ),
         ),
-        widget.errorText == null
+        errorText == null
             ? const SizedBox.shrink()
             : Text(
-                widget.errorText ?? "",
+                errorText ?? "",
                 style: TextStyle(
                     color: AppColors.red.withOpacity(0.8), fontSize: 12),
               )
@@ -272,19 +288,18 @@ class PasswordSuffixWidget extends StatelessWidget {
         // color: AppColors.black,
         borderRadius: BorderRadius.circular(4),
       ),
-      // child: showPassword
-      //     ? const Icon(
-
-      //         Iconsax.eye_slash5,
-
-      //         size: 24,
-      //         color: AppColors.black,
-      //       )
-      //     : const Icon(
-      //         Iconsax.eye4,
-      //         size: 24,
-      //         color: AppColors.black,
-      //       ),
+      child: showPassword
+          ? const Icon(
+              Icons.visibility,
+              size: 24,
+              color: AppColors.black,
+            )
+          : const Icon(
+              Icons.visibility_off,
+              // Iconsax.eye4,
+              size: 24,
+              color: AppColors.black,
+            ),
     );
   }
 }

@@ -9,8 +9,8 @@ class DioService {
 
   DioService() {
     _dio.options.baseUrl = dotenv.env['STAGING_URL'] ?? "";
-    _dio.options.connectTimeout = const Duration(milliseconds: 20000); // 5s
-    _dio.options.receiveTimeout = const Duration(milliseconds: 3000); // 3s
+    // _dio.options.connectTimeout = const Duration(milliseconds: 20000); // 5s
+    // _dio.options.receiveTimeout = const Duration(milliseconds: 3000); // 3s
 
     // Add an interceptor for handling tokens
     _dio.interceptors.add(TokenInterceptor());

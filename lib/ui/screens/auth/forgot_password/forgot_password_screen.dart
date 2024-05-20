@@ -1,4 +1,3 @@
-import 'package:litpad/ui/screens/auth/forgot_password/forgot_password_mobile.dart';
 
 import '../../../../core/utils/utils.dart';
 import 'forgot_password.dart';

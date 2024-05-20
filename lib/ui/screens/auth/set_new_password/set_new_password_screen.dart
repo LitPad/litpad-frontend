@@ -1,4 +1,3 @@
-import 'package:litpad/ui/screens/auth/forgot_password/forgot_password_mobile.dart';
 import 'package:litpad/ui/screens/auth/set_new_password/set_new_password.dart';
 
 import '../../../../core/utils/utils.dart';
@@ -14,5 +13,6 @@ class SetNewPasswordScreen extends StatelessWidget {
             ? const SetNewPasswordDesktop()
             : const SetNewPasswordMobile();
       },
-    );  }
+    );
+  }
 }
