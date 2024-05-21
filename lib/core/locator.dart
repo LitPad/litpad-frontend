@@ -5,6 +5,7 @@ import 'package:litpad/core/vm/profile/profile.dart';
 import 'package:provider/provider.dart';
 import 'package:provider/single_child_widget.dart';
 
+import 'vm/home/home.dart';
 
 final allProviders = <SingleChildWidget>[
   ChangeNotifierProvider(create: (_) => BaseVM()),
@@ -19,4 +20,6 @@ final allProviders = <SingleChildWidget>[
   ChangeNotifierProvider(create: (_) => StartupVM()),
   ChangeNotifierProvider(create: (_) => ToastService()),
   ChangeNotifierProvider(create: (_) => ViewUserProfileVM()),
+  ChangeNotifierProvider(create: (_) => GetSiteDetailsVM()),
+  ChangeNotifierProvider(create: (_) => SiteHealthCheckVM()),
 ];

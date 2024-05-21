@@ -1,7 +1,7 @@
 import '../../core.dart';
 
 class SiteHealthCheckVM extends BaseVM {
-  Future<ApiResponse> siteHealthCheck({required String token}) async {
+  Future<ApiResponse> siteHealthCheck() async {
     return makeRequest(
       method: DioHttpMethod.GET,
       endpoint: '/healthcheck',

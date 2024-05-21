@@ -35,11 +35,10 @@ class LoginVM extends BaseVM {
         saveAccessToken('accessToken', accessToken);
         saveRefreshTokenToken('refreshToken', refreshToken);
 
-        debugPrint('access token ==> :${ data['data']['access']}');
-        debugPrint('refresh token ==> :${ data['data']['refresh']}');
-        final userResponse = ViewUserProfileVM().getUserProfile(token: accessToken);
-
-
+        debugPrint('access token ==> :${data['data']['access']}');
+        debugPrint('refresh token ==> :${data['data']['refresh']}');
+        final userResponse =
+            ViewUserProfileVM().getUserProfile(token: accessToken);
 
         return ApiResponse(success: true, data: data);
       },
