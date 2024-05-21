@@ -99,6 +99,7 @@ class DeskTopNavbar extends StatelessWidget {
                 onTap: () {
                   context.goNamed(RoutePath.authorsDetailScreen,
                       pathParameters: {
+
                         'id': '1',
                       });
                 },
