@@ -22,6 +22,7 @@ migrate_working_dir/
 #.vscode/
 
 .env
+dotenv
 
 # Flutter/Dart/Pub related
 **/doc/api/

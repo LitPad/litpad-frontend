@@ -1,10 +1,11 @@
+import 'package:flutter/foundation.dart' show kIsWeb;
 import 'package:flutter_dotenv/flutter_dotenv.dart';
+import 'package:flutter_facebook_auth/flutter_facebook_auth.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 // import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:litpad/core/core.dart';
 import 'package:provider/provider.dart';
 import 'package:url_strategy/url_strategy.dart';
-import 'package:flutter/foundation.dart' show kIsWeb;
-import 'package:flutter_facebook_auth/flutter_facebook_auth.dart';
 
 void main() async {
   setPathUrlStrategy();
@@ -43,11 +44,10 @@ class MyApp extends StatelessWidget {
               if (snapshot.connectionState == ConnectionState.done) {
                 return child!;
               }
-              return const CircularProgressIndicator();
-              // return  const SpinKitFadingCircle(
-              //   color: Colors.deepPurple,
-              //   size: 50.0,
-              // );
+              return const SpinKitFadingCircle(
+                color: Colors.deepPurple,
+                size: 50.0,
+              );
             }),
       ),
     );

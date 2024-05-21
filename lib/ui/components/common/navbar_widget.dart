@@ -90,7 +90,7 @@ class DeskTopNavbar extends StatelessWidget {
                   NavButton(
                     text: 'TopUp',
                     onTap: () {
-                      context.goNamed(RoutePath.topupScreen);
+                      // context.goNamed(RoutePath.topupScreen);
                     },
                   ),
                   NavButton(
