@@ -1,15 +1,28 @@
+import 'package:go_router/go_router.dart';
 import 'package:litpad/core/core.dart';
 import 'package:litpad/ui/screens/auth/widgets/widgets.dart';
 import 'package:provider/provider.dart';
 
-class LoginDesktop extends StatelessWidget {
+class LoginDesktop extends StatefulWidget {
   const LoginDesktop({Key? key}) : super(key: key);
 
   @override
+  State<LoginDesktop> createState() => _LoginDesktopState();
+}
+
+class _LoginDesktopState extends State<LoginDesktop> {
+  @override
   Widget build(BuildContext context) {
-    return Consumer<FaceBookLoginVM>(
-      builder: (context, fbLoginVM, _) {
-        return Scaffold(
+    return MultiProvider(
+        providers: [
+          ChangeNotifierProvider<FaceBookLoginVM>(
+            create: (context) => FaceBookLoginVM(),
+          ),
+          ChangeNotifierProvider<GoogleLoginVM>(
+            create: (context) => GoogleLoginVM(),
+          ),
+        ],
+        child: Scaffold(
           body: Container(
             color: AppColors.white,
             width: MediaQuery.of(context).size.width,
@@ -54,7 +67,8 @@ class LoginDesktop extends StatelessWidget {
                         child: SocialAuthBtn(
                           text: "Login with Facebook",
                           svg: AppSvgs.fb,
-                          onTap: fbLoginVM.facebookLogin,
+                          onTap: () =>
+                              context.read<FaceBookLoginVM>().facebookLogin(),
                         ),
                       ),
                       const XBox(14),
@@ -62,7 +76,7 @@ class LoginDesktop extends StatelessWidget {
                         child: SocialAuthBtn(
                           text: "Login with Google",
                           svg: AppSvgs.google,
-                          onTap: () {},
+                          onTap: googleLogin,
                         ),
                       )
                     ],
@@ -94,8 +108,20 @@ class LoginDesktop extends StatelessWidget {
               ),
             )),
           ),
-        );
+        ));
+  }
+
+  googleLogin() {
+    printty("Login pressed");
+
+    context.read<GoogleLoginVM>().googleLogin().then((value) {
+      if (value.success) {
+        debugPrint('D $value');
+        context.goNamed(RoutePath.homeScreen);
+      } else {
+        debugPrint('Error');
+        // show error toast
       }
-    );
+    });
   }
 }

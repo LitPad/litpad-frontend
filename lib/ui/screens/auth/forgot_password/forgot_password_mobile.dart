@@ -1,7 +1,5 @@
 import 'package:litpad/ui/screens/auth/widgets/forgot_password_form.dart';
-
 import '../../../../core/core.dart';
-import '../widgets/signup_form.dart';
 
 class ForgotPasswordMobile extends StatelessWidget {
   const ForgotPasswordMobile({Key? key}) : super(key: key);

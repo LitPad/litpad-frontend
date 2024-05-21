@@ -2,10 +2,17 @@ import 'package:flutter/foundation.dart' show kIsWeb;
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:flutter_facebook_auth/flutter_facebook_auth.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
-// import 'package:flutter_spinkit/flutter_spinkit.dart';
-import 'package:litpad/core/core.dart';
+import 'package:flutter/foundation.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
+import 'package:flutter_facebook_auth/flutter_facebook_auth.dart';
 import 'package:provider/provider.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:url_strategy/url_strategy.dart';
+import 'core/locator.dart';
+import 'core/router/app_router.dart';
+import 'core/vm/auth/startup_vm.dart';
+
 
 void main() async {
   setPathUrlStrategy();
@@ -39,17 +46,28 @@ class MyApp extends StatelessWidget {
         ),
         routerConfig: appRouter,
         builder: (context, child) => FutureBuilder(
-            future: Future.delayed(const Duration(seconds: 2)),
-            builder: (context, snapshot) {
-              if (snapshot.connectionState == ConnectionState.done) {
-                return child!;
-              }
-              return const SpinKitFadingCircle(
-                color: Colors.deepPurple,
-                size: 50.0,
-              );
-            }),
+          future: checkAuthentication(),
+          builder: (context, snapshot) {
+            if (snapshot.connectionState == ConnectionState.done) {
+              return child!;
+              // if (snapshot.hasData && snapshot.data == true) {
+              //   return const HomeScreen(isAuthenticated: true);
+              // } else {
+              //   return const HomeScreen(isAuthenticated: false);
+              // }
+            }
+            return const SpinKitFadingCircle(
+              color: Colors.deepPurple,
+              size: 50.0,
+            );
+          },
+        ),
+
       ),
     );
+  }
+  Future<bool> checkAuthentication() async {
+    final startupVM = StartupVM();
+    return await startupVM.checkAuthentication();
   }
 }

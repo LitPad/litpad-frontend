@@ -1,6 +1,5 @@
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:go_router/go_router.dart';
-import 'package:litpad/core/vm/auth/set_new_password_vm.dart';
 import 'package:provider/provider.dart';
 
 import '../../../../core/core.dart';

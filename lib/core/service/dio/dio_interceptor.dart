@@ -1,4 +1,5 @@
 import 'package:dio/dio.dart';
+import 'package:litpad/app/local_storage.dart';
 import 'package:litpad/app/session_storage.dart';
 
 class TokenInterceptor extends InterceptorsWrapper {
@@ -6,7 +7,9 @@ class TokenInterceptor extends InterceptorsWrapper {
   Future onRequest(
       RequestOptions options, RequestInterceptorHandler handler) async {
     final accessToken = await TokenManager.getAccessToken();
-    options.headers['Authorization'] = 'Bearer $accessToken';
+    if (accessToken != null) {
+      options.headers['Authorization'] = 'Bearer $accessToken';
+    }
     return handler.next(options);
   }
 
@@ -43,7 +46,30 @@ class TokenManager {
     return SessionStorageHelper.getValue('accessToken');
   }
 
+  static Future<String?> getRefreshToken() async {
+    return LocalStorageHelper.getValue('refreshToken');
+  }
+  static Future<void> saveTokens(String accessToken, String refreshToken) async {
+    SessionStorageHelper.saveValue('accessToken', accessToken);
+    LocalStorageHelper.saveValue('refreshToken', refreshToken);
+  }
+
+  static Future<void> clearTokens() async {
+    SessionStorageHelper.removeValue('accessToken');
+    LocalStorageHelper.removeValue('refreshToken');
+  }
+
   static Future<String?> refreshAccessToken() async {
-    return SessionStorageHelper.getValue('refreshToken');
+    final refreshToken = await getRefreshToken();
+    if (refreshToken == null) {
+      return null;
+    }
+    final response = await Dio().post('/auth/refresh', data: {'refresh': refreshToken});
+    if (response.statusCode == 200|| response.statusCode == 201) {
+      final newAccessToken = response.data['access'];
+      SessionStorageHelper.saveValue('accessToken', newAccessToken);
+      return newAccessToken;
+    }
+    return null;
   }
 }

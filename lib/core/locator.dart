@@ -1,7 +1,11 @@
 import 'package:litpad/core/core.dart';
+import 'package:litpad/core/service/toast_service.dart';
+import 'package:litpad/core/vm/auth/startup_vm.dart';
+import 'package:litpad/core/vm/profile/profile.dart';
 import 'package:provider/provider.dart';
 import 'package:provider/single_child_widget.dart';
 
+import 'vm/home/home.dart';
 
 final allProviders = <SingleChildWidget>[
   ChangeNotifierProvider(create: (_) => BaseVM()),
@@ -12,4 +16,10 @@ final allProviders = <SingleChildWidget>[
   ChangeNotifierProvider(create: (_) => ResetPasswordVM()),
   ChangeNotifierProvider(create: (_) => FaceBookLoginVM()),
   ChangeNotifierProvider(create: (_) => GoogleLoginVM()),
+  ChangeNotifierProvider(create: (_) => ResendVerificationMailVM()),
+  ChangeNotifierProvider(create: (_) => StartupVM()),
+  ChangeNotifierProvider(create: (_) => ToastService()),
+  ChangeNotifierProvider(create: (_) => ViewUserProfileVM()),
+  ChangeNotifierProvider(create: (_) => GetSiteDetailsVM()),
+  ChangeNotifierProvider(create: (_) => SiteHealthCheckVM()),
 ];

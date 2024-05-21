@@ -1,7 +1,5 @@
 import 'package:flutter/services.dart';
-import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:flutter_facebook_auth/flutter_facebook_auth.dart';
-
 import '../../../app/local_storage.dart';
 import '../../../app/session_storage.dart';
 import '../../core.dart';

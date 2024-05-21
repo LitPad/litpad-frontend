@@ -1,5 +1,4 @@
 import 'package:go_router/go_router.dart';
-import 'package:litpad/core/vm/auth/reset_new_password_vm.dart';
 import 'package:provider/provider.dart';
 
 import '../../../../core/core.dart';
@@ -63,8 +62,7 @@ class _ForgotPasswordFormState extends State<ForgotPasswordForm> {
               const XBox(5),
               InkWell(
                 onTap: () {
-                  //Todo: change route
-                  context.goNamed(RoutePath.resetPasswordMessageScreen);
+                  context.goNamed(RoutePath.signupScreen);
                 },
                 child: Text(
                   "Create an account",
@@ -83,14 +81,10 @@ class _ForgotPasswordFormState extends State<ForgotPasswordForm> {
 
   resetPassword() {
     printty("Login pressed");
-    //Todo: change route and build screen for reset pass message
-
-    var resetPassword =
-        context.read<ResetPasswordVM>().resetPassword().then((value) {
+    context.read<ResetPasswordVM>().resetPassword().then((value) {
       if (value.success) {
         debugPrint('D $value');
         context.goNamed(RoutePath.resetPasswordMessageScreen);
-
       } else {
         debugPrint('Error');
         // show error toast

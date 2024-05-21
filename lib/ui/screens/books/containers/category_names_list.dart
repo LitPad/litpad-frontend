@@ -1,4 +1,3 @@
-import 'package:flutter/material.dart';
 import 'package:litpad/core/utils/utils.dart';
 
 class CategoryNameList extends StatefulWidget {
