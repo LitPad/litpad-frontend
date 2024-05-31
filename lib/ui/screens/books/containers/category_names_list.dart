@@ -1,4 +1,6 @@
 import 'package:litpad/core/utils/utils.dart';
+import 'package:litpad/core/vm/books/view_book_by_genres_vm.dart';
+import 'package:provider/provider.dart';
 
 class CategoryNameList extends StatefulWidget {
   const CategoryNameList({Key? key}) : super(key: key);
@@ -9,48 +11,53 @@ class CategoryNameList extends StatefulWidget {
 
 class _CategoryNameListState extends State<CategoryNameList> {
   String _selectedCategory = 'All';
-  final _categories = [
-    'All',
-    'Business',
-    'Entertainment',
-    'General',
-    'Health',
-    'Science',
-    'Sports',
-    'Technology',
-    'Poetry',
-    'Music',
-    'Art',
-    'Literature',
-    'History',
-    'War',
-  ];
+  late ViewBooksByGenreVM _viewModel;
+
+  @override
+  void initState() {
+    _viewModel = Provider.of<ViewBooksByGenreVM>(context, listen: false);
+    fetchGenres();
+    // TODO: implement initState
+    super.initState();
+  }
+
+  Future<void> fetchGenres() async {
+    await _viewModel.viewBooksByGenre();
+  }
+
   @override
   Widget build(BuildContext context) {
-    return Container(
-      alignment: Alignment.centerLeft,
-      padding: const EdgeInsets.symmetric(
-        horizontal: 60,
-        vertical: 28,
-      ),
-      child: Wrap(
-        spacing: 12,
-        runSpacing: 12,
-        children: _categories
-            .map(
-              (category) => CatBtn(
-                title: category,
-                isActive: _selectedCategory == category,
-                onTap: () {
-                  setState(() {
-                    _selectedCategory = category;
-                  });
-                },
-              ),
-            )
-            .toList(),
-      ),
-    );
+    return Consumer<ViewBooksByGenreVM>(builder: (context, viewBookGenreVm, _) {
+      final categories = [
+        'All',
+        ...viewBookGenreVm.bookGenre.map((genre) => genre.name)
+      ];
+
+      return Container(
+        alignment: Alignment.centerLeft,
+        padding: const EdgeInsets.symmetric(
+          horizontal: 60,
+          vertical: 28,
+        ),
+        child: Wrap(
+          spacing: 12,
+          runSpacing: 12,
+          children: categories
+              .map(
+                (category) => CatBtn(
+                  title: category,
+                  isActive: _selectedCategory == category,
+                  onTap: () {
+                    setState(() {
+                      _selectedCategory = category;
+                    });
+                  },
+                ),
+              )
+              .toList(),
+        ),
+      );
+    });
   }
 }
 
