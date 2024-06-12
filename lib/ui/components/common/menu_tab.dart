@@ -1,4 +1,3 @@
-import 'package:flutter/material.dart';
 import 'package:litpad/core/utils/utils.dart';
 
 class MenuTab extends StatelessWidget {
@@ -7,11 +6,15 @@ class MenuTab extends StatelessWidget {
     required this.text,
     this.onTap,
     this.isActive = false,
+    this.isMobile = false,
+    this.fontSize,
   }) : super(key: key);
 
   final String text;
   final Function()? onTap;
   final bool isActive;
+  final bool isMobile;
+  final double? fontSize;
 
   @override
   Widget build(BuildContext context) {
@@ -34,7 +37,8 @@ class MenuTab extends StatelessWidget {
         ),
         child: Text(
           text,
-          style: AppTypography.text22.copyWith(
+          style: TextStyle(
+            fontSize: fontSize ?? (isMobile ? 14 : 22),
             fontWeight: FontWeight.w500,
             color: isActive ? AppColors.purple900 : AppColors.menuGrey,
           ),

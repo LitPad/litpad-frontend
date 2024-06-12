@@ -9,6 +9,10 @@ class AppImages {
 
   static const String trendbook = "$images/trendbook.png";
   static const String risingBook = "$images/risingBook.png";
+
+  static const String coin = "$images/coin.png";
+  static const String book = "$images/book.png";
+  static const String prize = "$images/prize.png";
 }
 
 // Image Helper

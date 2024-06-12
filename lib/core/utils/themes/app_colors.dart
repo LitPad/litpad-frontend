@@ -15,7 +15,10 @@ class AppColors {
 
   static const purple900 = Color(0xFF2B1744);
   static const purple100 = Color(0xFFD7BAF3);
+  static const purple50 = Color(0xFFEBDCF9);
+  static const purple400 = Color(0xFF9255DD);
   static const purple500 = Color(0xFF7730D5);
+  static const purple600 = Color(0xFF632AAE);
   static const purple800 = Color(0xFF3E1E65);
 
   static const grey900 = Color(0xFF120024);
@@ -27,6 +30,7 @@ class AppColors {
   static const grey300 = Color(0xFFEDEDED);
   static const grey200 = Color(0xFFF6F5F6);
   static const grey100 = Color(0xFFFAFAFB);
+  static const grey000 = Color(0xFFF5F6F7);
   static const menuGrey = Color(0xFFAAA3B0);
 
   static const magneta50 = Color(0xFFFFE6FA);

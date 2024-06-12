@@ -1,14 +1,11 @@
-import 'package:flutter/material.dart';
 import 'package:litpad/core/utils/utils.dart';
-import 'package:litpad/ui/components/buttons/custom_btn.dart';
 
-class AvatarContainer extends StatelessWidget {
-  const AvatarContainer({Key? key}) : super(key: key);
+class AvatarContainerDeskTop extends StatelessWidget {
+  const AvatarContainerDeskTop({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: const EdgeInsets.symmetric(horizontal: 60),
       color: AppColors.white,
       width: MediaQuery.of(context).size.width,
       height: 400,
@@ -26,41 +23,7 @@ class AvatarContainer extends StatelessWidget {
             ),
           ),
           Positioned(
-            bottom: 100,
-            right: 30,
-            child: Row(
-              children: [
-                CustomBtn.outlineWithChild(
-                  onTap: () {},
-                  online: true,
-                  child: Row(
-                    mainAxisSize: MainAxisSize.min,
-                    children: [
-                      const Icon(
-                        Icons.message,
-                        color: AppColors.purple900,
-                      ),
-                      const SizedBox(width: 10),
-                      Text(
-                        'Message',
-                        style: AppTypography.text15,
-                      ),
-                    ],
-                  ),
-                  width: 170,
-                ),
-                const SizedBox(width: 12),
-                CustomBtn.solid(
-                  onTap: () {},
-                  online: true,
-                  text: 'Sign up',
-                  width: 110,
-                )
-              ],
-            ),
-          ),
-          Positioned(
-            bottom: 40,
+            bottom: 25,
             child: Container(
               margin: const EdgeInsets.only(
                 left: 50,
@@ -74,29 +37,135 @@ class AvatarContainer extends StatelessWidget {
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Text(
-                          'Herman Merville',
-                          style: AppTypography.text32.copyWith(
-                            fontWeight: FontWeight.w500,
-                          ),
-                        ),
-                        const SizedBox(height: 4),
                         Row(
-                          mainAxisSize: MainAxisSize.min,
                           children: [
                             Text(
-                              '45 followers',
-                              style: AppTypography.text16.copyWith(
-                                color: AppColors.grey600,
+                              'Temitope',
+                              style: AppTypography.text32.copyWith(
+                                fontWeight: FontWeight.w500,
                               ),
                             ),
-                            Text(
-                              '10 books',
-                              style: AppTypography.text16.copyWith(
-                                color: AppColors.grey600,
+                            const XBox(12),
+                            Container(
+                              padding: const EdgeInsets.symmetric(
+                                horizontal: 16,
+                                vertical: 5,
+                              ),
+                              decoration: BoxDecoration(
+                                color: AppColors.grey200,
+                                borderRadius: BorderRadius.circular(40),
+                              ),
+                              child: Row(
+                                mainAxisSize: MainAxisSize.min,
+                                children: [
+                                  Text(
+                                    'ID 70987210',
+                                    style: AppTypography.text15,
+                                  ),
+                                  const XBox(8),
+                                  svgHelper(AppSvgs.copy1)
+                                ],
                               ),
                             ),
                           ],
+                        ),
+                        const SizedBox(height: 8),
+                        Text(
+                          'Change picture',
+                          style: AppTypography.text20.copyWith(
+                            color: AppColors.purple500,
+                            decoration: TextDecoration.underline,
+                            decorationColor: AppColors.purple500,
+                          ),
+                        ),
+                      ],
+                    ),
+                  )
+                ],
+              ),
+            ),
+          )
+        ],
+      ),
+    );
+  }
+}
+
+class AvatarContainerMobile extends StatelessWidget {
+  const AvatarContainerMobile({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      color: AppColors.bgWhite,
+      width: MediaQuery.of(context).size.width,
+      height: 310,
+      child: Stack(
+        children: [
+          Container(
+            width: MediaQuery.of(context).size.width,
+            height: 235,
+            decoration: const BoxDecoration(
+              gradient: AppColors.avaterContainerLG,
+              borderRadius: BorderRadius.only(
+                topLeft: Radius.circular(16),
+                topRight: Radius.circular(16),
+              ),
+            ),
+          ),
+          Positioned(
+            bottom: 6,
+            child: Container(
+              margin: const EdgeInsets.only(left: 16),
+              child: Row(
+                children: [
+                  const AvatarClip(isMobile: true),
+                  const XBox(25),
+                  Container(
+                    margin: const EdgeInsets.only(top: 30),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Row(
+                          children: [
+                            Text(
+                              'Temitope',
+                              style: AppTypography.text18.copyWith(
+                                fontWeight: FontWeight.w500,
+                              ),
+                            ),
+                            const XBox(12),
+                            Container(
+                              padding: const EdgeInsets.symmetric(
+                                horizontal: 16,
+                                vertical: 5,
+                              ),
+                              decoration: BoxDecoration(
+                                color: AppColors.grey200,
+                                borderRadius: BorderRadius.circular(40),
+                              ),
+                              child: Row(
+                                mainAxisSize: MainAxisSize.min,
+                                children: [
+                                  Text(
+                                    'ID 70987210',
+                                    style: AppTypography.text12,
+                                  ),
+                                  const XBox(8),
+                                  svgHelper(AppSvgs.copy1)
+                                ],
+                              ),
+                            ),
+                          ],
+                        ),
+                        const YBox(4),
+                        Text(
+                          'Change picture',
+                          style: AppTypography.text14.copyWith(
+                            color: AppColors.purple500,
+                            decoration: TextDecoration.underline,
+                            decorationColor: AppColors.purple500,
+                          ),
                         ),
                       ],
                     ),
@@ -113,14 +182,17 @@ class AvatarContainer extends StatelessWidget {
 
 class AvatarClip extends StatelessWidget {
   const AvatarClip({
-    super.key,
-  });
+    Key? key,
+    this.isMobile = false,
+  }) : super(key: key);
+
+  final bool isMobile;
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 200,
-      width: 200,
+      height: isMobile ? 100 : 200,
+      width: isMobile ? 100 : 200,
       decoration: BoxDecoration(
         color: AppColors.white,
         borderRadius: BorderRadius.circular(400),

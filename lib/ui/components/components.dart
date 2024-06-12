@@ -5,3 +5,4 @@ export 'buttons/buttons.dart';
 export 'common/common.dart';
 export 'home/home.dart';
 export 'textfields/textfields.dart';
+export 'writer/writer.dart';

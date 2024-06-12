@@ -44,11 +44,6 @@ class _BooksTabMenuSectionState extends State<BooksTabMenuSection> {
                       isActive: _selectedTabIndex == 1,
                       onTap: () => setState(() => _selectedTabIndex = 1),
                     ),
-                    MenuTab(
-                      text: 'Reviews(20)',
-                      isActive: _selectedTabIndex == 2,
-                      onTap: () => setState(() => _selectedTabIndex = 2),
-                    ),
                   ],
                 ),
               ],
@@ -144,20 +139,6 @@ class _BooksTabMenuSectionState extends State<BooksTabMenuSection> {
                 ),
               ),
             ),
-          Visibility(
-            visible: _selectedTabIndex == 2,
-            child: AnimatedOpacity(
-              duration: const Duration(milliseconds: 500),
-              opacity: _selectedTabIndex == 2 ? 1 : 0,
-              child: Text(
-                "Reviews(20)",
-                style: AppTypography.text20.copyWith(
-                  color: AppColors.purple900,
-                  fontWeight: FontWeight.w500,
-                ),
-              ),
-            ),
-          ),
           const SizedBox(height: 100),
         ],
       ),

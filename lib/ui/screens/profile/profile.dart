@@ -1,2 +1,4 @@
-export 'authors_details.dart';
-export 'user_profile_screen.dart';
+export 'author_details/authors_details.dart';
+export 'user_profile/user_profile_screen.dart';
+export 'widgets/widgets.dart';
+export 'writers_benefit/writers_benefit_screen.dart';
