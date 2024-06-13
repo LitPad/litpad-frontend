@@ -13,9 +13,9 @@ class _AuthorCentreTabDesktopState extends State<AuthorCentreTabDesktop> {
   int _selectedTabIndex = 0;
 
   Map<String, Widget> menuTabs = {
-    'Homepage': const IncomeTab(),
+    'Homepage': const MyFansTab(),
     'Story': const StoryTab(),
-    'Income': const InboxTab(),
+    'Income': const IncomeTab(),
     'Inbox': const InboxTab(),
     'Analytics': const HomepageTab(),
     'Gifts': const HomepageTab(),
