@@ -1,18 +1,15 @@
 import 'package:flutter/foundation.dart' show kIsWeb;
-import 'package:flutter_dotenv/flutter_dotenv.dart';
-import 'package:flutter_facebook_auth/flutter_facebook_auth.dart';
-import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:flutter_facebook_auth/flutter_facebook_auth.dart';
-import 'package:provider/provider.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
+import 'package:provider/provider.dart';
 import 'package:url_strategy/url_strategy.dart';
+
 import 'core/locator.dart';
 import 'core/router/app_router.dart';
 import 'core/vm/auth/startup_vm.dart';
-
 
 void main() async {
   setPathUrlStrategy();
@@ -62,10 +59,10 @@ class MyApp extends StatelessWidget {
             );
           },
         ),
-
       ),
     );
   }
+
   Future<bool> checkAuthentication() async {
     final startupVM = StartupVM();
     return await startupVM.checkAuthentication();
