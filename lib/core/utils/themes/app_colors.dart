@@ -38,6 +38,10 @@ class AppColors {
 
   static const green = Color(0xFF00C041);
   static const green100 = Color(0xFFEBFFF2);
+  static  const kSuccessToastBg = Color(0xFFEBFCF6);
+  static  const kErrorToastBg = Color(0xFFFDEDEE);
+
+
 
   // Linear gradient
   static const avaterContainerLG = LinearGradient(
