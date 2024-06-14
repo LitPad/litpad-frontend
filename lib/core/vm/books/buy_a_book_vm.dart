@@ -1,16 +1,16 @@
-import 'package:litpad/core/models/book_genre_model.dart';
-
 import '../../core.dart';
 
-class ViewBooksByGenreVM extends BaseVM {
-  List<BookGenre> bookGenre = [];
-  Future<ApiResponse> viewBooksByGenre() async {
+class BuyBooksVM extends BaseVM {
+  // List<BookGenre> bookGenre = [];
+  Future<ApiResponse> buyABook() async {
     return makeRequest(
       method: DioHttpMethod.GET,
-      endpoint: '/books/genres',
+      endpoint: '/books/book/{slug}/buy',
       data: {},
       onSuccess: (data) {
-        bookGenre = (data['data'] as List).map((genre) => BookGenre.fromJson(genre)).toList();
+        // bookGenre = (data['data'] as List)
+        //     .map((genre) => BookGenre.fromJson(genre))
+        //     .toList();
 
         notifyListeners();
         return ApiResponse(success: true, data: data);
