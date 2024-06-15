@@ -11,6 +11,17 @@ class AuthorCentreTabDesktop extends StatefulWidget {
 
 class _AuthorCentreTabDesktopState extends State<AuthorCentreTabDesktop> {
   int _selectedTabIndex = 0;
+
+  Map<String, Widget> menuTabs = {
+    'Homepage': const IncomeTab(),
+    'Story': const StoryTab(),
+    'Income': const InboxTab(),
+    'Inbox': const InboxTab(),
+    'Analytics': const HomepageTab(),
+    'Gifts': const HomepageTab(),
+    'My fans': const HomepageTab(),
+  };
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -47,82 +58,33 @@ class _AuthorCentreTabDesktopState extends State<AuthorCentreTabDesktop> {
             child: Stack(
               children: [
                 Row(
-                  children: [
-                    MenuTab(
-                      text: 'Homepage',
-                      fontSize: 18,
-                      isActive: _selectedTabIndex == 0,
-                      onTap: () => setState(() => _selectedTabIndex = 0),
+                  children: List.generate(
+                    menuTabs.keys.length,
+                    (index) => MenuTab(
+                      text: menuTabs.keys.elementAt(index),
+                      isActive: _selectedTabIndex == index,
+                      onTap: () => setState(
+                        () => _selectedTabIndex = index,
+                      ),
                     ),
-                    MenuTab(
-                      text: 'Story',
-                      fontSize: 18,
-                      isActive: _selectedTabIndex == 1,
-                      onTap: () => setState(() => _selectedTabIndex = 1),
-                    ),
-                    MenuTab(
-                      text: 'Income',
-                      fontSize: 18,
-                      isActive: _selectedTabIndex == 2,
-                      onTap: () => setState(() => _selectedTabIndex = 2),
-                    ),
-                    MenuTab(
-                      text: 'Inbox',
-                      fontSize: 18,
-                      isActive: _selectedTabIndex == 2,
-                      onTap: () => setState(() => _selectedTabIndex = 2),
-                    ),
-                    MenuTab(
-                      text: 'Analytics',
-                      fontSize: 18,
-                      isActive: _selectedTabIndex == 3,
-                      onTap: () => setState(() => _selectedTabIndex = 3),
-                    ),
-                    MenuTab(
-                      text: 'Gifts',
-                      fontSize: 18,
-                      isActive: _selectedTabIndex == 4,
-                      onTap: () => setState(() => _selectedTabIndex = 4),
-                    ),
-                    MenuTab(
-                      text: 'My fans',
-                      fontSize: 18,
-                      isActive: _selectedTabIndex == 5,
-                      onTap: () => setState(() => _selectedTabIndex = 5),
-                    ),
-                  ],
+                  ),
                 ),
               ],
             ),
           ),
           const SizedBox(height: 20),
           Column(
-            children: [
-              Visibility(
-                visible: _selectedTabIndex == 0,
+            children: List.generate(
+              menuTabs.keys.length,
+              (index) => Visibility(
+                visible: _selectedTabIndex == index,
                 child: AnimatedOpacity(
                   duration: const Duration(milliseconds: 500),
-                  opacity: _selectedTabIndex == 0 ? 1 : 0,
-                  child: const HomepageTab(),
+                  opacity: _selectedTabIndex == index ? 1 : 0,
+                  child: menuTabs.values.elementAt(index),
                 ),
               ),
-              Visibility(
-                visible: _selectedTabIndex == 1,
-                child: AnimatedOpacity(
-                  duration: const Duration(milliseconds: 500),
-                  opacity: _selectedTabIndex == 1 ? 1 : 0,
-                  child: const UpdatePasswordWidget(),
-                ),
-              ),
-              Visibility(
-                visible: _selectedTabIndex == 2,
-                child: AnimatedOpacity(
-                  duration: const Duration(milliseconds: 500),
-                  opacity: _selectedTabIndex == 2 ? 1 : 0,
-                  child: const FollowingTab(),
-                ),
-              ),
-            ],
+            ),
           )
         ],
       ),
@@ -139,6 +101,15 @@ class AuthorCentreTabMobile extends StatefulWidget {
 
 class _AuthorCentreTabMobileState extends State<AuthorCentreTabMobile> {
   int _selectedTabIndex = 0;
+  Map<String, Widget> menuTabs = {
+    'Homepage': const HomepageTab(isMobile: true),
+    'Story': const StoryTab(isMobile: true),
+    'Income': const HomepageTab(isMobile: true),
+    'Inbox': const HomepageTab(isMobile: true),
+    'Analytics': const HomepageTab(isMobile: true),
+    'Gifts': const HomepageTab(isMobile: true),
+    'My fans': const HomepageTab(isMobile: true),
+  };
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -177,50 +148,17 @@ class _AuthorCentreTabMobileState extends State<AuthorCentreTabMobile> {
                 SingleChildScrollView(
                   scrollDirection: Axis.horizontal,
                   child: Row(
-                    children: [
-                      MenuTab(
+                    children: List.generate(
+                      menuTabs.keys.length,
+                      (index) => MenuTab(
                         isMobile: true,
-                        text: 'Homepage',
-                        isActive: _selectedTabIndex == 0,
-                        onTap: () => setState(() => _selectedTabIndex = 0),
+                        text: menuTabs.keys.elementAt(index),
+                        isActive: _selectedTabIndex == index,
+                        onTap: () => setState(
+                          () => _selectedTabIndex = index,
+                        ),
                       ),
-                      MenuTab(
-                        isMobile: true,
-                        text: 'Story',
-                        isActive: _selectedTabIndex == 1,
-                        onTap: () => setState(() => _selectedTabIndex = 1),
-                      ),
-                      MenuTab(
-                        isMobile: true,
-                        text: 'Income',
-                        isActive: _selectedTabIndex == 2,
-                        onTap: () => setState(() => _selectedTabIndex = 2),
-                      ),
-                      MenuTab(
-                        isMobile: true,
-                        text: 'Inbox',
-                        isActive: _selectedTabIndex == 2,
-                        onTap: () => setState(() => _selectedTabIndex = 2),
-                      ),
-                      MenuTab(
-                        isMobile: true,
-                        text: 'Analytics',
-                        isActive: _selectedTabIndex == 2,
-                        onTap: () => setState(() => _selectedTabIndex = 2),
-                      ),
-                      MenuTab(
-                        isMobile: true,
-                        text: 'Gifts',
-                        isActive: _selectedTabIndex == 2,
-                        onTap: () => setState(() => _selectedTabIndex = 2),
-                      ),
-                      MenuTab(
-                        isMobile: true,
-                        text: 'My fans',
-                        isActive: _selectedTabIndex == 2,
-                        onTap: () => setState(() => _selectedTabIndex = 2),
-                      ),
-                    ],
+                    ),
                   ),
                 ),
               ],
@@ -228,32 +166,17 @@ class _AuthorCentreTabMobileState extends State<AuthorCentreTabMobile> {
           ),
           const SizedBox(height: 20),
           Column(
-            children: [
-              Visibility(
-                visible: _selectedTabIndex == 0,
+            children: List.generate(
+              menuTabs.keys.length,
+              (index) => Visibility(
+                visible: _selectedTabIndex == index,
                 child: AnimatedOpacity(
                   duration: const Duration(milliseconds: 500),
-                  opacity: _selectedTabIndex == 0 ? 1 : 0,
-                  child: const HomepageTab(isMobile: true),
+                  opacity: _selectedTabIndex == index ? 1 : 0,
+                  child: menuTabs.values.elementAt(index),
                 ),
               ),
-              Visibility(
-                visible: _selectedTabIndex == 1,
-                child: AnimatedOpacity(
-                  duration: const Duration(milliseconds: 500),
-                  opacity: _selectedTabIndex == 1 ? 1 : 0,
-                  child: const UpdatePasswordWidget(),
-                ),
-              ),
-              Visibility(
-                visible: _selectedTabIndex == 2,
-                child: AnimatedOpacity(
-                  duration: const Duration(milliseconds: 500),
-                  opacity: _selectedTabIndex == 2 ? 1 : 0,
-                  child: const FollowingTab(),
-                ),
-              ),
-            ],
+            ),
           )
         ],
       ),

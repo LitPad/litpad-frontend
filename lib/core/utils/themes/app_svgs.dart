@@ -24,6 +24,8 @@ class AppSvgs {
   static const String rocket = "$svgIcon/rocket.svg";
 
   static const String copy1 = "$svgIcon/copy1.svg";
+  static const String coins = "$svgIcon/coins.svg";
+  static const String wallet = "$svgIcon/wallet.svg";
 }
 
 SvgPicture svgHelper(String svg,

@@ -41,6 +41,7 @@ class FollowingCard extends StatelessWidget {
     required this.name,
     required this.store,
     required this.followers,
+    this.margin,
   }) : super(key: key);
 
   final bool isMobile;
@@ -48,11 +49,12 @@ class FollowingCard extends StatelessWidget {
   final String name;
   final String store;
   final String followers;
+  final EdgeInsetsGeometry? margin;
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: EdgeInsets.only(bottom: isMobile ? 16 : 24),
+      margin: margin ?? EdgeInsets.only(bottom: isMobile ? 16 : 24),
       child: Row(
         children: [
           CircleAvatar(

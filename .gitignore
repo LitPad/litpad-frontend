@@ -21,6 +21,8 @@ migrate_working_dir/
 # is commented out by default.
 #.vscode/
 
+
+.env
 dotenv
 
 # Flutter/Dart/Pub related

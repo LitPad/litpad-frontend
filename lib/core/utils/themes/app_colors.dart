@@ -30,6 +30,7 @@ class AppColors {
   static const grey300 = Color(0xFFEDEDED);
   static const grey200 = Color(0xFFF6F5F6);
   static const grey100 = Color(0xFFFAFAFB);
+  static const grey000 = Color(0xFFF5F6F7);
   static const menuGrey = Color(0xFFAAA3B0);
 
   static const magneta50 = Color(0xFFFFE6FA);
