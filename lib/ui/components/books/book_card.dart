@@ -8,9 +8,15 @@ class BookCard extends StatelessWidget {
     this.imgWidth,
     this.imgheight,
     this.onImageTap,
+    this.authorName,
+    this.bookTitle, this.bookDescription, this.wordCount
   }) : super(key: key);
 
   final double? imgWidth;
+  final String? bookTitle;
+  final String? authorName;
+  final String? bookDescription;
+  final String? wordCount;
   final double? imgheight;
   final VoidCallback? onImageTap;
 
@@ -38,7 +44,7 @@ class BookCard extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(
-                "The Call of the wild",
+                bookTitle ?? "The Call of the wild",
                 style: AppTypography.text20.copyWith(
                   color: AppColors.purple900,
                   fontWeight: FontWeight.w500,
@@ -46,25 +52,25 @@ class BookCard extends StatelessWidget {
               ),
               const YBox(6),
               Text(
-                "By Herman Merville",
+                "By ${authorName ?? 'Herman Merville'}",
                 style: AppTypography.text16.copyWith(
                   color: AppColors.purple900,
                 ),
               ),
               const YBox(12),
-              const Row(
+               Row(
                 children: [
-                  RowIconWithText(
+                  const RowIconWithText(
                     text: "4.5k",
                     icon: Icons.visibility_outlined,
                   ),
-                  XBox(5),
-                  RowIconWithText(
-                    text: "248.k words",
+                  const XBox(5),
+                   RowIconWithText(
+                    text:" ${wordCount ?? "248.k" } words",
                     icon: Icons.edit_outlined,
                   ),
-                  XBox(5),
-                  RowIconWithText(
+                  const XBox(5),
+                  const RowIconWithText(
                     text: "4.5",
                     icon: Icons.star,
                   ),

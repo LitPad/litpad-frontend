@@ -4,7 +4,7 @@ class AddSubscriberVM extends BaseVM {
   bool isSuccess = false;
   TextEditingController emailC = TextEditingController();
 
-  Future<ApiResponse> addSubscriber({required String token}) async {
+  Future<ApiResponse> addSubscriber() async {
     return makeRequest(
       method: DioHttpMethod.POST,
       endpoint: '/general/subscribe',
