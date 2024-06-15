@@ -41,6 +41,8 @@ class CustomBtn {
                     color: textStyle?.color ?? AppColors.white,
                     child: icon,
                   ),
+                if (icon != null)
+                  const XBox(15),
                 Center(
                   child: isLoading
                       ? CircularProgressIndicator(

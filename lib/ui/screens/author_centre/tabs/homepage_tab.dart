@@ -1,3 +1,4 @@
+import 'package:go_router/go_router.dart';
 import 'package:litpad/core/core.dart';
 import 'package:litpad/ui/ui.dart';
 
@@ -17,10 +18,7 @@ class HomepageTab extends StatelessWidget {
         if (!isMobile)
           Row(
             children: [
-              Expanded(
-                flex: 5,
-                child: _storyCard(),
-              ),
+              const StoryCard(),
               const XBox(40),
               Expanded(
                 flex: 2,
@@ -28,7 +26,7 @@ class HomepageTab extends StatelessWidget {
               )
             ],
           ),
-        if (isMobile) _storyCard(),
+        if (isMobile) const StoryCard(),
         if (isMobile) const YBox(20),
         if (isMobile) _dateCard(),
         const YBox(50),
@@ -98,7 +96,19 @@ class HomepageTab extends StatelessWidget {
     );
   }
 
-  Widget _storyCard() {
+
+}
+
+class StoryCard extends StatefulWidget {
+  const StoryCard({Key? key}) : super(key: key);
+
+  @override
+  _StoryCardState createState() => _StoryCardState();
+}
+
+class _StoryCardState extends State<StoryCard> {
+  @override
+  Widget build(BuildContext context) {
     return Container(
       height: 450,
       decoration: BoxDecoration(
@@ -151,15 +161,18 @@ class HomepageTab extends StatelessWidget {
                 imageHelper(AppImages.book, height: 80, width: 102),
                 const YBox(30),
                 const Text(
-                  "You have no stores yet",
+                  "You have no stories yet",
                   style: TextStyle(
                     fontSize: 15,
                     color: AppColors.grey600,
                   ),
                 ),
                 const YBox(16),
-                const BtnContainer(
-                  padding: EdgeInsets.symmetric(
+                BtnContainer(
+                  onTap: (){
+                    context.goNamed(RoutePath.createStoryScreen);
+                  },
+                  padding: const EdgeInsets.symmetric(
                     horizontal: 28,
                     vertical: 14,
                   ),
@@ -173,3 +186,4 @@ class HomepageTab extends StatelessWidget {
     );
   }
 }
+

@@ -1,11 +1,10 @@
 import '../../core.dart';
-import '../../models/user.dart';
 
-class ViewUserProfileVM extends BaseVM {
-  Future<ApiResponse> getUserProfile({required String token}) async {
+class ViewLatestBookByAuthorVM extends BaseVM {
+  Future<ApiResponse> viewBookByAuthor() async {
     return makeRequest(
       method: DioHttpMethod.GET,
-      endpoint: '/profiles/profile/jeremy_essien',
+      endpoint: '/books/author/{username}',
       data: {},
       onSuccess: (data) {
         notifyListeners();
@@ -14,11 +13,9 @@ class ViewUserProfileVM extends BaseVM {
     );
   }
 
-  //Todo: Fix user profile coming as null
-
   @override
   void dispose() {
-    printty("ViewUserProfileVM  disposed");
+    printty("SignUpVM disposed");
     super.dispose();
   }
 }

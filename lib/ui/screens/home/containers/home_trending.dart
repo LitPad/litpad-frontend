@@ -117,7 +117,7 @@ class CardDetailSMobile extends StatelessWidget {
       child: Column(
         children: [
           Text(
-            "An affair with anotorious heiress",
+            "An affair with a notorious heiress",
             textAlign: TextAlign.center,
             style: AppTypography.text20.copyWith(
               fontWeight: FontWeight.w500,

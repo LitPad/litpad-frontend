@@ -1,6 +1,5 @@
 // Package Exports
 export 'package:flutter/material.dart';
-
 export 'locator.dart';
 export 'models/models.dart';
 export 'router/router.dart';

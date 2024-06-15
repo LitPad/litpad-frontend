@@ -9,6 +9,7 @@ class CustomTextField extends StatefulWidget {
   final KeyboardType keyboardType;
   final double? width, height, labelSize;
   final double borderRadius;
+  final int? maxLines;
   final bool? isReadOnly;
   final FocusNode? focusNode;
   final bool showLabelHeader, hideBorder;
@@ -21,6 +22,7 @@ class CustomTextField extends StatefulWidget {
   const CustomTextField({
     Key? key,
     this.labelText,
+    this.maxLines,
     this.hintText,
     this.optionalText,
     this.labelColor,
@@ -123,6 +125,7 @@ class _CustomTextFieldState extends State<CustomTextField> {
           alignment: Alignment.center,
           // color: Colors.red,
           child: TextFormField(
+            // maxLines: widget.maxLines,
             validator: (value) {
               final result = widget.validator?.call(value);
 

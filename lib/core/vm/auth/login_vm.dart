@@ -7,9 +7,13 @@ import '../profile/view_user_profile.dart';
 
 //Todo: Handle proper user data saving and confirm the getProfile implementation
 class LoginVM extends BaseVM {
+  User? user;
   TextEditingController emailC = TextEditingController();
   TextEditingController passwordC = TextEditingController();
 
+  LoginVM() {
+    loadUserDetails();
+  }
   saveAccessToken(key, value) async {
     SessionStorageHelper.saveValue(key, value);
     LocalStorageHelper.saveValue(key, value);
@@ -35,16 +39,25 @@ class LoginVM extends BaseVM {
         saveAccessToken('accessToken', accessToken);
         saveRefreshTokenToken('refreshToken', refreshToken);
 
+
         debugPrint('access token ==> :${data['data']['access']}');
         debugPrint('refresh token ==> :${data['data']['refresh']}');
-        final userResponse =
-            ViewUserProfileVM().getUserProfile(token: accessToken);
+        user = User.fromMap(data['data']);
+        LocalStorageHelper.saveUser(user!);
 
+
+        notifyListeners();
         return ApiResponse(success: true, data: data);
       },
     );
   }
 
+  void loadUserDetails() {
+    user = LocalStorageHelper.getUser();
+    if (user != null) {
+      notifyListeners();
+    }
+  }
   @override
   void dispose() {
     printty("SignUpVM disposed");

@@ -10,7 +10,7 @@ import '../../../core/models/user.dart';
 import '../../../core/router/app_router.dart';
 import '../buttons/custom_btn.dart';
 
-//Todo: Build Drawer screen for mobile menubar
+//Todo: Finalise drawer with proper drawer
 class DrawerMobile extends StatelessWidget {
   const DrawerMobile({
     super.key,
@@ -69,7 +69,7 @@ class DrawerMobile extends StatelessWidget {
               style: AppTypography.text15,
             ),
             onTap: () {
-              context.goNamed(RoutePath.writersBenefitScreen);
+              context.pushNamed(RoutePath.writersBenefitScreen);
             },
             trailing: const Icon(Icons.keyboard_arrow_down_rounded,
                 color: AppColors.grey),
@@ -90,7 +90,7 @@ class DrawerMobile extends StatelessWidget {
               style: AppTypography.text15,
             ),
             onTap: () {
-              // context.goNamed(RoutePath.writersBenefitScreen);
+              context.goNamed(RoutePath.authorCentreScreen);
             },
             leading: svgHelper('assets/svgs/write.svg'),
           ),
@@ -267,23 +267,24 @@ class UserDetails extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Consumer<ViewUserProfileVM>(
-      builder: (context, userProfileVM, _) {
-        User? user = userProfileVM.user;
+    return Consumer<LoginVM>(
+      builder: (context, loginVM, _) {
+        User? user = loginVM.user;
         debugPrint('User === $user');
         return Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
           Row(
             children: [
-              const CircleAvatar(
+               CircleAvatar(
                 radius: 30,
-                child: Text('T'),
+                child: Text(user?.firstName[0] ??''),
               ),
               const XBox(10),
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 mainAxisSize: MainAxisSize.min,
                 children: [
-                  Text(user?.firstName ??'Temitope', style: AppTypography.text16),
+                  Text('${user?.firstName ?? ''} ${user?.lastName ?? ''}' , style: AppTypography.text16),
+                  user?.id == null ? const SizedBox() :
                   Row(
                     children: [
                       Text(

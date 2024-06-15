@@ -1,8 +1,8 @@
 import 'package:go_router/go_router.dart';
-import 'package:litpad/core/router/app_router.dart';
-import 'package:litpad/core/utils/utils.dart';
+import 'package:litpad/core/core.dart';
 import 'package:litpad/ui/components/books/books.dart';
 import 'package:litpad/ui/components/home/home.dart';
+import 'package:provider/provider.dart';
 
 class PopularBooksMobile extends StatelessWidget {
   const PopularBooksMobile({
@@ -62,13 +62,37 @@ class PopularBooksMobile extends StatelessWidget {
   }
 }
 
-class PopularBookDesttop extends StatelessWidget {
-  const PopularBookDesttop({
+class PopularBookDesktop extends StatefulWidget {
+  const PopularBookDesktop({
     Key? key,
     this.title,
   }) : super(key: key);
 
   final String? title;
+
+  @override
+  State<PopularBookDesktop> createState() => _PopularBookDesktopState();
+}
+
+class _PopularBookDesktopState extends State<PopularBookDesktop> {
+  //Todo: Finalise latest book endpoint
+
+  @override
+  void initState() {
+    WidgetsBinding.instance.addPostFrameCallback((_) async {
+      final latestBooks = context.read<ViewLatestBooksVM>();
+      final response = await latestBooks.viewLatestBooks();
+      printty(response, logLevel: 'LATEST BOOKS');
+      if (response.success) {
+        printty("Site health check successful!");
+      } else {
+        printty("Site health check failed: ${response.message}");
+      }
+    });
+
+    // TODO: implement initState
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -89,7 +113,7 @@ class PopularBookDesttop extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Text(
-                title ?? "Popular books",
+                widget.title ?? "Popular books",
                 style: AppTypography.text36.copyWith(
                   fontWeight: FontWeight.w500,
                 ),
@@ -101,7 +125,7 @@ class PopularBookDesttop extends StatelessWidget {
           Wrap(
             spacing: (20),
             runSpacing: (40),
-            children: List.generate(6, (index) {
+            children: List.generate(2, (index) {
               return SizedBox(
                 width: (420),
                 child: BookCard(

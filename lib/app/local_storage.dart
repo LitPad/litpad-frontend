@@ -1,6 +1,9 @@
+import 'dart:convert';
 import 'dart:developer';
 
 import 'package:universal_html/html.dart';
+
+import '../core/core.dart';
 
 class LocalStorageHelper {
   static Storage localStorage = window.localStorage;
@@ -20,6 +23,17 @@ class LocalStorageHelper {
   }
   static void clearAll(){
     localStorage.clear();
+  }
+  static void saveUser(User user) {
+    saveValue('user', jsonEncode(user.toMap()));
+  }
+
+  static User? getUser() {
+    String? userJson = getValue('user');
+    if (userJson != null) {
+      return User.fromMap(jsonDecode(userJson));
+    }
+    return null;
   }
 
 }
