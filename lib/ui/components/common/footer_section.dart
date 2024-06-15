@@ -1,7 +1,6 @@
 import 'package:go_router/go_router.dart';
 import 'package:litpad/core/core.dart';
-import 'package:litpad/core/vm/home/get_site_details_vm.dart';
-import 'package:litpad/ui/components/common/on_hover.dart';
+import 'package:litpad/ui/components/components.dart';
 import 'package:provider/provider.dart';
 import 'package:responsive_builder/responsive_builder.dart';
 import 'package:url_launcher/url_launcher.dart';
@@ -162,61 +161,46 @@ class _FooterSectionState extends State<FooterSection> {
           Row(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              const Expanded(
-                flex: 2,
-                child: FooterAbout(),
+              const FooterAbout(),
+              // const NewsLetter(),
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  _footerLink(
+                    text: "Company",
+                    onPressed: () {},
+                  ),
+                  _footerLink(
+                    text: "About us",
+                    onPressed: () {},
+                  ),
+                ],
               ),
-              Expanded(
-                flex: 3,
-                child: Row(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  mainAxisSize: MainAxisSize.min,
-                  children: [
-                    Container(
-                      padding: const EdgeInsets.only(left: 40),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          _footerLink(
-                            text: "Company",
-                            onPressed: () {},
-                          ),
-                          _footerLink(
-                            text: "About us",
-                            onPressed: () {},
-                          ),
-                        ],
-                      ),
-                    ),
-                    Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        _footerLink(
-                          text: "Support",
-                          onPressed: () {},
-                        ),
-                        _footerLink(
-                          text: "Contact us",
-                          onPressed: () {},
-                        ),
-                      ],
-                    ),
-                    Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        _footerLink(
-                          text: "Legal",
-                          onPressed: () {},
-                        ),
-                        _footerLink(
-                          text: "Privacy",
-                          onPressed: () {},
-                        ),
-                      ],
-                    ),
-                  ],
-                ),
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  _footerLink(
+                    text: "Support",
+                    onPressed: () {},
+                  ),
+                  _footerLink(
+                    text: "Contact us",
+                    onPressed: () {},
+                  ),
+                ],
+              ),
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  _footerLink(
+                    text: "Legal",
+                    onPressed: () {},
+                  ),
+                  _footerLink(
+                    text: "Privacy",
+                    onPressed: () {},
+                  ),
+                ],
               ),
             ],
           ),
@@ -369,3 +353,5 @@ class FooterSocials extends StatelessWidget {
     }
   }
 }
+
+

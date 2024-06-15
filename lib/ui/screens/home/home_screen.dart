@@ -2,11 +2,8 @@ import 'package:litpad/core/utils/utils.dart';
 import 'package:litpad/core/vm/home/home.dart';
 import 'package:litpad/ui/components/components.dart';
 import 'package:litpad/ui/screens/home/containers/containers.dart';
-import 'package:litpad/ui/screens/home/home_screen_viewmodel.dart';
 import 'package:provider/provider.dart';
-import 'package:stacked/stacked.dart';
 
-import '../../../core/vm/home/health_check.dart';
 
 class HomeScreen extends StatefulWidget {
   final bool? isAuthenticated;
@@ -69,17 +66,17 @@ class _HomeScreenState extends State<HomeScreen> {
                 //     ? const WithLitpadDesktop()
                 //     : const WithLitpadMobile(),
                 constraints.maxWidth >= 950
-                    ? const PopularBookDesttop()
+                    ? const PopularBookDesktop()
                     : const PopularBooksMobile(),
                 constraints.maxWidth >= 950
                     ? const HomeTrendingDesktop()
                     : const HometrendingMobile(),
                 const ArticleSlider(title: "New arrivals"),
                 constraints.maxWidth >= 950
-                    ? const PopularBookDesttop(title: "Serialising")
+                    ? const PopularBookDesktop(title: "Serialising")
                     : const PopularBooksMobile(title: "Serialising"),
                 constraints.maxWidth >= 950
-                    ? const PopularBookDesttop(title: "Completed books")
+                    ? const PopularBookDesktop(title: "Completed books")
                     : const PopularBooksMobile(title: "Completed books"),
                 const ArticleSlider(title: "Upcoming book"),
                 const HDivider(),
