@@ -1,5 +1,5 @@
 import 'package:litpad/core/utils/utils.dart';
-import 'package:litpad/core/vm/books/view_book_by_genres_vm.dart';
+import 'package:litpad/core/vm/books/view_available_book_genres_vm.dart';
 import 'package:provider/provider.dart';
 
 class CategoryNameList extends StatefulWidget {
@@ -11,23 +11,23 @@ class CategoryNameList extends StatefulWidget {
 
 class _CategoryNameListState extends State<CategoryNameList> {
   String _selectedCategory = 'All';
-  late ViewBooksByGenreVM _viewModel;
+  late ViewAvailableBooksGenreVM _viewModel;
 
   @override
   void initState() {
-    _viewModel = Provider.of<ViewBooksByGenreVM>(context, listen: false);
+    _viewModel = Provider.of<ViewAvailableBooksGenreVM>(context, listen: false);
     fetchGenres();
     // TODO: implement initState
     super.initState();
   }
 
   Future<void> fetchGenres() async {
-    await _viewModel.viewBooksByGenre();
+    await _viewModel.viewAvailableBooksGenre();
   }
 
   @override
   Widget build(BuildContext context) {
-    return Consumer<ViewBooksByGenreVM>(builder: (context, viewBookGenreVm, _) {
+    return Consumer<ViewAvailableBooksGenreVM>(builder: (context, viewBookGenreVm, _) {
       final categories = [
         'All',
         ...viewBookGenreVm.bookGenre.map((genre) => genre.name)
