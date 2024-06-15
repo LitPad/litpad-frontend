@@ -73,17 +73,17 @@ class _LandingPageState extends State<LandingPage> {
                     ? const WithLitpadDesktop()
                     : const WithLitpadMobile(),
                 constraints.maxWidth >= 950
-                    ? const PopularBookDesttop()
+                    ? const PopularBookDesktop()
                     : const PopularBooksMobile(),
                 constraints.maxWidth >= 950
                     ? const HomeTrendingDesktop()
                     : const HometrendingMobile(),
                 const ArticleSlider(title: "New arrivals"),
                 constraints.maxWidth >= 950
-                    ? const PopularBookDesttop(title: "Serialising")
+                    ? const PopularBookDesktop(title: "Serialising")
                     : const PopularBooksMobile(title: "Serialising"),
                 constraints.maxWidth >= 950
-                    ? const PopularBookDesttop(title: "Completed books")
+                    ? const PopularBookDesktop(title: "Completed books")
                     : const PopularBooksMobile(title: "Completed books"),
                 const ArticleSlider(title: "Upcoming book"),
                 const HDivider(),
