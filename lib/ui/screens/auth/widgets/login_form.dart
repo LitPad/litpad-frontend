@@ -5,6 +5,7 @@ import 'package:litpad/ui/components/textfields/textfields.dart';
 import 'package:provider/provider.dart';
 
 import '../../../../core/core.dart';
+import '../../../../core/service/toast_service.dart';
 
 class LoginForm extends StatefulWidget {
   const LoginForm({Key? key}) : super(key: key);
@@ -15,6 +16,7 @@ class LoginForm extends StatefulWidget {
 
 class _LoginFormState extends State<LoginForm> {
   final _formKey = GlobalKey<FormState>();
+  final toast = ToastService();
 
   @override
   Widget build(BuildContext context) {
@@ -64,7 +66,8 @@ class _LoginFormState extends State<LoginForm> {
                     children: [
                       InkWell(
                         onTap: () {
-                          context.goNamed(RoutePath.unverifiedUserScreen);
+                          toast.show('Help');
+                          // context.goNamed(RoutePath.unverifiedUserScreen);
                         },
                         child: Text(
                           "Forgot password?",
@@ -80,7 +83,7 @@ class _LoginFormState extends State<LoginForm> {
                   CustomBtn.solid(
                     onTap: completeLogin,
                     online: true,
-                    text: 'Save changes',
+                    text: 'Login',
                   ),
                   const YBox(16),
                   Row(
@@ -116,12 +119,16 @@ class _LoginFormState extends State<LoginForm> {
     if (_formKey.currentState?.validate() ?? false) {
       printty("Login pressed");
       context.read<LoginVM>().login().then((value) {
+        debugPrint('Login Res $value');
         if (value.success) {
           debugPrint('D $value');
          context.pushReplacement('/home');
 
           // context.goNamed(RoutePath.homeScreen);
-        } else {
+        }
+        //Todo: Handle case for unverified accounts
+        else if(value.code == 401) {
+          context.goNamed(RoutePath.verifyMailScreen);
           debugPrint('Error on login');
           // show error toast
         }

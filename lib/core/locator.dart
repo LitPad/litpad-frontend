@@ -1,13 +1,13 @@
 import 'package:litpad/core/core.dart';
-import 'package:litpad/core/service/toast_service.dart';
-import 'package:litpad/core/vm/auth/startup_vm.dart';
-import 'package:litpad/core/vm/profile/profile.dart';
 import 'package:provider/provider.dart';
 import 'package:provider/single_child_widget.dart';
 
-import 'vm/home/home.dart';
-
 final allProviders = <SingleChildWidget>[
+  //Site details
+  ChangeNotifierProvider(create: (_) => GetSiteDetailsVM()),
+  ChangeNotifierProvider(create: (_) => SiteHealthCheckVM()),
+
+  //Auth providers
   ChangeNotifierProvider(create: (_) => BaseVM()),
   ChangeNotifierProvider(create: (_) => SignupVM()),
   ChangeNotifierProvider(create: (_) => LoginVM()),
@@ -18,8 +18,27 @@ final allProviders = <SingleChildWidget>[
   ChangeNotifierProvider(create: (_) => GoogleLoginVM()),
   ChangeNotifierProvider(create: (_) => ResendVerificationMailVM()),
   ChangeNotifierProvider(create: (_) => StartupVM()),
-  ChangeNotifierProvider(create: (_) => ToastService()),
+
+  //Profile providers
+  ChangeNotifierProvider(create: (_) => FollowAndUnfollowVM()),
+  ChangeNotifierProvider(create: (_) => UpdatePasswordVM()),
+  ChangeNotifierProvider(create: (_) => UpdateProfileVM()),
+  ChangeNotifierProvider(create: (_) => AddSubscriberVM()),
   ChangeNotifierProvider(create: (_) => ViewUserProfileVM()),
-  ChangeNotifierProvider(create: (_) => GetSiteDetailsVM()),
-  ChangeNotifierProvider(create: (_) => SiteHealthCheckVM()),
+
+  //Books providers
+  ChangeNotifierProvider(create: (_) => ViewAvailableBooksGenreVM()),
+  ChangeNotifierProvider(create: (_) => ViewAvailableBooksTagVM()),
+  ChangeNotifierProvider(create: (_) => ViewLatestBookByAuthorVM()),
+  ChangeNotifierProvider(create: (_) => ViewLatestBooksVM()),
+  ChangeNotifierProvider(create: (_) => CreateABookVM()),
+  ChangeNotifierProvider(create: (_) => AddChapterToBookVM()),
+  ChangeNotifierProvider(create: (_) => BuyBooksVM()),
+  ChangeNotifierProvider(create: (_) => DeleteBookVM()),
+  ChangeNotifierProvider(create: (_) => DeleteChapterVM()),
+  ChangeNotifierProvider(create: (_) => UpdateBookVM()),
+  ChangeNotifierProvider(create: (_) => UpdateBookChapterVM()),
+  ChangeNotifierProvider(create: (_) => ViewBoughtBooksVM()),
+  ChangeNotifierProvider(create: (_) => ViewSingleBooksPartialChapterVM()),
+  ChangeNotifierProvider(create: (_) => ViewSingleBooksVM()),
 ];

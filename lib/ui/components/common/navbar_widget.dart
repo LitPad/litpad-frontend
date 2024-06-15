@@ -59,7 +59,7 @@ class DeskTopNavbar extends StatelessWidget {
       ),
       // height: 83,
       child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        // mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           const NavLogo(),
           const XBox(20),
@@ -77,42 +77,34 @@ class DeskTopNavbar extends StatelessWidget {
                     context.goNamed(RoutePath.latestBooksScreen);
                   }),
               NavButton(
-                text: 'Settings',
+                text: 'Writers benefit',
                 onTap: () {
-                  context.goNamed(RoutePath.settingsScreen);
+                  context.goNamed(RoutePath.writersBenefitScreen);
                 },
               ),
-              NavButton(
-                text: 'TopUp',
-                onTap: () {
-                  // context.goNamed(RoutePath.topupScreen);
-                },
-              ),
+              // NavButton(
+              //   text: 'TopUp',
+              //   onTap: () {
+              //     // context.goNamed(RoutePath.topupScreen);
+              //   },
+              // ),
               NavButton(
                 text: 'Author\'s Centre',
                 onTap: () {
                   context.goNamed(RoutePath.authorCentreScreen);
                 },
               ),
-              NavButton(
-                text: 'Author Id',
-                onTap: () {
-                  context.goNamed(RoutePath.authorsDetailScreen,
-                      pathParameters: {
-                        'id': '1',
-                      });
-                },
-              ),
+              // NavButton(
+              //   text: 'Author Id',
+              //   onTap: () {
+              //     context.goNamed(RoutePath.authorsDetailScreen,
+              //         pathParameters: {
+              //           'id': '1',
+              //         });
+              //   },
+              // ),
 
               // isAuthenticated == true ?
-              NavButton(
-                text: 'My Profile',
-                onTap: () {
-                  context.goNamed(RoutePath.profileScreen, pathParameters: {
-                    'id': '1',
-                  });
-                },
-              )
                   // : const SizedBox() ,
               // NavButton(
               //   text: 'About Us',
@@ -122,21 +114,34 @@ class DeskTopNavbar extends StatelessWidget {
               // ),
             ],
           ),
-          // // !isAuthenticated! ?
-          // NavButton(
-          //     text: 'Login',
-          //     onTap: () {
-          //       context.goNamed(RoutePath.loginScreen);
-          //     }) ,
-          //     // : const SizedBox(),
-          // CustomBtn.solid(
-          //   onTap: () {
-          //     context.goNamed(RoutePath.signupScreen);
-          //   },
-          //   online: true,
-          //   text: 'Sign up',
-          //   // width: 110,
-          // ),
+          const XBox(20),
+
+          Row(
+            children: [
+               SizedBox(
+                  width: MediaQuery.of(context).size.width* 0.2,
+                  child: const CustomTextField(
+                    borderRadius: 50,
+                    prefixIcon: Icon(Icons.search),
+                    hintText: 'What do you want to read?',
+                  )),
+              const XBox(20),
+
+              InkWell(
+                onTap: (){},
+                child: svgHelper('assets/svgs/notification.svg'),
+              ),
+              NavButton(
+                text: 'Me',
+                onTap: () {
+                  context.goNamed(RoutePath.profileScreen, pathParameters: {
+                    'id': '1',
+                  });
+                },
+              ),
+
+            ],
+          )
         ],
       ),
     );
