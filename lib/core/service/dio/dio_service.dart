@@ -42,9 +42,9 @@ class DioService {
       if (e.error is SocketException) {
         throw Exception('No internet connection');
       }
-      if (e.response?.statusCode == 409) {
-        throw Exception('Username already exists');
-      }
+      // if (e.response?.statusCode == 409) {
+      //   throw Exception('Username already exists');
+      // }
       _handleDioError(e);
       rethrow;
     }
