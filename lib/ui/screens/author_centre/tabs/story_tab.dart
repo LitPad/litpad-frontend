@@ -1,3 +1,4 @@
+import 'package:go_router/go_router.dart';
 import 'package:litpad/core/core.dart';
 import 'package:litpad/ui/ui.dart';
 
@@ -19,7 +20,7 @@ class StoryTab extends StatelessWidget {
             children: [
               Expanded(
                 flex: 5,
-                child: _storyCard(),
+                child: _storyCard(context),
               ),
               const XBox(40),
               Expanded(
@@ -28,7 +29,7 @@ class StoryTab extends StatelessWidget {
               )
             ],
           ),
-        if (isMobile) _storyCard(),
+        if (isMobile) _storyCard(context),
         if (isMobile) const YBox(20),
         if (isMobile) _dateCard(),
         const YBox(50),
@@ -98,7 +99,7 @@ class StoryTab extends StatelessWidget {
     );
   }
 
-  Widget _storyCard() {
+  Widget _storyCard(BuildContext context) {
     return Container(
       height: 450,
       decoration: BoxDecoration(
@@ -158,7 +159,10 @@ class StoryTab extends StatelessWidget {
                   ),
                 ),
                 const YBox(16),
-                const BtnContainer(
+                 BtnContainer(
+                  onTap: (){
+                    context.goNamed(RoutePath.createStoryScreen);
+                  },
                   padding: EdgeInsets.symmetric(
                     horizontal: 28,
                     vertical: 14,

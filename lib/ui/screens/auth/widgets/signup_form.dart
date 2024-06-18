@@ -78,7 +78,8 @@ class _SignupFormState extends State<SignupForm> {
                       return 'Please enter your username';
                     }
                     return null;
-                  }),
+                  }
+                  ),
               const YBox(20),
               CustomTextField(
                 controller: signUpVM.passwordC,
