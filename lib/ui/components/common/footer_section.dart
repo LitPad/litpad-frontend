@@ -1,10 +1,19 @@
-import 'package:litpad/core/utils/utils.dart';
+import 'package:go_router/go_router.dart';
+import 'package:litpad/core/core.dart';
+import 'package:litpad/core/vm/home/get_site_details_vm.dart';
 import 'package:litpad/ui/components/common/on_hover.dart';
+import 'package:provider/provider.dart';
 import 'package:responsive_builder/responsive_builder.dart';
+import 'package:url_launcher/url_launcher.dart';
 
-class FooterSection extends StatelessWidget {
+class FooterSection extends StatefulWidget {
   const FooterSection({Key? key}) : super(key: key);
 
+  @override
+  State<FooterSection> createState() => _FooterSectionState();
+}
+
+class _FooterSectionState extends State<FooterSection> {
   @override
   Widget build(BuildContext context) {
     return ScreenTypeLayout.builder(
@@ -15,124 +24,133 @@ class FooterSection extends StatelessWidget {
   }
 
   _footerMobile() {
-    return Container(
-      color: AppColors.white,
-      padding: const EdgeInsets.symmetric(horizontal: 20),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              svgHelper(AppSvgs.logo, height: 28, width: 105),
-              Row(
-                children: [
-                  FooterSocials(
-                    isMobile: true,
-                    assetPath: AppSvgs.x,
-                    onTap: () {},
-                  ),
-                  const SizedBox(width: 16),
-                  imageHelper(AppImages.vline, height: 20),
-                  const SizedBox(width: 16),
-                  FooterSocials(
-                    isMobile: true,
-                    assetPath: AppSvgs.fb,
-                    onTap: () {},
-                  ),
-                  const SizedBox(width: 16),
-                  imageHelper(AppImages.vline, height: 20),
-                  const SizedBox(width: 16),
-                  FooterSocials(
-                    isMobile: true,
-                    assetPath: AppImages.ig,
-                    isImage: true,
-                    onTap: () {},
-                  ),
-                  const SizedBox(width: 16),
-                  imageHelper(AppImages.vline, height: 20),
-                  const SizedBox(width: 16),
-                  FooterSocials(
-                    isMobile: true,
-                    assetPath: AppSvgs.lk,
-                    onTap: () {},
-                  ),
-                ],
-              )
-            ],
-          ),
-          const SizedBox(height: 16),
-          Text(
-            "Write, read, and enjoy \nquality stories without \nlimits",
-            style: AppTypography.text15.copyWith(
-              color: AppColors.purple900,
-              fontWeight: FontWeight.w500,
+    return Consumer<GetSiteDetailsVM>(builder: (context, getSiteDetailsVM, _) {
+      SiteDetails? siteDetails = getSiteDetailsVM.siteDetails;
+      return Container(
+        color: AppColors.white,
+        padding: const EdgeInsets.symmetric(horizontal: 20),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                svgHelper(AppSvgs.logo, height: 28, width: 105),
+                Row(
+                  children: [
+                    FooterSocials(
+                      isMobile: true,
+                      assetPath: AppSvgs.x,
+                      onTap: () {},
+                      link: siteDetails?.tw ?? '',
+                    ),
+                    const SizedBox(width: 16),
+                    imageHelper(AppImages.vline, height: 20),
+                    const SizedBox(width: 16),
+                    FooterSocials(
+                      isMobile: true,
+                      assetPath: AppSvgs.fb,
+                      onTap: () {},
+                      link: siteDetails?.fb ?? '',
+                    ),
+                    const SizedBox(width: 16),
+                    imageHelper(AppImages.vline, height: 20),
+                    const SizedBox(width: 16),
+                    FooterSocials(
+                      isMobile: true,
+                      assetPath: AppImages.ig,
+                      isImage: true,
+                      onTap: () {},
+                      link: siteDetails?.ig ?? '',
+                    ),
+                    const SizedBox(width: 16),
+                    imageHelper(AppImages.vline, height: 20),
+                    const SizedBox(width: 16),
+                    FooterSocials(
+                      isMobile: true,
+                      assetPath: AppSvgs.lk,
+                      onTap: () {},
+                      link: '',
+                    ),
+                  ],
+                )
+              ],
             ),
-          ),
-          const SizedBox(height: 40),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  _footerLink(
-                    text: "Company",
-                    isMobile: true,
-                    onPressed: () {},
-                  ),
-                  _footerLink(
-                    text: "About us",
-                    isMobile: true,
-                    onPressed: () {},
-                  ),
-                ],
-              ),
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  _footerLink(
-                    text: "Support",
-                    isMobile: true,
-                    onPressed: () {},
-                  ),
-                  _footerLink(
-                    text: "Contact us",
-                    isMobile: true,
-                    onPressed: () {},
-                  ),
-                ],
-              ),
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  _footerLink(
-                    text: "Legal",
-                    isMobile: true,
-                    onPressed: () {},
-                  ),
-                  _footerLink(
-                    text: "Privacy",
-                    onPressed: () {},
-                  ),
-                ],
-              ),
-            ],
-          ),
-          const SizedBox(height: 100),
-          Container(
-            padding: const EdgeInsets.symmetric(vertical: 20),
-            alignment: Alignment.center,
-            child: Text(
-              "© 2024 LitPad",
-              style: AppTypography.text14.copyWith(
-                color: AppColors.grey,
+            const SizedBox(height: 16),
+            Text(
+              "Write, read, and enjoy \nquality stories without \nlimits",
+              style: AppTypography.text15.copyWith(
+                color: AppColors.purple900,
+                fontWeight: FontWeight.w500,
               ),
             ),
-          ),
-        ],
-      ),
-    );
+            const SizedBox(height: 40),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    _footerLink(
+                      text: "Company",
+                      isMobile: true,
+                      onPressed: () {},
+                    ),
+                    _footerLink(
+                      text: "About us",
+                      isMobile: true,
+                      onPressed: () {
+                        context.go(RoutePath.aboutScreen);
+                      },
+                    ),
+                  ],
+                ),
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    _footerLink(
+                      text: "Support",
+                      isMobile: true,
+                      onPressed: () {},
+                    ),
+                    _footerLink(
+                      text: "Contact us",
+                      isMobile: true,
+                      onPressed: () {},
+                    ),
+                  ],
+                ),
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    _footerLink(
+                      text: "Legal",
+                      isMobile: true,
+                      onPressed: () {},
+                    ),
+                    _footerLink(
+                      text: "Privacy",
+                      onPressed: () {},
+                    ),
+                  ],
+                ),
+              ],
+            ),
+            const SizedBox(height: 100),
+            Container(
+              padding: const EdgeInsets.symmetric(vertical: 20),
+              alignment: Alignment.center,
+              child: Text(
+                "© 2024 LitPad",
+                style: AppTypography.text14.copyWith(
+                  color: AppColors.grey,
+                ),
+              ),
+            ),
+          ],
+        ),
+      );
+    });
   }
 
   Container _footerDesktop() {
@@ -247,48 +265,57 @@ class FooterAbout extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        svgHelper(AppSvgs.logo, height: 35, width: 125),
-        const SizedBox(height: 16),
-        Text(
-          "Write, read, and enjoy \nquality stories without \nlimits",
-          style: AppTypography.text22,
-        ),
-        const SizedBox(height: 40),
-        Row(
-          children: [
-            FooterSocials(
-              assetPath: AppSvgs.x,
-              onTap: () {},
-            ),
-            const SizedBox(width: 16),
-            imageHelper(AppImages.vline, height: 20),
-            const SizedBox(width: 16),
-            FooterSocials(
-              assetPath: AppSvgs.fb,
-              onTap: () {},
-            ),
-            const SizedBox(width: 16),
-            imageHelper(AppImages.vline, height: 20),
-            const SizedBox(width: 16),
-            FooterSocials(
-              assetPath: AppImages.ig,
-              isImage: true,
-              onTap: () {},
-            ),
-            const SizedBox(width: 16),
-            imageHelper(AppImages.vline, height: 20),
-            const SizedBox(width: 16),
-            FooterSocials(
-              assetPath: AppSvgs.lk,
-              onTap: () {},
-            ),
-          ],
-        )
-      ],
-    );
+    return Consumer<GetSiteDetailsVM>(builder: (context, getSiteVM, _) {
+      SiteDetails? siteDetails = getSiteVM.siteDetails;
+      printty(siteDetails, logLevel: 'Url');
+
+      return Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          svgHelper(AppSvgs.logo, height: 35, width: 125),
+          const SizedBox(height: 16),
+          Text(
+            "Write, read, and enjoy \nquality stories without \nlimits",
+            style: AppTypography.text22,
+          ),
+          const SizedBox(height: 40),
+          Row(
+            children: [
+              FooterSocials(
+                assetPath: AppSvgs.x,
+                onTap: () {},
+                link: siteDetails?.tw ?? '',
+              ),
+              const SizedBox(width: 16),
+              imageHelper(AppImages.vline, height: 20),
+              const SizedBox(width: 16),
+              FooterSocials(
+                assetPath: AppSvgs.fb,
+                onTap: () {},
+                link: siteDetails?.fb ?? '',
+              ),
+              const SizedBox(width: 16),
+              imageHelper(AppImages.vline, height: 20),
+              const SizedBox(width: 16),
+              FooterSocials(
+                assetPath: AppImages.ig,
+                isImage: true,
+                onTap: () {},
+                link: siteDetails?.ig ?? '',
+              ),
+              const SizedBox(width: 16),
+              imageHelper(AppImages.vline, height: 20),
+              const SizedBox(width: 16),
+              FooterSocials(
+                assetPath: AppSvgs.lk,
+                onTap: () {},
+                link: '',
+              ),
+            ],
+          )
+        ],
+      );
+    });
   }
 }
 
@@ -299,9 +326,11 @@ class FooterSocials extends StatelessWidget {
     this.isImage = false,
     this.isMobile = false,
     this.onTap,
+    required this.link,
   }) : super(key: key);
 
   final String assetPath;
+  final String link;
   final bool isImage;
   final bool isMobile;
   final VoidCallback? onTap;
@@ -310,7 +339,11 @@ class FooterSocials extends StatelessWidget {
   Widget build(BuildContext context) {
     return OnHoverTranslate(
       child: InkWell(
-        onTap: onTap,
+        onTap: () {
+          printty(link, logLevel: 'Url');
+
+          launchUrl(Uri.parse(link));
+        },
         child: isImage
             ? imageHelper(
                 assetPath,
@@ -324,5 +357,15 @@ class FooterSocials extends StatelessWidget {
               ),
       ),
     );
+  }
+
+  void launchURL(String url) async {
+    final Uri uri = Uri.parse(url);
+    if (await canLaunchUrl(uri)) {
+      await launchUrl(uri);
+      printty(url, logLevel: 'Url');
+    } else {
+      throw 'Could not launch $url';
+    }
   }
 }

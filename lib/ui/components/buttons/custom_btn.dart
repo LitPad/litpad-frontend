@@ -117,6 +117,7 @@ class CustomBtn {
       ignoring: !online,
       child: OnHoverScale(
         child: InkWell(
+          borderRadius: BorderRadius.circular(borderRadius ?? 30),
           onTap: onTap,
           child: Container(
             width: width,

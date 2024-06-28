@@ -1,17 +1,22 @@
 import '../../core.dart';
 
-class ResetPasswordVM extends BaseVM {
-  TextEditingController emailC = TextEditingController();
+class SetNewPasswordVM extends BaseVM {
+  TextEditingController newPasswordC = TextEditingController();
+  TextEditingController confirmPasswordC = TextEditingController();
+  bool isSuccess = false;
 
-  Future<ApiResponse> resetPassword() async {
+
+  Future<ApiResponse> setNewPass(String? token) async {
     return makeRequest(
       method: DioHttpMethod.POST,
       endpoint: '/auth/set-new-password',
       data: {
-        "email": emailC.text.trim(),
+        "password": newPasswordC.text.trim(),
+        "token_string": token,
       },
       onSuccess: (data) {
-        // Store the access token
+        bool isSuccess = true;
+        notifyListeners();
         return ApiResponse(success: true, data: data);
       },
     );
@@ -20,7 +25,7 @@ class ResetPasswordVM extends BaseVM {
   @override
   void dispose() {
     printty("SignUpVM disposed");
-    emailC.dispose();
+    newPasswordC.dispose();
     super.dispose();
   }
 }

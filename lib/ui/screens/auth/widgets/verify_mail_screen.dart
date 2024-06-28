@@ -1,7 +1,6 @@
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:go_router/go_router.dart';
 import 'package:litpad/core/core.dart';
-import 'package:litpad/core/vm/auth/verify_email_vm.dart';
 import 'package:provider/provider.dart';
 import 'package:universal_html/html.dart';
 
@@ -19,7 +18,6 @@ class _VerifyMailScreenState extends State<VerifyMailScreen> {
   String? token;
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
     final uri = Uri.parse(window.location.href);
     final pathSegments = uri.pathSegments.takeWhile((value) => value != '');
@@ -95,7 +93,7 @@ class _MainContentState extends State<MainContent> {
           ],
         ),
         child: verifyMailVM.isBusy
-            ? const SpinKitFadingCircle(
+                    ? const SpinKitFadingCircle(
                 color: Colors.deepPurple,
                 size: 50.0,
               )

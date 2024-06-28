@@ -1,8 +1,11 @@
 import 'package:litpad/core/core.dart';
 
+import '../service/toast_service.dart';
+
 class BaseVM extends ChangeNotifier {
   late ApiResponse apiResponse;
   final dioService = DioService();
+  final toast = GlobalToastService();
 
   bool _isBusy = false;
   bool get isBusy => _isBusy;
@@ -45,16 +48,22 @@ class BaseVM extends ChangeNotifier {
           response.statusCode == 204) {
         printty(response.data, logLevel: endpoint);
         apiResponse = ApiResponse(success: true, data: response.data);
+        toast.showToast(response.data['message'], isError: false);
+
         return onSuccess(apiResponse.data);
       } else {
         setError(true);
         printty('An error else: ${response.data}', logLevel: endpoint);
+        toast.showToast(response.data['message'] ?? 'An error occurred',
+            isError: true);
         return apiResponse = ApiResponse(
             success: false,
             data: response.data,
             message: response.data['message'] ?? 'An error occurred');
       }
     } catch (e) {
+      toast.showToast('An error occurred',
+          isError: true);
       setError(true);
       setBusy(false);
       printty('An error catch: $e', logLevel: endpoint);

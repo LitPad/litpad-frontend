@@ -25,6 +25,11 @@ class AppTypography {
     color: AppColors.purple900,
     fontSize: 14,
     height: 1.2,
+  );  static TextStyle text14Bold = const TextStyle(
+    fontWeight: FontWeight.bold,
+    color: AppColors.purple900,
+    fontSize: 14,
+    height: 1.2,
   );
 
   static TextStyle text15 = const TextStyle(
