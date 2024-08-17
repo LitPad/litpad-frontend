@@ -10,7 +10,6 @@ import '../../../core/models/user.dart';
 import '../../../core/router/app_router.dart';
 import '../buttons/custom_btn.dart';
 
-//Todo: Finalise drawer with proper drawer
 class DrawerMobile extends StatelessWidget {
   const DrawerMobile({
     super.key,
@@ -119,9 +118,25 @@ class DrawerMobile extends StatelessWidget {
               'Log out',
               style: AppTypography.text15,
             ),
-            onTap: () {
-              // context.goNamed(RoutePath.writersBenefitScreen);
+            onTap: () async {
+              var logoutResponse = await context.read<LogoutVM>().logout();
+              debugPrint('Logout val -------- $logoutResponse');
+              if (logoutResponse.success) {
+                context.goNamed(RoutePath.landingPage);
+              } else {
+                ScaffoldMessenger.of(context).showSnackBar(
+                  SnackBar(
+                    duration: const Duration(seconds: 2),
+                    backgroundColor: AppColors.red,
+                    content: Text(
+                      logoutResponse.message ?? 'Something went wrong',
+                      textAlign: TextAlign.center,
+                    ),
+                  ),
+                );
+              }
             },
+            // context.goNamed(RoutePath.writersBenefitScreen);
             leading: svgHelper('assets/svgs/logout.svg'),
           ),
           const YBox(20),
@@ -149,14 +164,20 @@ class MyWalletItem extends StatelessWidget {
           color: Colors.grey.shade100.withOpacity(0.2)),
       child: Column(
         children: [
-           Row(
+          Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Text('My wallet', style: AppTypography.text14Bold,),
+              Text(
+                'My wallet',
+                style: AppTypography.text14Bold,
+              ),
               // XBox(50),
               Row(
                 children: [
-                  Text('View details',  style: AppTypography.text12,),
+                  Text(
+                    'View details',
+                    style: AppTypography.text12,
+                  ),
                   const Icon(Icons.keyboard_arrow_right)
                 ],
               )
@@ -267,47 +288,47 @@ class UserDetails extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Consumer<LoginVM>(
-      builder: (context, loginVM, _) {
-        User? user = loginVM.user;
-        debugPrint('User === $user');
-        return Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
-          Row(
-            children: [
-               CircleAvatar(
-                radius: 30,
-                child: Text(user?.firstName[0] ??''),
-              ),
-              const XBox(10),
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                mainAxisSize: MainAxisSize.min,
-                children: [
-                  Text('${user?.firstName ?? ''} ${user?.lastName ?? ''}' , style: AppTypography.text16),
-                  user?.id == null ? const SizedBox() :
-                  Row(
-                    children: [
-                      Text(
-                        'ID ${user?.id ??'70999HIH'}' ,
-                        style: AppTypography.text14,
-                      ),
-                      IconButton(
-                          onPressed: () {},
-                          icon: svgHelper(
-                            'assets/svgs/copy1.svg',
-                            height: 14.4,
-                            width: 10.8,
-                          )),
-                    ],
-                  )
-                ],
-              ),
-            ],
-          ),
-          const Icon(Icons.keyboard_arrow_right, color: AppColors.grey),
-        ]);
-      }
-    );
+    return Consumer<LoginVM>(builder: (context, loginVM, _) {
+      User? user = loginVM.user;
+      debugPrint('User === ${user?.username}');
+      return Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
+        Row(
+          children: [
+            CircleAvatar(
+              radius: 30,
+              child: Text(user?.firstName[0] ?? ''),
+            ),
+            const XBox(10),
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                Text('${user?.firstName ?? ''} ${user?.lastName ?? ''}',
+                    style: AppTypography.text16),
+                user?.id == null
+                    ? const SizedBox()
+                    : Row(
+                        children: [
+                          Text(
+                            'ID ${user?.id ?? '70999HIH'}',
+                            style: AppTypography.text14,
+                          ),
+                          IconButton(
+                              onPressed: () {},
+                              icon: svgHelper(
+                                'assets/svgs/copy1.svg',
+                                height: 14.4,
+                                width: 10.8,
+                              )),
+                        ],
+                      )
+              ],
+            ),
+          ],
+        ),
+        const Icon(Icons.keyboard_arrow_right, color: AppColors.grey),
+      ]);
+    });
   }
 }
 
@@ -333,8 +354,7 @@ class LandingPageDrawerMobile extends StatelessWidget {
               icon: const Icon(Icons.close),
             ),
           ),
-          const  YBox(20),
-
+          const YBox(20),
           ListTile(
             leading: Text(
               'Browse',
@@ -370,7 +390,7 @@ class LandingPageDrawerMobile extends StatelessWidget {
             trailing: const Icon(Icons.keyboard_arrow_down_rounded,
                 color: AppColors.grey),
           ),
-       const  YBox(20),
+          const YBox(20),
           CustomBtn.outline(
             onlineColor: Colors.transparent,
             onTap: () {

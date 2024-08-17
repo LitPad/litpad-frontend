@@ -5,12 +5,33 @@ import 'package:litpad/ui/components/books/books.dart';
 import 'package:litpad/ui/components/home/home.dart';
 
 class PopularBooksMobile extends StatelessWidget {
-  const PopularBooksMobile({
+  PopularBooksMobile({
     Key? key,
     this.title,
   }) : super(key: key);
 
   final String? title;
+  final List<String> imgList = [
+    AppImages.article,
+    AppImages.book2,
+    AppImages.book3,
+    AppImages.book4,
+    AppImages.book5,
+  ];
+  final List<String> bookTitle = [
+    'Falling for my boyfriend\'s dad',
+    'Tangled destinies',
+    'Morgana',
+    'Haunted Desire',
+    'Princess Heaven',
+  ];
+  final List<String> author = [
+    'Sarah John',
+    'Xenia Litpad',
+    'Dark Xenia',
+    'DarkXenia',
+    'Alexandra Dell',
+  ];
 
   @override
   Widget build(BuildContext context) {
@@ -48,11 +69,15 @@ class PopularBooksMobile extends StatelessWidget {
           Wrap(
             spacing: (20),
             runSpacing: (40),
-            children: List.generate(6, (index) {
+            children: List.generate(imgList.length, (index) {
               return SizedBox(
                 // color: AppColors.black700,
                 width: MediaQuery.of(context).size.width * 0.4,
-                child: const ArticleCardMobile(),
+                child: ArticleCardMobile(
+                  imgList: imgList[index],
+                  author: author[index],
+                  title: bookTitle[index],
+                ),
               );
             }),
           )

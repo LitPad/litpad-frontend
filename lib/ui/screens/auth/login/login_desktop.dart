@@ -21,6 +21,9 @@ class _LoginDesktopState extends State<LoginDesktop> {
           ChangeNotifierProvider<GoogleLoginVM>(
             create: (context) => GoogleLoginVM(),
           ),
+          ChangeNotifierProvider<LoginVM>(
+            create: (context) => LoginVM(),
+          ),
         ],
         child: Scaffold(
           body: Container(

@@ -1,4 +1,5 @@
 import 'package:litpad/core/core.dart';
+import 'package:litpad/core/vm/auth/logout_vm.dart';
 import 'package:provider/provider.dart';
 import 'package:provider/single_child_widget.dart';
 
@@ -18,6 +19,7 @@ final allProviders = <SingleChildWidget>[
   ChangeNotifierProvider(create: (_) => GoogleLoginVM()),
   ChangeNotifierProvider(create: (_) => ResendVerificationMailVM()),
   ChangeNotifierProvider(create: (_) => StartupVM()),
+  ChangeNotifierProvider(create: (_) => LogoutVM()),
 
   //Profile providers
   ChangeNotifierProvider(create: (_) => FollowAndUnfollowVM()),

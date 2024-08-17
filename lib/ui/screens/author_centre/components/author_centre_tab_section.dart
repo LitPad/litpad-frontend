@@ -1,3 +1,4 @@
+import 'package:litpad/core/core.dart';
 import 'package:litpad/core/utils/utils.dart';
 import 'package:litpad/ui/components/components.dart';
 import 'package:litpad/ui/screens/screens.dart';
@@ -21,6 +22,13 @@ class _AuthorCentreTabDesktopState extends State<AuthorCentreTabDesktop> {
     'Gifts': const HomepageTab(),
     'My fans': const HomepageTab(),
   };
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+  }
+
 
   @override
   Widget build(BuildContext context) {
@@ -103,7 +111,7 @@ class _AuthorCentreTabMobileState extends State<AuthorCentreTabMobile> {
   int _selectedTabIndex = 0;
   Map<String, Widget> menuTabs = {
     'Homepage': const HomepageTab(isMobile: true),
-    'Story': const StoryTab(isMobile: true),
+    'Story': const StoryTab(),
     'Income': const HomepageTab(isMobile: true),
     'Inbox': const HomepageTab(isMobile: true),
     'Analytics': const HomepageTab(isMobile: true),

@@ -1,3 +1,4 @@
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:go_router/go_router.dart';
 import 'package:litpad/core/core.dart';
 import 'package:litpad/ui/ui.dart';
@@ -272,11 +273,29 @@ class _StoryTabState extends State<StoryTab> {
 
   @override
   Widget build(BuildContext context) {
-    final viewModel = context.read<ViewLatestBookByAuthorVM>();
-
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
+        Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            Text(
+              'My stories',
+              style: AppTypography.text14Bold,
+            ),
+            BtnContainer(
+              onTap: () {
+                context.goNamed(RoutePath.createStoryScreen);
+              },
+              padding: const EdgeInsets.symmetric(
+                horizontal: 28,
+                vertical: 14,
+              ),
+              text: "Create story",
+            ),
+          ],
+        ),
+        const YBox(20),
         if (!widget.isMobile)
           Row(
             children: [
@@ -367,7 +386,11 @@ class _StoryTabState extends State<StoryTab> {
     return Consumer<ViewLatestBookByAuthorVM>(
       builder: (context, authorBooksVM, _) {
         if (authorBooksVM.isLoading == false) {
-          return const Center(child: CircularProgressIndicator());
+          return const Center(
+              child: SpinKitFadingCircle(
+            color: Colors.deepPurple,
+            size: 50.0,
+          ));
         } else {
           if (authorBooksVM.booksResponse == null ||
               authorBooksVM.booksResponse!.books.isEmpty) {
@@ -441,7 +464,7 @@ class _StoryTabState extends State<StoryTab> {
                                 child: ClipRRect(
                                     borderRadius: BorderRadius.circular(10),
                                     child: Image.network(
-                                      book.coverImage,
+                                      book.coverImage?? '',
                                       fit: BoxFit.cover,
                                     ))),
                             const XBox(20),
@@ -450,7 +473,7 @@ class _StoryTabState extends State<StoryTab> {
                               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                               children: [
                                 Text(
-                                  book.title,
+                                  book.title ?? '',
                                   style: AppTypography.text14Bold,
                                 ),
                                 Row(
@@ -488,7 +511,10 @@ class _StoryTabState extends State<StoryTab> {
                                 width: 177,
                                 height: 43,
                                 borderRadius: 100,
-                                onTap: () {},
+                                onTap: () {
+                                  context.goNamed(RoutePath.addNewChapterScreen,
+                                      extra: book.slug ?? '');
+                                },
                                 online: true,
                                 child: const Text('Add new chapter')),
                             TextButton(

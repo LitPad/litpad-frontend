@@ -1,6 +1,6 @@
-class ApiResponse<T> {
+class ApiResponse {
   bool success;
-  T? data;
+  dynamic data;
   String? message;
   int? code;
 

@@ -44,7 +44,8 @@ class _HomeScreenState extends State<HomeScreen> {
           key: scaffoldKey,
           backgroundColor: AppColors.bgWhite,
           endDrawer: constraints.maxWidth >= 950
-              ? null
+              ? DrawerDesktop(onNavItemTap: (int navIndex) {
+            scaffoldKey.currentState?.closeEndDrawer();})
               : DrawerMobile(onNavItemTap: (int navIndex) {
                   scaffoldKey.currentState?.closeEndDrawer();
                 }),
@@ -53,32 +54,36 @@ class _HomeScreenState extends State<HomeScreen> {
             child: Column(
               children: [
                 constraints.maxWidth >= 950
-                    ? const DeskTopNavbar()
+                    ?  DeskTopNavbar(
+                  openDrawer: () {
+                    scaffoldKey.currentState!.openEndDrawer();
+                  },
+                )
                     : MobileNavbar(
                         openDrawer: () {
                           scaffoldKey.currentState!.openEndDrawer();
                         },
                       ),
-                // constraints.maxWidth >= 950
-                //     ? const HeroSectionDestop()
-                //     : const HeroSectionMobile(),
+                constraints.maxWidth >= 950
+                    ? const HeroSectionDestop()
+                    : const HeroSectionMobile(),
                 // constraints.maxWidth >= 950
                 //     ? const WithLitpadDesktop()
                 //     : const WithLitpadMobile(),
                 constraints.maxWidth >= 950
                     ? const PopularBookDesktop()
-                    : const PopularBooksMobile(),
+                    :  PopularBooksMobile(),
                 constraints.maxWidth >= 950
-                    ? const HomeTrendingDesktop()
-                    : const HometrendingMobile(),
-                const ArticleSlider(title: "New arrivals"),
+                    ?  HomeTrendingDesktop()
+                    :  HomeTrendingMobile(),
+                 ArticleSlider(title: "New arrivals"),
                 constraints.maxWidth >= 950
                     ? const PopularBookDesktop(title: "Serialising")
-                    : const PopularBooksMobile(title: "Serialising"),
+                    :  PopularBooksMobile(title: "Serialising"),
                 constraints.maxWidth >= 950
                     ? const PopularBookDesktop(title: "Completed books")
-                    : const PopularBooksMobile(title: "Completed books"),
-                const ArticleSlider(title: "Upcoming book"),
+                    :  PopularBooksMobile(title: "Completed books"),
+                 ArticleSlider(title: "Upcoming book"),
                 const HDivider(),
                 const FooterSection(),
               ],

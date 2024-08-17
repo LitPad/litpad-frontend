@@ -2,8 +2,11 @@ import 'package:litpad/core/utils/utils.dart';
 import 'package:litpad/ui/components/books/tags.dart';
 
 class ArticleCard extends StatelessWidget {
+  final String? imgList;
+  final String? title;
+  final String? author;
   const ArticleCard({
-    super.key,
+    super.key, this.imgList, this.title, this.author,
   });
 
   @override
@@ -22,18 +25,18 @@ class ArticleCard extends StatelessWidget {
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(12),
             ),
-            child: imageHelper(AppImages.article, height: 300),
+            child: imageHelper(imgList ?? AppImages.article, height: 300),
           ),
           const SizedBox(height: 12),
           Text(
-            "Falling for my Boyfriend",
+            title??"Falling for my Boyfriend",
             style: AppTypography.text18.copyWith(
               fontWeight: FontWeight.w500,
             ),
           ),
           const SizedBox(height: 2),
           Text(
-            "By Sarah john",
+            "By ${author ?? 'Sarah John'}",
             style: AppTypography.text15,
           ),
           const SizedBox(height: 6),
@@ -70,8 +73,14 @@ class ArticleCard extends StatelessWidget {
 }
 
 class ArticleCardMobile extends StatelessWidget {
-  const ArticleCardMobile({
+  final String? imgList;
+  final String? title;
+  final String? author;
+   const ArticleCardMobile({
     super.key,
+      this.imgList,
+      this.title,
+      this.author,
   });
 
   @override
@@ -90,10 +99,11 @@ class ArticleCardMobile extends StatelessWidget {
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(12),
             ),
-            child: imageHelper(
-              AppImages.article,
-              // height: 137,
-              // width: 107,
+            child:imageHelper(
+              imgList ?? '',
+
+              height: 200,
+
             ),
           ),
           const SizedBox(height: 10),
@@ -103,7 +113,7 @@ class ArticleCardMobile extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  "The Call of the wild",
+                  title ?? '',
                   maxLines: 2,
                   overflow: TextOverflow.ellipsis,
                   style: AppTypography.text14.copyWith(
@@ -112,7 +122,7 @@ class ArticleCardMobile extends StatelessWidget {
                 ),
                 const SizedBox(height: 2),
                 Text(
-                  "By Sarah john",
+                  'By ${author ?? ''}',
                   style: AppTypography.text12,
                 ),
                 const SizedBox(height: 6),
@@ -123,5 +133,4 @@ class ArticleCardMobile extends StatelessWidget {
         ],
       ),
     );
-  }
-}
+  }}

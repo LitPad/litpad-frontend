@@ -5,7 +5,6 @@ import 'package:provider/provider.dart';
 
 import '../profile/view_user_profile.dart';
 
-//Todo: Handle proper user data saving and confirm the getProfile implementation
 class LoginVM extends BaseVM {
   User? user;
   TextEditingController emailC = TextEditingController();

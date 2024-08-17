@@ -3,11 +3,12 @@ import 'package:litpad/ui/screens/auth/create_username_screen.dart';
 import 'package:litpad/ui/screens/auth/set_new_password/set_new_password.dart';
 import 'package:litpad/ui/screens/auth/unverified_user.dart';
 import 'package:litpad/ui/screens/auth/widgets/reset_password_message_screen.dart';
+import 'package:litpad/ui/screens/author_centre/add_chapter/add_new_chapter.dart';
+import 'package:litpad/ui/screens/author_centre/add_chapter/preview_chapter.dart';
 import 'package:litpad/ui/screens/author_centre/create_a_story/create_a_story.dart';
 import 'package:litpad/ui/screens/landing_page/landing_page.dart';
 import 'package:litpad/ui/screens/screens.dart';
 
-import '../../ui/components/components.dart';
 import '../../ui/screens/auth/forgot_password/forgot_password.dart';
 import '../../ui/screens/auth/widgets/verify_mail_screen.dart';
 import '../core.dart';
@@ -40,6 +41,8 @@ class RoutePath {
   static const String resetPasswordMessageScreen = 'resetPasswordMessageScreen';
   static const String unverifiedUserScreen = 'unverifiedUserScreen';
   static const String createStoryScreen = 'createStoryScreen';
+  static const String addNewChapterScreen = 'addNewChapterScreen';
+  static const String previewChapterScreen = 'previewChapterScreen';
 }
 
 Future<bool> isAuthenticated() async {
@@ -136,6 +139,27 @@ final GoRouter appRouter = GoRouter(
             path: "create-story",
             builder: (context, state) => const CreateStoryScreen(),
           ),
+          GoRoute(
+              name: RoutePath.addNewChapterScreen,
+              path: "add-chapter",
+              builder: (context, state) {
+                final slug = state.extra as String;
+                return AddNewChapter(bookSlug : slug);
+              },
+              routes: [
+                GoRoute(
+                  name: RoutePath.previewChapterScreen,
+                  path: "preview-chapter",
+                  builder: (context, state) {
+                    final Map<String, dynamic>? extra =
+                        state.extra as Map<String, dynamic>?;
+                    return PreviewScreen(
+                      title: extra?['title'],
+                      chapterText: extra?['chapterText'],
+                    );
+                  },
+                ),
+              ]),
         ]),
 
     GoRoute(
@@ -197,6 +221,3 @@ final GoRouter appRouter = GoRouter(
 );
 
 //Todo: Screens to be placed in login guard
-//Homscreen has
-//Browse, Booklisting and writer's benefit
-//Browse, Booklisting and writer's benefit , login & signup

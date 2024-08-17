@@ -16,7 +16,7 @@ class LoginForm extends StatefulWidget {
 
 class _LoginFormState extends State<LoginForm> {
   final _formKey = GlobalKey<FormState>();
-  final toast = ToastService();
+  final scaffoldMessenger = ScaffoldMessengerState();
 
   @override
   Widget build(BuildContext context) {
@@ -66,8 +66,7 @@ class _LoginFormState extends State<LoginForm> {
                     children: [
                       InkWell(
                         onTap: () {
-                          toast.show('Help');
-                          // context.goNamed(RoutePath.unverifiedUserScreen);
+                          context.goNamed(RoutePath.forgotPasswordScreen);
                         },
                         child: Text(
                           "Forgot password?",
@@ -122,14 +121,36 @@ class _LoginFormState extends State<LoginForm> {
         debugPrint('Login Res $value');
         if (value.success) {
           debugPrint('D $value');
-         context.pushReplacement('/home');
+          ScaffoldMessenger.of(context).showSnackBar(
+            SnackBar(
+              duration: const Duration(seconds: 2),
+              backgroundColor: AppColors.green,
+              content: Text(
+                value.message ?? 'Login Successful',
+                textAlign: TextAlign.center,
+              ),
+            ),
+          );
+          context.pushReplacement('/home');
+        } else if(value.data['message'] == 'Unauthorised'      ){
+          // context.goNamed(RoutePath.verifyMailScreen);
 
-          // context.goNamed(RoutePath.homeScreen);
         }
-        //Todo: Handle case for unverified accounts
-        else if(value.code == 401) {
-          context.goNamed(RoutePath.verifyMailScreen);
-          debugPrint('Error on login');
+
+        else {
+          debugPrint('Error on login $value');
+          ScaffoldMessenger.of(context).showSnackBar(
+            SnackBar(
+              backgroundColor: AppColors.red,
+              behavior: SnackBarBehavior.floating,
+              duration: const Duration(seconds: 2),
+              content: Text(
+                value.message ?? 'Try again',
+                textAlign: TextAlign.center,
+              ),
+            ),
+          );
+          // context.goNamed(RoutePath.verifyMailScreen);
           // show error toast
         }
       });

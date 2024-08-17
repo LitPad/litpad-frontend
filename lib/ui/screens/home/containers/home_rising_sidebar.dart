@@ -11,7 +11,7 @@ class HomeRisingSibarSection extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       padding: const EdgeInsets.symmetric(
-        horizontal: 20,
+        // horizontal: 20,
       ),
       // margin: const EdgeInsets.only(
       //   bottom: 20,

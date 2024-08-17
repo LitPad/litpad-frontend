@@ -3,14 +3,17 @@ import 'package:litpad/ui/components/books/row_icon_with_text.dart';
 import 'package:litpad/ui/components/books/tags.dart';
 
 class BookCard extends StatelessWidget {
-  const BookCard({
-    Key? key,
-    this.imgWidth,
-    this.imgheight,
-    this.onImageTap,
-    this.authorName,
-    this.bookTitle, this.bookDescription, this.wordCount
-  }) : super(key: key);
+  const BookCard(
+      {Key? key,
+      this.imgWidth,
+      this.imgheight,
+      this.onImageTap,
+      this.authorName,
+      this.bookTitle,
+      this.bookDescription,
+      this.wordCount,
+      this.image})
+      : super(key: key);
 
   final double? imgWidth;
   final String? bookTitle;
@@ -18,6 +21,7 @@ class BookCard extends StatelessWidget {
   final String? bookDescription;
   final String? wordCount;
   final double? imgheight;
+  final String? image;
   final VoidCallback? onImageTap;
 
   @override
@@ -32,9 +36,12 @@ class BookCard extends StatelessWidget {
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(20),
             ),
-            child: Image.asset(
-              AppImages.article,
-              fit: BoxFit.cover,
+            child: ClipRRect(
+              borderRadius: BorderRadius.circular(20),
+              child: Image.asset(
+                image ?? '',
+                fit: BoxFit.cover,
+              ),
             ),
           ),
         ),
@@ -58,15 +65,15 @@ class BookCard extends StatelessWidget {
                 ),
               ),
               const YBox(12),
-               Row(
+              Row(
                 children: [
                   const RowIconWithText(
                     text: "4.5k",
                     icon: Icons.visibility_outlined,
                   ),
                   const XBox(5),
-                   RowIconWithText(
-                    text:" ${wordCount ?? "248.k" } words",
+                  RowIconWithText(
+                    text: " ${wordCount ?? "248.k"} words",
                     icon: Icons.edit_outlined,
                   ),
                   const XBox(5),

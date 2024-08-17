@@ -23,7 +23,6 @@ class _VerifyMailScreenState extends State<VerifyMailScreen> {
     final pathSegments = uri.pathSegments.takeWhile((value) => value != '');
 
     token = pathSegments.isNotEmpty ? pathSegments.last : null;
-    debugPrint('token: $token');
   }
 
   @override

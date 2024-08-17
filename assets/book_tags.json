@@ -1,0 +1,150 @@
+{
+  "status": "success",
+  "message": "Tags fetched successfully",
+  "data": [
+    {
+      "name": "Campus",
+      "slug": "campus"
+    },
+    {
+      "name": "Revenge",
+      "slug": "revenge"
+    },
+    {
+      "name": "Second Chance",
+      "slug": "second-chance"
+    },
+    {
+      "name": "Age gap",
+      "slug": "age-gap"
+    },
+    {
+      "name": "Regret",
+      "slug": "regret"
+    },
+    {
+      "name": "Misunderstanding",
+      "slug": "misunderstanding"
+    },
+    {
+      "name": "Hatred",
+      "slug": "hatred"
+    },
+    {
+      "name": "Kiss",
+      "slug": "kiss"
+    },
+    {
+      "name": "Runaway",
+      "slug": "runaway"
+    },
+    {
+      "name": "Hate to love",
+      "slug": "hate-to-love"
+    },
+    {
+      "name": "Strong female lead",
+      "slug": "strong-female-lead"
+    },
+    {
+      "name": "School",
+      "slug": "school"
+    },
+    {
+      "name": "Forgiveness",
+      "slug": "forgiveness"
+    },
+    {
+      "name": "Royal",
+      "slug": "royal"
+    },
+    {
+      "name": "Arranged marriage",
+      "slug": "arranged-marriage"
+    },
+    {
+      "name": "Betrayal",
+      "slug": "betrayal"
+    },
+    {
+      "name": "Secret crush",
+      "slug": "secret-crush"
+    },
+    {
+      "name": "Pregnant",
+      "slug": "pregnant"
+    },
+    {
+      "name": "Character growth",
+      "slug": "character-growth"
+    },
+    {
+      "name": "He",
+      "slug": "he"
+    },
+    {
+      "name": "She",
+      "slug": "she"
+    },
+    {
+      "name": "Destiny",
+      "slug": "destiny"
+    },
+    {
+      "name": "Painful love",
+      "slug": "painful-love"
+    },
+    {
+      "name": "Rejected",
+      "slug": "rejected"
+    },
+    {
+      "name": "Enemies",
+      "slug": "enemies"
+    },
+    {
+      "name": "Prophecy",
+      "slug": "prophecy"
+    },
+    {
+      "name": "Shifter",
+      "slug": "shifter"
+    },
+    {
+      "name": "Omega verse",
+      "slug": "omega-verse"
+    },
+    {
+      "name": "Alternate universe",
+      "slug": "alternate-universe"
+    },
+    {
+      "name": "Controlling",
+      "slug": "controlling"
+    },
+    {
+      "name": "World domination",
+      "slug": "world-domination"
+    },
+    {
+      "name": "Karma",
+      "slug": "karma"
+    },
+    {
+      "name": "Beautiful female lead",
+      "slug": "beautiful-female-lead"
+    },
+    {
+      "name": "Hardship",
+      "slug": "hardship"
+    },
+    {
+      "name": "Hard-working protagonist",
+      "slug": "hard-working-protagonist"
+    },
+    {
+      "name": "Future",
+      "slug": "future"
+    }
+  ]
+}

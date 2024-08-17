@@ -1,11 +1,14 @@
 import '../../core.dart';
 
 class UpdateProfileVM extends BaseVM {
-  Future<ApiResponse> getSiteDetails({required String token}) async {
+  TextEditingController usernameC = TextEditingController();
+  Future<ApiResponse> updateProfile() async {
     return makeRequest(
       method: DioHttpMethod.POST,
-      endpoint: '/profiles/update',
-      data: {},
+      endpoint: 'profiles/update',
+      data: {
+        'username' : usernameC.text.trim()
+      },
       onSuccess: (data) {
         return ApiResponse(success: true, data: data);
       },
@@ -14,7 +17,8 @@ class UpdateProfileVM extends BaseVM {
 
   @override
   void dispose() {
-    printty("SignUpVM disposed");
+    printty("Update profile disposed");
+    usernameC.dispose();
     super.dispose();
   }
 }

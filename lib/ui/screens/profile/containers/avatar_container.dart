@@ -1,10 +1,17 @@
+import 'package:litpad/core/core.dart';
 import 'package:litpad/core/utils/utils.dart';
+import 'package:provider/provider.dart';
+
+import '../../../../core/models/user.dart';
 
 class AvatarContainerDeskTop extends StatelessWidget {
   const AvatarContainerDeskTop({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+   final loginVM = context.read<LoginVM>().user;
+    User? user = loginVM;
+
     return Container(
       color: AppColors.white,
       width: MediaQuery.of(context).size.width,
@@ -40,7 +47,7 @@ class AvatarContainerDeskTop extends StatelessWidget {
                         Row(
                           children: [
                             Text(
-                              'Temitope',
+                              user?.firstName ?? '',
                               style: AppTypography.text32.copyWith(
                                 fontWeight: FontWeight.w500,
                               ),
@@ -59,7 +66,7 @@ class AvatarContainerDeskTop extends StatelessWidget {
                                 mainAxisSize: MainAxisSize.min,
                                 children: [
                                   Text(
-                                    'ID 70987210',
+                                    user?.id ?? 'ID 70987210',
                                     style: AppTypography.text15,
                                   ),
                                   const XBox(8),
@@ -70,12 +77,17 @@ class AvatarContainerDeskTop extends StatelessWidget {
                           ],
                         ),
                         const SizedBox(height: 8),
-                        Text(
-                          'Change picture',
-                          style: AppTypography.text20.copyWith(
-                            color: AppColors.purple500,
-                            decoration: TextDecoration.underline,
-                            decorationColor: AppColors.purple500,
+                        GestureDetector(
+                          onTap: (){
+                            debugPrint(' User data ---- $user');
+                          },
+                          child: Text(
+                            'Change picture',
+                            style: AppTypography.text20.copyWith(
+                              color: AppColors.purple500,
+                              decoration: TextDecoration.underline,
+                              decorationColor: AppColors.purple500,
+                            ),
                           ),
                         ),
                       ],

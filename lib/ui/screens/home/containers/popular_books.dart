@@ -5,12 +5,33 @@ import 'package:litpad/ui/components/home/home.dart';
 import 'package:provider/provider.dart';
 
 class PopularBooksMobile extends StatelessWidget {
-  const PopularBooksMobile({
+   PopularBooksMobile({
     Key? key,
     this.title,
   }) : super(key: key);
 
   final String? title;
+  final List<String> imgList = [
+    AppImages.article,
+    AppImages.book2,
+    AppImages.book3,
+    AppImages.book4,
+    AppImages.book5,
+  ];
+   final List<String> bookTitle = [
+     'Falling for my boyfriend\'s dad',
+     'Tangled destinies',
+     'Morgana',
+     'Haunted Desire',
+     'Princess Heaven',
+   ];
+  final List<String> author = [
+    'Sarah John',
+    'Xenia Litpad',
+    'Dark Xenia',
+    'DarkXenia',
+    'Alexandra Dell',
+  ];
 
   @override
   Widget build(BuildContext context) {
@@ -48,11 +69,11 @@ class PopularBooksMobile extends StatelessWidget {
           Wrap(
             spacing: (20),
             runSpacing: (40),
-            children: List.generate(6, (index) {
+            children: List.generate(imgList.length, (index) {
               return SizedBox(
                 // color: AppColors.black700,
                 width: MediaQuery.of(context).size.width * 0.4,
-                child: const ArticleCardMobile(),
+                child:  ArticleCardMobile(imgList: imgList[index], title: bookTitle[index], author: author[index], ),
               );
             }),
           )
@@ -77,6 +98,7 @@ class PopularBookDesktop extends StatefulWidget {
 class _PopularBookDesktopState extends State<PopularBookDesktop> {
   //Todo: Finalise latest book endpoint
 
+
   @override
   void initState() {
     WidgetsBinding.instance.addPostFrameCallback((_) async {
@@ -93,6 +115,28 @@ class _PopularBookDesktopState extends State<PopularBookDesktop> {
     // TODO: implement initState
     super.initState();
   }
+
+  final List<String> imgList = [
+    AppImages.book,
+    AppImages.book2,
+    AppImages.book3,
+    AppImages.book4,
+    AppImages.book5,
+  ];
+  final List<String> bookTitle = [
+    'Falling for my boyfriend\'s dad',
+    'Tangled destinies',
+    'Morgana',
+    'Haunted Desire',
+    'Princess Heaven',
+  ];
+  final List<String> author = [
+    'Sarah John',
+    'Xenia Litpad',
+    'Dark Xenia',
+    'DarkXenia',
+    'Alexandra Dell',
+  ];
 
   @override
   Widget build(BuildContext context) {
@@ -125,12 +169,15 @@ class _PopularBookDesktopState extends State<PopularBookDesktop> {
           Wrap(
             spacing: (20),
             runSpacing: (40),
-            children: List.generate(2, (index) {
+            children: List.generate(imgList.length, (index) {
               return SizedBox(
                 width: (420),
                 child: BookCard(
                   imgWidth: 174,
                   imgheight: 225,
+                  image: imgList[index],
+                  bookTitle: bookTitle[index],
+                  authorName: author[index],
                   onImageTap: () {
                     context
                         .goNamed(RoutePath.bookDetailsScreen, pathParameters: {

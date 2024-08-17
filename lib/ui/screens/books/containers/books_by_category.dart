@@ -12,7 +12,7 @@ class BooksByCategory extends StatefulWidget {
 
 class _BooksByCategoryState extends State<BooksByCategory> {
   int _currentPage = 1;
-  final int _totalPages = 5; // Assuming there are 5 pages in total
+  final int _totalPages = 5;
 
   void _handlePageChanged(int newPage) {
     setState(() {

@@ -179,11 +179,30 @@ class _SignupFormState extends State<SignupForm> {
     if (_formKey.currentState?.validate() ?? false) {
       context.read<SignupVM>().signUp().then((value) {
         if (value.success) {
-          // show a success toast and navigate to next screen
+          ScaffoldMessenger.of(context).showSnackBar(
+            SnackBar(
+              duration: const Duration(seconds: 2),
+              backgroundColor: AppColors.green,
+              behavior: SnackBarBehavior.floating,
+              content: Text(
+                value.message ?? 'Signup Successful',
+                textAlign: TextAlign.center,
+              ),
+            ),
+          );
           context.goNamed(RoutePath.authCheckMail);
         } else {
-          debugPrint('Error');
-        }
+          ScaffoldMessenger.of(context).showSnackBar(
+            SnackBar(
+              backgroundColor: AppColors.red,
+              behavior: SnackBarBehavior.floating,
+              duration: const Duration(seconds: 2),
+              content: Text(
+                value.message ?? 'Try again',
+                textAlign: TextAlign.center,
+              ),
+            ),
+          );        }
       });
     } else {
       debugPrint('Form validation failed');

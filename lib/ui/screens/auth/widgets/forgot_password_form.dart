@@ -80,14 +80,32 @@ class _ForgotPasswordFormState extends State<ForgotPasswordForm> {
   }
 
   resetPassword() {
-    printty("Login pressed");
+    printty("reset password pressed");
     context.read<ResetPasswordVM>().resetPassword().then((value) {
       if (value.success) {
         debugPrint('D $value');
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(
+            backgroundColor: AppColors.green,
+            duration: const Duration(seconds: 2),
+            content: Text(
+              value.message ?? 'Reset password Successful',
+              textAlign: TextAlign.center,
+            ),
+          ),
+        );
         context.goNamed(RoutePath.resetPasswordMessageScreen);
       } else {
-        debugPrint('Error');
-        // show error toast
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(
+            backgroundColor: AppColors.red,
+            duration: const Duration(seconds: 2),
+            content: Text(
+              value.message ?? 'Try again',
+              textAlign: TextAlign.center,
+            ),
+          ),
+        );        // show error toast
       }
     });
   }

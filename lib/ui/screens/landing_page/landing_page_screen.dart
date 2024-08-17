@@ -44,8 +44,6 @@ class _LandingPageState extends State<LandingPage> {
   Widget build(BuildContext context) {
     w = MediaQuery.of(context).size.width;
     h = MediaQuery.of(context).size.height;
-    // printty(w, logLevel: "width");
-    // printty(h, logLevel: "height");
     return LayoutBuilder(builder: (context, constraints) {
       return Scaffold(
           key: scaffoldKey,
@@ -74,18 +72,18 @@ class _LandingPageState extends State<LandingPage> {
                     : const WithLitpadMobile(),
                 constraints.maxWidth >= 950
                     ? const PopularBookDesktop()
-                    : const PopularBooksMobile(),
+                    :  PopularBooksMobile(),
                 constraints.maxWidth >= 950
-                    ? const HomeTrendingDesktop()
-                    : const HometrendingMobile(),
-                const ArticleSlider(title: "New arrivals"),
+                    ?  HomeTrendingDesktop()
+                    :  HomeTrendingMobile(),
+                 ArticleSlider(title: "New arrivals"),
                 constraints.maxWidth >= 950
                     ? const PopularBookDesktop(title: "Serialising")
-                    : const PopularBooksMobile(title: "Serialising"),
+                    :  PopularBooksMobile(title: "Serialising"),
                 constraints.maxWidth >= 950
                     ? const PopularBookDesktop(title: "Completed books")
-                    : const PopularBooksMobile(title: "Completed books"),
-                const ArticleSlider(title: "Upcoming book"),
+                    :  PopularBooksMobile(title: "Completed books"),
+                 ArticleSlider(title: "Upcoming book"),
                 const HDivider(),
                 const FooterSection(),
               ],

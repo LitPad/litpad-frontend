@@ -4,13 +4,33 @@ import 'package:litpad/ui/components/books/tags.dart';
 import 'package:litpad/ui/components/home/text_btn.dart';
 
 class ArticleSlider extends StatelessWidget {
-  const ArticleSlider({
+   ArticleSlider({
     Key? key,
     required this.title,
   }) : super(key: key);
 
   final String title;
-
+  final List<String> imgList = [
+    AppImages.article,
+    AppImages.book2,
+    AppImages.book3,
+    AppImages.book4,
+    AppImages.book5,
+  ];
+  final List<String> bookTitle = [
+    'Falling for my boyfriend\'s dad',
+    'Tangled destinies',
+    'Morgana',
+    'Haunted Desire',
+    'Princess Heaven',
+  ];
+  final List<String> author = [
+    'Sarah John',
+    'Xenia Litpad',
+    'Dark Xenia',
+    'DarkXenia',
+    'Alexandra Dell',
+  ];
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -37,9 +57,9 @@ class ArticleSlider extends StatelessWidget {
             scrollDirection: Axis.horizontal,
             child: Row(
               children: List.generate(
-                10,
+                imgList.length,
                 (index) {
-                  return const SliderArticleCard();
+                  return  SliderArticleCard(img: imgList[index], title: bookTitle[index], author: author[index],);
                 },
               ),
             ),
@@ -51,8 +71,14 @@ class ArticleSlider extends StatelessWidget {
 }
 
 class SliderArticleCard extends StatelessWidget {
+  final String? img;
+  final String? title;
+  final String? author;
   const SliderArticleCard({
     super.key,
+    this.img,
+    this.title,
+    this.author,
   });
 
   @override
@@ -68,13 +94,13 @@ class SliderArticleCard extends StatelessWidget {
             child: ClipRRect(
               borderRadius: BorderRadius.circular(12),
               child: imageHelper(
-                AppImages.article,
+                img ?? AppImages.article,
               ),
             ),
           ),
           const YBox(12),
           Text(
-            "Falling for my Boyfriend",
+            title ?? "Falling for my Boyfriend",
             maxLines: 2,
             overflow: TextOverflow.ellipsis,
             style: AppTypography.text16.copyWith(
@@ -83,7 +109,7 @@ class SliderArticleCard extends StatelessWidget {
           ),
           const YBox(4),
           Text(
-            "By Sarah john",
+            "By ${author ?? 'Sarah john'}",
             overflow: TextOverflow.ellipsis,
             style: AppTypography.text15,
           ),

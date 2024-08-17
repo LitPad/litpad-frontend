@@ -69,6 +69,11 @@ class AppTypography {
     color: AppColors.purple900,
     fontSize: 24,
     height: 1.2,
+  );static TextStyle textBold24 = const TextStyle(
+    color: AppColors.purple900,
+    fontSize: 24,
+    fontWeight: FontWeight.w500,
+    height: 1.2,
   );
 
   static TextStyle text28 = const TextStyle(

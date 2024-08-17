@@ -11,7 +11,6 @@ class UnverifiedAccountForm extends StatefulWidget {
   State<UnverifiedAccountForm> createState() => _UnverifiedAccountFormState();
 }
 
-//Todo: Check for errors on this method
 class _UnverifiedAccountFormState extends State<UnverifiedAccountForm> {
   final _formKey = GlobalKey<FormState>();
 
@@ -62,11 +61,30 @@ class _UnverifiedAccountFormState extends State<UnverifiedAccountForm> {
       context.read<ResendVerificationMailVM>().verifyMail().then((value) {
         if (value.success) {
           debugPrint('D $value');
+          ScaffoldMessenger.of(context).showSnackBar(
+            SnackBar(
+              backgroundColor: AppColors.green,
+              duration: const Duration(seconds: 2),
+              content: Text(
+                value.message ?? 'Account verified',
+                textAlign: TextAlign.center,
+              ),
+            ),
+          );
           context.goNamed(RoutePath.authCheckMail);
         } else {
           debugPrint('Error');
-          // show error toast
-        }
+
+          ScaffoldMessenger.of(context).showSnackBar(
+            SnackBar(
+              backgroundColor: AppColors.red,
+              duration: const Duration(seconds: 2),
+              content: Text(
+                value.message ?? 'Try again',
+                textAlign: TextAlign.center,
+              ),
+            ),
+          );        }
       });
     }
   }

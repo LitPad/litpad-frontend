@@ -1,4 +1,4 @@
-import 'books_model.dart';
+import 'books.dart';
 
 class Book {
   final Author author;

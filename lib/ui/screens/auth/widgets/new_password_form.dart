@@ -53,18 +53,36 @@ class _SetNewPasswordFormState extends State<SetNewPasswordForm> {
           const YBox(16),
         ],
       );
-
     });
   }
+
   setNewPassword() async {
     printty("Login pressed");
     context.read<SetNewPasswordVM>().setNewPass(token).then((value) {
       if (value.success) {
         debugPrint('D $value');
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(
+            backgroundColor: AppColors.green,
+            duration: const Duration(seconds: 2),
+            content: Text(
+              value.message ?? 'Successful',
+              textAlign: TextAlign.center,
+            ),
+          ),
+        );
         context.goNamed(RoutePath.authCheckMail);
       } else {
-        debugPrint('Error');
-        // show error toast
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(
+            backgroundColor: AppColors.red,
+            duration: const Duration(seconds: 2),
+            content: Text(
+              value.message ?? 'Try again',
+              textAlign: TextAlign.center,
+            ),
+          ),
+        ); // show error toast
       }
     });
   }
