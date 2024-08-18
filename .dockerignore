@@ -1,0 +1,21 @@
+# Ignore Flutter build outputs
+build/
+.flutter/
+.dart_tool/
+.packages
+
+# Ignore node_modules if you have any
+node_modules/
+
+# Ignore editor settings
+.idea/
+.vscode/
+*.iml
+
+# Ignore OS-specific files
+.DS_Store
+Thumbs.db
+
+# Ignore git files
+.git
+.gitignore
