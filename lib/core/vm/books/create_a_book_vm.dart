@@ -2,7 +2,7 @@ import 'dart:convert';
 import 'dart:typed_data';
 import 'package:file_picker/file_picker.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
-import 'package:universal_html/html.dart';
+// import 'package:universal_html/html.dart' as html;
 import '../../core.dart';
 import 'package:http/http.dart' as http;
 

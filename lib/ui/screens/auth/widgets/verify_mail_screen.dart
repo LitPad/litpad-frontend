@@ -2,7 +2,7 @@ import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:go_router/go_router.dart';
 import 'package:litpad/core/core.dart';
 import 'package:provider/provider.dart';
-import 'package:universal_html/html.dart';
+import 'package:universal_html/html.dart' as html;
 
 import '../../../components/components.dart';
 
@@ -19,7 +19,7 @@ class _VerifyMailScreenState extends State<VerifyMailScreen> {
   @override
   void initState() {
     super.initState();
-    final uri = Uri.parse(window.location.href);
+    final uri = Uri.parse(html.window.location.href);
     final pathSegments = uri.pathSegments.takeWhile((value) => value != '');
 
     token = pathSegments.isNotEmpty ? pathSegments.last : null;

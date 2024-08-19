@@ -1,6 +1,5 @@
 # Stage 1: Build the Flutter web project
-FROM debian:bullseye-slim as build
-
+FROM debian:latest AS build
 # Install required dependencies
 RUN apt-get update && apt-get install -y \
     curl \
