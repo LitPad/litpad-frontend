@@ -5,5 +5,5 @@ ENV_FILE_PARAM = --env-file .env
 
 endif
 
-build:
+dock-build:
 	docker-compose up -d --build

@@ -1,5 +1,26 @@
 # Stage 1: Build the Flutter web project
-FROM cirrusci/flutter:3.10.6 as build
+FROM debian:bullseye-slim as build
+
+# Install required dependencies
+RUN apt-get update && apt-get install -y \
+    curl \
+    git \
+    unzip \
+    xz-utils \
+    libglu1-mesa \
+    && rm -rf /var/lib/apt/lists/*
+
+# Install Flutter SDK
+WORKDIR /usr/local
+RUN curl -LO https://storage.googleapis.com/flutter_infra_release/releases/stable/linux/flutter_linux_3.10.6-stable.tar.xz \
+    && tar xf flutter_linux_3.10.6-stable.tar.xz \
+    && rm flutter_linux_3.10.6-stable.tar.xz
+
+# Set Flutter in PATH
+ENV PATH="/usr/local/flutter/bin:/usr/local/flutter/bin/cache/dart-sdk/bin:${PATH}"
+
+# Enable Flutter web
+RUN flutter channel stable && flutter upgrade && flutter config --enable-web
 
 # Set working directory
 WORKDIR /app
