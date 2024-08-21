@@ -1,49 +1,53 @@
-# Stage 1: Build the Flutter web project
-FROM debian:latest AS build
-# Install required dependencies
-RUN apt-get update && apt-get install -y \
-    curl \
-    git \
-    unzip \
-    xz-utils \
-    libglu1-mesa \
-    && rm -rf /var/lib/apt/lists/*
+# Use the official Dart image as a parent image
+FROM ghcr.io/cirruslabs/flutter:3.24.0-0.2.pre AS build
 
-# Install Flutter SDK
-WORKDIR /usr/local
-RUN curl -LO https://storage.googleapis.com/flutter_infra_release/releases/stable/linux/flutter_linux_3.10.6-stable.tar.xz \
-    && tar xf flutter_linux_3.10.6-stable.tar.xz \
-    && rm flutter_linux_3.10.6-stable.tar.xz
-
-# Set Flutter in PATH
-ENV PATH="/usr/local/flutter/bin:/usr/local/flutter/bin/cache/dart-sdk/bin:${PATH}"
-
-# Enable Flutter web
-RUN flutter channel stable && flutter upgrade && flutter config --enable-web
-
-# Set working directory
+# Set the working directory
 WORKDIR /app
 
-# Copy the Flutter project files
+# Copy the code into the container
 COPY . .
 
-# Ensure dependencies are installed
+# Fetch the dependencies
 RUN flutter pub get
 
-# Build the project for web
-RUN flutter build web --release
+# Build the application (for web)
+RUN flutter build web
 
-# Stage 2: Serve the static files with nginx
-FROM nginx:stable-alpine
+# Use Nginx to serve the app
+FROM nginx:alpine
 
-# Copy the built files from the previous stage
-COPY --from=build /app/build/web /usr/share/nginx/html
+# Copy the build artifacts from the build stage, and the Nginx configuration
+COPY --from=build /app/build /usr/share/nginx/html
+COPY nginx.conf /etc/nginx/nginx.conf
 
-# Change the default nginx port to 3000
-RUN sed -i 's/listen .*/listen 3000;/' /etc/nginx/conf.d/default.conf
-
-# Expose the new port
 EXPOSE 3000
 
-# Start nginx server
 CMD ["nginx", "-g", "daemon off;"]
+
+
+
+
+
+
+
+# #Stage 1 - Install dependencies and build the app in a build environment
+# FROM debian:latest AS build-env
+# # Install flutter dependencies
+# RUN apt-get update
+# RUN apt-get install -y curl git wget unzip libgconf-2-4 gdb libstdc++6 libglu1-mesa fonts-droid-fallback lib32stdc++6 python3 sed
+# RUN apt-get clean# Clone the flutter repo
+# RUN git clone https://github.com/flutter/flutter.git /usr/local/flutter# Set flutter path
+# ENV PATH="${PATH}:/usr/local/flutter/bin:/usr/local/flutter/bin/cache/dart-sdk/bin"
+# # Run flutter doctor
+# RUN flutter doctor -v
+# RUN flutter channel master
+# RUN flutter upgrade
+# # Copy files to container and build
+# RUN mkdir /app/
+# COPY . /app/
+# WORKDIR /app/RUN flutter build web
+
+# EXPOSE 3000
+# # Stage 2 - Create the run-time image
+# FROM nginx:1.21.1-alpine
+# COPY --from=build-env /app/build/web /usr/share/nginx/html

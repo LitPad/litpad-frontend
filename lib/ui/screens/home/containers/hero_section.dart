@@ -1,7 +1,7 @@
 import 'package:litpad/core/utils/utils.dart';
 import 'package:litpad/ui/components/buttons/custom_btn.dart';
 
-import 'carousel_container.dart';
+import 'carousel_container.dart' as cct;
 
 // class HeroSection extends StatelessWidget {
 //   const HeroSection({Key? key}) : super(key: key);
@@ -104,7 +104,7 @@ class HeroSectionDestop extends StatelessWidget {
               ),
             ],
           )),
-          CarouselContainer(),
+          cct.CarouselContainer(),
         ],
       ),
     );
@@ -192,7 +192,7 @@ class HeroSectionMobile extends StatelessWidget {
               color: AppColors.purple900,
               borderRadius: BorderRadius.circular((40)),
             ),
-            child: CarouselContainer(),
+            child: cct.CarouselContainer(),
           ),
         ],
       ),

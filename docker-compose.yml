@@ -1,6 +1,10 @@
 services:
-  flutter-web:
+  web:
     build: .
     ports:
       - "3000:3000"
-    restart: always
+    volumes:
+      - .:/app
+      - /app/build/web # Avoid mounting over the build artifacts
+    environment:
+      - USER=appuser

@@ -241,15 +241,13 @@ class NavButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return OnHoverTranslate(
-      child: Container(
-        margin: const EdgeInsets.symmetric(horizontal: 2),
-        child: TextButton(
-          onPressed: onTap,
-          child: Text(
-            text,
-            style: AppTypography.text15,
-          ),
+    return Container(
+      margin: const EdgeInsets.symmetric(horizontal: 2),
+      child: TextButton(
+        onPressed: onTap,
+        child: Text(
+          text,
+          style: AppTypography.text15,
         ),
       ),
     );

@@ -18,51 +18,49 @@ class CustomBtn {
   }) {
     return IgnorePointer(
       ignoring: !online,
-      child: OnHoverTranslate(
-        child: InkWell(
-          onTap: onTap,
-          child: Container(
-            width: width,
-            padding: const EdgeInsets.symmetric(
-              vertical: 13,
-              horizontal: 26,
-            ),
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(borderRadius ?? 30),
-              color: online
-                  ? (onlineColor ?? AppColors.primaryPurple)
-                  : (offlineColor ?? AppColors.grey),
-            ),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                if (icon != null)
-                  Container(
-                    color: textStyle?.color ?? AppColors.white,
-                    child: icon,
-                  ),
-                if (icon != null)
-                  const XBox(15),
-                Center(
-                  child: isLoading
-                      ? CircularProgressIndicator(
-                          valueColor: AlwaysStoppedAnimation<Color>(
-                              textStyle?.color ?? Colors.white),
-                        )
-                      : Text(
-                          text,
-                          style: textStyle ??
-                              AppTypography.text14.copyWith(
-                                fontWeight: FontWeight.w500,
-                                color: online
-                                    ? Colors.white
-                                    : AppColors.grey.withOpacity(0.5),
-                              ),
-                          textAlign: TextAlign.center,
-                        ),
+      child: InkWell(
+        onTap: onTap,
+        child: Container(
+          width: width,
+          padding: const EdgeInsets.symmetric(
+            vertical: 13,
+            horizontal: 26,
+          ),
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(borderRadius ?? 30),
+            color: online
+                ? (onlineColor ?? AppColors.primaryPurple)
+                : (offlineColor ?? AppColors.grey),
+          ),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              if (icon != null)
+                Container(
+                  color: textStyle?.color ?? AppColors.white,
+                  child: icon,
                 ),
-              ],
-            ),
+              if (icon != null)
+                const XBox(15),
+              Center(
+                child: isLoading
+                    ? CircularProgressIndicator(
+                        valueColor: AlwaysStoppedAnimation<Color>(
+                            textStyle?.color ?? Colors.white),
+                      )
+                    : Text(
+                        text,
+                        style: textStyle ??
+                            AppTypography.text14.copyWith(
+                              fontWeight: FontWeight.w500,
+                              color: online
+                                  ? Colors.white
+                                  : AppColors.grey.withOpacity(0.5),
+                            ),
+                        textAlign: TextAlign.center,
+                      ),
+              ),
+            ],
           ),
         ),
       ),
