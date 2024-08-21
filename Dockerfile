@@ -9,6 +9,7 @@ COPY . .
 
 # Fetch the dependencies
 RUN flutter pub get
+RUN flutter pub upgrade
 
 # Build the application (for web)
 RUN flutter build web
