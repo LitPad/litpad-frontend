@@ -2,9 +2,10 @@ services:
   web:
     build: .
     ports:
-      - "3000:3000"
-    volumes:
-      - .:/app
-      - /app/build/web # Avoid mounting over the build artifacts
-    environment:
-      - USER=appuser
+      - "3000:80"
+    networks:
+      - flutter-network
+
+networks:
+  flutter-network:
+    driver: bridge

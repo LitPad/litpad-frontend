@@ -18,8 +18,7 @@ RUN flutter build web
 FROM nginx:alpine
 
 # Copy the build artifacts from the build stage, and the Nginx configuration
-COPY --from=build /app/build /usr/share/nginx/html
-COPY nginx.conf /etc/nginx/nginx.conf
+COPY --from=build /app/build/web /usr/share/nginx/html
 
 EXPOSE 3000
 
