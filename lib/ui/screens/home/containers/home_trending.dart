@@ -1,5 +1,4 @@
-import 'package:carousel_slider/carousel_options.dart';
-import 'package:carousel_slider/carousel_slider.dart';
+import 'package:carousel_slider_plus/carousel_slider_plus.dart';
 import 'package:litpad/core/utils/utils.dart';
 import 'package:litpad/ui/components/books/books.dart';
 import 'package:litpad/ui/components/components.dart';
