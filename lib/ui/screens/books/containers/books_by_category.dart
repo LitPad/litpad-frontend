@@ -14,6 +14,31 @@ class _BooksByCategoryState extends State<BooksByCategory> {
   int _currentPage = 1;
   final int _totalPages = 5;
 
+  final List<String> imgList = [
+    AppImages.article,
+    AppImages.book2,
+    AppImages.book3,
+    AppImages.book4,
+    AppImages.book5,
+  ];
+
+  final List<String> bookTitle = [
+    'Falling for my boyfriend\'s dad',
+    'Tangled destinies',
+    'Morgana',
+    'Haunted Desire',
+    'Princess Heaven',
+  ];
+
+  final List<String> author = [
+    'Sarah John',
+    'Xenia Litpad',
+    'Dark Xenia',
+    'DarkXenia',
+    'Alexandra Dell',
+  ];
+
+
   void _handlePageChanged(int newPage) {
     setState(() {
       _currentPage = newPage;
@@ -44,11 +69,13 @@ class _BooksByCategoryState extends State<BooksByCategory> {
           Wrap(
             spacing: (20),
             runSpacing: (40),
-            children: List.generate(6, (index) {
+            children: List.generate(imgList.length, (index) {
               return SizedBox(
                 width: (420),
                 child: BookCard(
-                  imgWidth: 174,
+                  image: imgList[index],
+                  bookTitle: bookTitle[index],
+authorName: author[index],                  imgWidth: 174,
                   imgheight: 225,
                   onImageTap: () {
                     context

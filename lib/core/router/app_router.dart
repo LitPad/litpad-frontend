@@ -72,6 +72,16 @@ final GoRouter appRouter = GoRouter(
       name: RoutePath.homeScreen,
       path: "/home",
       builder: (context, state) => const HomeScreen(),
+      redirect: (context, state) async {
+        debugPrint('In redirect ====>');
+        final isAuth = await isAuthenticated();
+        debugPrint('Redirect Auth State ====> $isAuth');
+        if (!isAuth) {
+          return '/';
+        } else {
+          return '/home';
+        }
+      },
     ),
 
     GoRoute(
